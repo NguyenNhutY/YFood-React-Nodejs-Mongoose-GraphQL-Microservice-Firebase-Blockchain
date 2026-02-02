@@ -6,7 +6,6 @@ import Material from "../material/material.model.js";
 import Material_Batch from "../material_batch/material_batch.model.js";
 import FoodService from "./food.service.js"
 
-import { GraphQLUpload } from 'graphql-upload';  // Correct scalar import
 
 import fs from 'fs';
 
@@ -57,39 +56,111 @@ const foodResolver = {
       },
   },
   Mutation: {
-    addFoods: async (_, { name, price, description, image, category_id }) => {
-      if (!image) {
-        throw new ApolloError("Image is required");
-      }
-      if (!name || !price || !description) {
-        throw new ApolloError("All fields are required");
+    addFoods: async (_, { foods }) => {
+      if (!foods || foods.length === 0) {
+        throw new Error("No foods provided");
       }
     
-      try {
-        // Assuming `image` is a URL from Cloudinary or similar service
-        const newFood = new Food({
-          name,
-          price,
-          description,
-          image, // URL from Cloudinary, for example
-          category_id,
-        });
-        const savedFood = await newFood.save();
-        if (!savedFood) {
-          throw new ApolloError("Failed to save food to database");
+      console.log("Array check:", Array.isArray(foods));
+    
+      if (Array.isArray(foods)) {
+        const foodNames = foods.map(food => food.name);
+        const existingFoods = await Food.find({ name: { $in: foodNames } });
+    
+        if (existingFoods.length > 0) {
+          throw new ApolloError("Some foods already exist");
         }
+    
+        try {
+          const foodPromises = foods.map(async (food) => {
+            if (!food.image) {
+              throw new ApolloError("Image is required for all foods");
+            }
+            console.log("Image received:", food.image);
+    
+            // Kiểm tra sự tồn tại của category trước khi tạo mới
+            let category = await Category.findOne({ name: food.category_name });
+            if (!category) {
+              // Nếu không tồn tại, tạo category mới
+              category = new Category({
+                name: food.category_name,
+              });
+              const savedCategory = await category.save();
+              if (!savedCategory) {
+                throw new ApolloError("Failed to create category");
+              }
+            }
+    
+            return new Food({
+              name: food.name,
+              price: food.price,
+              description: food.description,
+              category_name: category.name,  // Lưu ID của category
 
-        return {
-          success: true,
-          message: "Food added successfully",
-          data: savedFood,
-        };
-      } catch (error) {
-        console.error("Error adding food:", error);
-        throw new ApolloError("Error adding food", error.message);
+              image: food.image,
+              category_id: category._id,  // Lưu ID của category
+            });
+          });
+    
+          const newFoods = await Promise.all(foodPromises);
+          const savedFoods = await Food.insertMany(newFoods);
+    
+          return {
+            success: true,
+            message: "Foods added successfully",
+            data: savedFoods,
+          };
+        } catch (error) {
+          console.error("Error adding foods:", error);
+          throw new ApolloError("Error adding foods", error.message);
+        }
+      } else {
+        const { name, price, description, image, category_name } = foods;
+    
+        if (!image) {
+          throw new ApolloError("Image is required");
+        }
+        if (!name || !price || !description || !category_name) {
+          throw new ApolloError("All fields are required");
+        }
+    
+        try {
+          const existingFood = await Food.findOne({ name });
+          if (existingFood) {
+            throw new ApolloError("Food already exists");
+          }
+    
+          // Kiểm tra sự tồn tại của category trước khi tạo mới
+          let category = await Category.findOne({ name: category_name });
+          if (!category) {
+            category = new Category({ name: category_name });
+            await category.save();
+          }
+    
+          const newFood = new Food({
+            name,
+            price,
+            description,
+            image,
+            category_id: category._id,  // Lưu ID của category
+          });
+    
+          const savedFood = await newFood.save();
+          return {
+            success: true,
+            message: "Food added successfully",
+            data: savedFood,
+          };
+        } catch (error) {
+          console.error("Error adding food:", error);
+          throw new ApolloError("Error adding food", error.message);
+        }
       }
-        
-      },
+    },
+    
+    
+    
+      
     removeFood : async () => {
         try {
           const food = await foodModel.findById(req.body._id);

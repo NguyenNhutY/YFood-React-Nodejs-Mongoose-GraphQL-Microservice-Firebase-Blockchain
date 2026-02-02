@@ -1,0 +1,23 @@
+.seo-content {
+  padding: 4rem 1.5rem;
+  background-color: #f7fafc;
+
+  &__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a202c;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #4a5568;
+    margin-bottom: 1rem;
+  }
+}

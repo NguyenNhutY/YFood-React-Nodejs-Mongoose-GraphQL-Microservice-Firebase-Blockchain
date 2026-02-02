@@ -16,13 +16,13 @@ const Then = ({ schema }) => {
   if (!fn.hasKeyword(schema, "then")) return null
 
   const name = (
-    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
       Then
     </span>
   )
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--then">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--then">
       <JSONSchema name={name} schema={schema.then} />
     </div>
   )

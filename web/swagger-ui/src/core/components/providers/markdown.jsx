@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Remarkable } from "remarkable"
 import { linkify } from "remarkable/linkify"
 import DomPurify from "dompurify"
-import cx from "classnames"
+import cx from "classs"
 
 if (DomPurify.addHook) {
   DomPurify.addHook("beforeSanitizeElements", function (current, ) {
@@ -18,7 +18,7 @@ if (DomPurify.addHook) {
   })
 }
 
-function Markdown({ source, className = "", getConfigs = () => ({ useUnsafeMarkdown: false }) }) {
+function Markdown({ source, class = "", getConfigs = () => ({ useUnsafeMarkdown: false }) }) {
   if (typeof source !== "string") {
     return null
   }
@@ -41,13 +41,13 @@ function Markdown({ source, className = "", getConfigs = () => ({ useUnsafeMarkd
   }
 
   return (
-    <div className={cx(className, "markdown")} dangerouslySetInnerHTML={{ __html: sanitized }}></div>
+    <div class={cx(class, "markdown")} dangerouslySetInnerHTML={{ __html: sanitized }}></div>
   )
 }
 
 Markdown.propTypes = {
   source: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  class: PropTypes.string,
   getConfigs: PropTypes.func,
 }
 

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import cx from "classnames"
+import cx from "classs"
 import { Remarkable } from "remarkable"
 import { OAS3ComponentWrapFactory } from "../helpers"
 import { sanitizer } from "core/components/providers/markdown"
@@ -9,7 +9,7 @@ const parser = new Remarkable("commonmark")
 parser.block.ruler.enable(["table"])
 parser.set({ linkTarget: "_blank" })
 
-export const Markdown = ({ source, className = "", getConfigs = () => ({ useUnsafeMarkdown: false }) }) => {
+export const Markdown = ({ source, class = "", getConfigs = () => ({ useUnsafeMarkdown: false }) }) => {
   if(typeof source !== "string") {
     return null
   }
@@ -30,7 +30,7 @@ export const Markdown = ({ source, className = "", getConfigs = () => ({ useUnsa
         dangerouslySetInnerHTML={{
           __html: trimmed
         }}
-        className={cx(className, "renderedMarkdown")}
+        class={cx(class, "renderedMarkdown")}
       />
     )
   }
@@ -38,7 +38,7 @@ export const Markdown = ({ source, className = "", getConfigs = () => ({ useUnsa
 }
 Markdown.propTypes = {
   source: PropTypes.string,
-  className: PropTypes.string,
+  class: PropTypes.string,
   getConfigs: PropTypes.func,
 }
 

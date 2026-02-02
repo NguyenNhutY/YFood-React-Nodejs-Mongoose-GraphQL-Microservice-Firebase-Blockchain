@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef }  from "preact/hooks";
 import "./ScrollAnimationComponent.css"; // Import your CSS file for styling
+import { FunctionalComponent } from "preact";
 
-const ScrollAnimationComponent: React.FC = () => {
+const ScrollAnimationComponent: FunctionalComponent = () => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const ScrollAnimationComponent: React.FC = () => {
   }, []);
 
   return (
-    <div ref={elementRef} className='scroll-animation'>
+    <div ref={elementRef} class='scroll-animation'>
       {/* Content of your component */}
       <h2>Title</h2>
       <p>Content...</p>

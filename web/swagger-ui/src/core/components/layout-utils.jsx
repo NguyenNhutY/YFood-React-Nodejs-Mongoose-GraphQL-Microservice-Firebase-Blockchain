@@ -15,7 +15,7 @@ export class Container extends React.Component {
 
     let containerClass = "swagger-container" + (full ? "-full" : "")
     return (
-      <section {...rest} className={xclass(rest.className, containerClass)}/>
+      <section {...rest} class={xclass(rest.class, containerClass)}/>
     )
   }
 }
@@ -23,7 +23,7 @@ export class Container extends React.Component {
 Container.propTypes = {
   fullscreen: PropTypes.bool,
   full: PropTypes.bool,
-  className: PropTypes.string
+  class: PropTypes.string
 }
 
 const DEVICES = {
@@ -77,10 +77,10 @@ export class Col extends React.Component {
       classesAr.push("hidden")
     }
 
-    let classes = xclass(rest.className, ...classesAr)
+    let classes = xclass(rest.class, ...classesAr)
 
     return (
-      <section {...rest} className={classes}/>
+      <section {...rest} class={classes}/>
     )
   }
 
@@ -93,33 +93,33 @@ Col.propTypes = {
   tablet: PropTypes.number,
   desktop: PropTypes.number,
   large: PropTypes.number,
-  className: PropTypes.string
+  class: PropTypes.string
 }
 
 export class Row extends React.Component {
 
   render() {
-    return <div {...this.props} className={xclass(this.props.className, "wrapper")} />
+    return <div {...this.props} class={xclass(this.props.class, "wrapper")} />
   }
 
 }
 
 Row.propTypes = {
-  className: PropTypes.string
+  class: PropTypes.string
 }
 
 export class Button extends React.Component {
 
   static propTypes = {
-    className: PropTypes.string
+    class: PropTypes.string
   }
 
   static defaultProps = {
-    className: ""
+    class: ""
   }
 
   render() {
-    return <button {...this.props} className={xclass(this.props.className, "button")} />
+    return <button {...this.props} class={xclass(this.props.class, "button")} />
   }
 
 }
@@ -136,7 +136,7 @@ export class Select extends React.Component {
     onChange: PropTypes.func,
     multiple: PropTypes.bool,
     allowEmptyValue: PropTypes.bool,
-    className: PropTypes.string,
+    class: PropTypes.string,
     disabled: PropTypes.bool,
   }
 
@@ -193,7 +193,7 @@ export class Select extends React.Component {
     let value = this.state.value?.toJS?.() || this.state.value
 
     return (
-      <select className={this.props.className} multiple={ multiple } value={value} onChange={ this.onChange } disabled={disabled} >
+      <select class={this.props.class} multiple={ multiple } value={value} onChange={ this.onChange } disabled={disabled} >
         { allowEmptyValue ? <option value="">--</option> : null }
         {
           allowedValues.map(function (item, key) {
@@ -208,16 +208,16 @@ export class Select extends React.Component {
 export class Link extends React.Component {
 
   render() {
-    return <a {...this.props} rel="noopener noreferrer" className={xclass(this.props.className, "link")}/>
+    return <a {...this.props} rel="noopener noreferrer" class={xclass(this.props.class, "link")}/>
   }
 
 }
 
 Link.propTypes = {
-  className: PropTypes.string
+  class: PropTypes.string
 }
 
-const NoMargin = ({children}) => <div className="no-margin"> {children} </div>
+const NoMargin = ({children}) => <div class="no-margin"> {children} </div>
 
 NoMargin.propTypes = {
   children: PropTypes.node

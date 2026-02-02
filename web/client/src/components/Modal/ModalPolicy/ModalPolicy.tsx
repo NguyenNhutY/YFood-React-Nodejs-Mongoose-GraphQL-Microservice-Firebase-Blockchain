@@ -1,11 +1,12 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./modalPolicy.scss";
+import { FunctionalComponent } from "preact";
 
 interface ModalPolicyProps {
   onClose: () => void;
 }
 
-const ModalPolicy: React.FC<ModalPolicyProps> = ({ onClose }) => {
+const ModalPolicy: FunctionalComponent<ModalPolicyProps> = ({ onClose }) => {
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).classList.contains("policy-overlay")) {
       onClose();
@@ -13,8 +14,8 @@ const ModalPolicy: React.FC<ModalPolicyProps> = ({ onClose }) => {
   };
 
   return (
-    <div className='policy-overlay' onClick={handleOverlayClick}>
-      <div className='policy-container'>
+    <div class='policy-overlay' onClick={handleOverlayClick}>
+      <div class='policy-container'>
         <h2>Terms of Use</h2>
         <ul>
           <li>
@@ -62,7 +63,7 @@ const ModalPolicy: React.FC<ModalPolicyProps> = ({ onClose }) => {
             support team.
           </li>
         </ul>
-        <div className='policy-button' onClick={onClose}>
+        <div class='policy-button' onClick={onClose}>
           Ok
         </div>
       </div>

@@ -16,13 +16,13 @@ const Else = ({ schema }) => {
   if (!fn.hasKeyword(schema, "else")) return null
 
   const name = (
-    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
       Else
     </span>
   )
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--if">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--if">
       <JSONSchema name={name} schema={schema.else} />
     </div>
   )

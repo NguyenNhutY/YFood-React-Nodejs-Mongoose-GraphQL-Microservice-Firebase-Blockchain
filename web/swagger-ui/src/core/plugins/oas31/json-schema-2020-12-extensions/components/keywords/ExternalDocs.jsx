@@ -3,7 +3,7 @@
  */
 import React, { useCallback, useState } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
 import { sanitizeUrl } from "core/utils"
 
@@ -43,11 +43,11 @@ const ExternalDocs = ({ schema, getSystem }) => {
 
   return (
     <JSONSchemaDeepExpansionContext.Provider value={expandedDeeply}>
-      <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--externalDocs">
+      <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--externalDocs">
         {isExpandable ? (
           <>
             <Accordion expanded={expanded} onChange={handleExpansion}>
-              <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+              <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                 External documentation
               </span>
             </Accordion>
@@ -57,22 +57,22 @@ const ExternalDocs = ({ schema, getSystem }) => {
             />
           </>
         ) : (
-          <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+          <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
             External documentation
           </span>
         )}
-        <strong className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+        <strong class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
           object
         </strong>
         <ul
-          className={classNames("json-schema-2020-12-keyword__children", {
+          class={classs("json-schema-2020-12-keyword__children", {
             "json-schema-2020-12-keyword__children--collapsed": !expanded,
           })}
         >
           {expanded && (
             <>
               {externalDocs.description && (
-                <li className="json-schema-2020-12-property">
+                <li class="json-schema-2020-12-property">
                   <KeywordDescription
                     schema={externalDocs}
                     getSystem={getSystem}
@@ -81,12 +81,12 @@ const ExternalDocs = ({ schema, getSystem }) => {
               )}
 
               {externalDocs.url && (
-                <li className="json-schema-2020-12-property">
-                  <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword">
-                    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+                <li class="json-schema-2020-12-property">
+                  <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword">
+                    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                       url
                     </span>
-                    <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
+                    <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
                       <Link
                         target="_blank"
                         href={sanitizeUrl(externalDocs.url)}

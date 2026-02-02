@@ -43,9 +43,9 @@ export default class BaseLayout extends React.Component {
 
     if (loadingStatus === "loading") {
       loadingMessage = (
-        <div className="info">
-          <div className="loading-container">
-            <div className="loading"></div>
+        <div class="info">
+          <div class="loading-container">
+            <div class="loading"></div>
           </div>
         </div>
       )
@@ -53,9 +53,9 @@ export default class BaseLayout extends React.Component {
 
     if (loadingStatus === "failed") {
       loadingMessage = (
-        <div className="info">
-          <div className="loading-container">
-            <h4 className="title">Failed to load API definition.</h4>
+        <div class="info">
+          <div class="loading-container">
+            <h4 class="title">Failed to load API definition.</h4>
             <Errors />
           </div>
         </div>
@@ -66,9 +66,9 @@ export default class BaseLayout extends React.Component {
       const lastErr = errSelectors.lastError()
       const lastErrMsg = lastErr ? lastErr.get("message") : ""
       loadingMessage = (
-        <div className="info failed-config">
-          <div className="loading-container">
-            <h4 className="title">Failed to load remote configuration.</h4>
+        <div class="info failed-config">
+          <div class="loading-container">
+            <h4 class="title">Failed to load remote configuration.</h4>
             <p>{lastErrMsg}</p>
           </div>
         </div>
@@ -81,8 +81,8 @@ export default class BaseLayout extends React.Component {
 
     if (loadingMessage) {
       return (
-        <div className="swagger-ui">
-          <div className="loading-container">{loadingMessage}</div>
+        <div class="swagger-ui">
+          <div class="loading-container">{loadingMessage}</div>
         </div>
       )
     }
@@ -95,7 +95,7 @@ export default class BaseLayout extends React.Component {
     const hasSecurityDefinitions = !!specSelectors.securityDefinitions()
 
     return (
-      <div className="swagger-ui">
+      <div class="swagger-ui">
         <SvgAssets />
         <VersionPragmaFilter
           isSwagger2={isSwagger2}
@@ -103,17 +103,17 @@ export default class BaseLayout extends React.Component {
           alsoShow={<Errors />}
         >
           <Errors />
-          <Row className="information-container">
+          <Row class="information-container">
             <Col mobile={12}>
               <InfoContainer />
             </Col>
           </Row>
 
           {hasServers || hasSchemes || hasSecurityDefinitions ? (
-            <div className="scheme-container">
-              <Col className="schemes wrapper" mobile={12}>
+            <div class="scheme-container">
+              <Col class="schemes wrapper" mobile={12}>
                 {hasServers || hasSchemes ? (
-                  <div className="schemes-server-container">
+                  <div class="schemes-server-container">
                     {hasServers ? <ServersContainer /> : null}
                     {hasSchemes ? <SchemesContainer /> : null}
                   </div>
@@ -132,7 +132,7 @@ export default class BaseLayout extends React.Component {
           </Row>
 
           {isOAS31 && (
-            <Row className="webhooks-container">
+            <Row class="webhooks-container">
               <Col mobile={12} desktop={12}>
                 <Webhooks />
               </Col>

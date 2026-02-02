@@ -5,11 +5,12 @@ import React, {
   useCallback,
   useMemo,
   useEffect,
-} from "react";
+}  from "preact/hooks";
 import debounce from "lodash.debounce";
 import { StoreContext } from "../../context/StoreContext";
 import SecurityInput from "../SecurityInput/SecurityInput";
 import "./search.scss";
+import { FunctionalComponent } from "preact";
 
 // Define types for the props
 interface SearchProps {
@@ -22,7 +23,7 @@ interface FoodItem {
   name: string;
 }
 
-const Search: React.FC<SearchProps> = ({ setSearchName, onClose }) => {
+const Search: FunctionalComponent<SearchProps> = ({ setSearchName, onClose }) => {
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]); // Lưu trữ các mục đã chọn
   const [placeholderText, setPlaceholderText] = useState<string>("Search...");
@@ -109,10 +110,10 @@ const Search: React.FC<SearchProps> = ({ setSearchName, onClose }) => {
   }, []);
 
   return (
-    <div className='navbar-search'>
+    <div class='navbar-search'>
       <SecurityInput
         type='text'
-        className='navbar-search-input'
+        class='navbar-search-input'
         placeholder={placeholderText}
         value={inputRef.current}
         onChange={handleSearchChange}
@@ -126,15 +127,15 @@ const Search: React.FC<SearchProps> = ({ setSearchName, onClose }) => {
       />
       {showSuggestions && (
         <div
-          className='suggestions-list'
+          class='suggestions-list'
           ref={suggestionsRef} // Tham chiếu đến phần tử danh sách gợi ý
         >
   {inputRef.current.length === 0 && selectedItems.length > 0 ? (
   selectedItems.map((item, index) => (
-    <div key={index} className='suggestion-item'>
+    <div key={index} class='suggestion-item'>
       <a
         href='#food-display'
-        className='suggestion-item'
+        class='suggestion-item'
         onClick={() => handleSuggestionClick(item)}
         aria-label={`Search for ${item}`}
       >
@@ -144,10 +145,10 @@ const Search: React.FC<SearchProps> = ({ setSearchName, onClose }) => {
   ))
 ) : suggestions.length > 0 ? (
   suggestions.map((item) => (
-    <div key={item.id} className='suggestion-item'>
+    <div key={item.id} class='suggestion-item'>
       <a
         href='#food-display'
-        className='suggestion-item'
+        class='suggestion-item'
         onClick={() => handleSuggestionClick(item.name)}
         aria-label={`Search for ${item.name}`}
       >
@@ -156,7 +157,7 @@ const Search: React.FC<SearchProps> = ({ setSearchName, onClose }) => {
     </div>
   ))
 ) : (
-  <div className='suggestion-item'>No suggestions</div>
+  <div class='suggestion-item'>No suggestions</div>
 )}
         </div>
       )}

@@ -11,7 +11,7 @@ const PropertyNames = ({ schema }) => {
   const { propertyNames } = schema
   const JSONSchema = useComponent("JSONSchema")
   const name = (
-    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
       Property names
     </span>
   )
@@ -22,7 +22,7 @@ const PropertyNames = ({ schema }) => {
   if (!fn.hasKeyword(schema, "propertyNames")) return null
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--propertyNames">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--propertyNames">
       <JSONSchema name={name} schema={propertyNames} />
     </div>
   )

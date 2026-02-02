@@ -1,24 +1,25 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./privacyPolicy.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
-const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicy: FunctionalComponent = () => {
   const handleGoBack = () => {
     window.history.back(); // Quay lại trang trước
   };
 
   return (
     <>
-      <button className='btn-back-history' onClick={handleGoBack}>
-        <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+      <button class='btn-back-history' onClick={handleGoBack}>
+        <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
       </button>
-      <div className=''>
+      <div class=''>
         {" "}
-        <header className='header-policy'>
+        <header class='header-policy'>
           <h1>Chính sách bảo mật của YFood</h1>
         </header>
-        <section className='section-policy'>
+        <section class='section-policy'>
           <p>
             Chào mừng bạn đến với YFood! Chúng tôi cam kết bảo vệ thông tin cá
             nhân của bạn và tôn trọng quyền riêng tư của từng khách hàng. Chính
@@ -147,7 +148,7 @@ const PrivacyPolicy: React.FC = () => {
           </p>
           <br />
         </section>
-        <footer className='footer-policy'>
+        <footer class='footer-policy'>
           <p>YFood - Đơn giản hóa ẩm thực mỗi ngày!</p>
         </footer>
       </div>

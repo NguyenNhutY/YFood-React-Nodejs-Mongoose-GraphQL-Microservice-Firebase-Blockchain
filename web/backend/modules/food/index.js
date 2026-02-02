@@ -6,12 +6,14 @@ import { ApolloServer } from "apollo-server-express";
 import foodSchema from './food.schema.js';  // Import material schema
 import foodResolver from "./food.resolver.js"; // Material batch resolvers
 import { buildSubgraphSchema } from "@apollo/subgraph";
+import { uploadAllImages } from '../../config/couldinaryConfig.js';  // Import hàm uploadAllImages
 
 const app = express();
 const PORT = process.env.PORT || 4004;
 
 // Connect to the database
 connectDB();  // Ensure correct database connection logic
+
 
 // Apply middleware for file uploads before Apollo Server middleware
 

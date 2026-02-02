@@ -1,0 +1,49 @@
+.feature-highlights {
+  padding: 4rem 1.5rem;
+  background-color: #ffffff;
+
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #1a202c;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.feature-card {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 1.75rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+  }
+
+  &__description {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.5;
+  }
+}

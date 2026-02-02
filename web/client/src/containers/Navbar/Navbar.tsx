@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState }  from "preact/hooks";
 import "./navbar.scss";
 import { assets } from "../../assets/frontend_assets/assets";
-import { Link } from "react-router-dom";
+import { Link } from "preact-router";
 import { AuthContext } from "../../context/AuthContext";
 
 import NavbarToggle from "./NavbarToggle/NavbarToggle";
 import NavBarRight from "./NavbarRight/NavBarRight";
 import { gql, useMutation } from "@apollo/client";
+import { FunctionalComponent } from "preact";
 
 const LOGOUT_MUTATION = gql`
   mutation logoutAccount($token: String!) {
@@ -22,7 +23,7 @@ interface NavbarProps {
   showLogin: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
+const Navbar: FunctionalComponent<NavbarProps> = ({
   setShowLogin,
   setSearchName,
   footerRef,
@@ -47,12 +48,12 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <div className='navbar' id='nav'>
+    <div class='navbar' id='nav'>
       <Link to='/'>
-        <img className='logo' src={assets.logo} alt='logo' />
+        <img class='logo' src={assets.logo} alt='logo' />
       </Link>
       <div
-        className='menu-toggle'
+        class='menu-toggle'
         onClick={toggleMenu}
         aria-label='Toggle menu'
       >

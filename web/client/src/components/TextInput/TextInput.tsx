@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 
 interface TextInputProps {
   type: "text" | "password" | "email";
@@ -7,7 +7,7 @@ interface TextInputProps {
   placeholder?: string;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  className?: string;
+  class?: string;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   ref?: React.Ref<HTMLInputElement>;
@@ -22,7 +22,7 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       placeholder={props.placeholder}
       value={props.value}
       onChange={props.onChange}
-      className={props.className}
+      class={props.class}
       onKeyDown={props.onKeyDown}
       onFocus={props.onFocus}
       ref={ref}

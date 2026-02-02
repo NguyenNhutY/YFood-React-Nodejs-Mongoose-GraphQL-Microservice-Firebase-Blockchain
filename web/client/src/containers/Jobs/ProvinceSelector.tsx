@@ -1,6 +1,7 @@
 // ProvinceSelector.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect }  from "preact/hooks";
 import axios from "axios";
+import { FunctionalComponent } from "preact";
 
 interface Province {
   id: string;
@@ -16,7 +17,7 @@ interface ProvinceSelectorProps {
   onSelectProvince: (provinceName: string) => void; // Cập nhật kiểu dữ liệu
 }
 
-const ProvinceSelector: React.FC<ProvinceSelectorProps> = ({
+const ProvinceSelector: FunctionalComponent<ProvinceSelectorProps> = ({
   onSelectProvince,
 }) => {
   const [provinces, setProvinces] = useState<Province[]>([]);
@@ -47,7 +48,7 @@ const ProvinceSelector: React.FC<ProvinceSelectorProps> = ({
   };
 
   return (
-    <div className='province-selector'>
+    <div class='province-selector'>
       <label htmlFor='province'>Chọn tỉnh thành:</label>
       <select
         id='province'

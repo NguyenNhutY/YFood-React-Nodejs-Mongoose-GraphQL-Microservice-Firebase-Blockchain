@@ -2,7 +2,7 @@
  * @prettier
  */
 import React, { useCallback, useState } from "react"
-import classNames from "classnames"
+import classs from "classs"
 
 import { schema } from "../../prop-types"
 import { useComponent, useIsExpanded, useIsExpandedDeeply } from "../../hooks"
@@ -38,25 +38,25 @@ const $defs = ({ schema }) => {
 
   return (
     <JSONSchemaDeepExpansionContext.Provider value={expandedDeeply}>
-      <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--$defs">
+      <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--$defs">
         <Accordion expanded={expanded} onChange={handleExpansion}>
-          <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+          <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
             $defs
           </span>
         </Accordion>
         <ExpandDeepButton expanded={expanded} onClick={handleExpansionDeep} />
-        <strong className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+        <strong class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
           object
         </strong>
         <ul
-          className={classNames("json-schema-2020-12-keyword__children", {
+          class={classs("json-schema-2020-12-keyword__children", {
             "json-schema-2020-12-keyword__children--collapsed": !expanded,
           })}
         >
           {expanded && (
             <>
               {Object.entries($defs).map(([schemaName, schema]) => (
-                <li key={schemaName} className="json-schema-2020-12-property">
+                <li key={schemaName} class="json-schema-2020-12-property">
                   <JSONSchema name={schemaName} schema={schema} />
                 </li>
               ))}

@@ -12,11 +12,11 @@ const Default = ({ schema }) => {
   if (!fn.hasKeyword(schema, "default")) return null
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--default">
-      <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--default">
+      <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
         Default
       </span>
-      <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--const">
+      <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--const">
         {fn.stringify(schema.default)}
       </span>
     </div>

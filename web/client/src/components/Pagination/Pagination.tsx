@@ -1,5 +1,6 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./pagination.scss"; // Import CSS file for Pagination
+import { FunctionalComponent } from "preact";
 
 interface PaginationProps {
   currentPage: number;
@@ -7,7 +8,7 @@ interface PaginationProps {
   paginate: (pageNumber: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination: FunctionalComponent<PaginationProps> = ({
   currentPage,
   totalPages,
   paginate,
@@ -32,8 +33,8 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className='container-pagination'>
-      <div className='pagination'>
+    <div class='container-pagination'>
+      <div class='pagination'>
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
@@ -44,7 +45,7 @@ const Pagination: React.FC<PaginationProps> = ({
           <button
             key={index}
             onClick={() => typeof page === "number" && paginate(page)}
-            className={page === currentPage ? "active" : ""}
+            class={page === currentPage ? "active" : ""}
             disabled={page === "..."}
           >
             {page}

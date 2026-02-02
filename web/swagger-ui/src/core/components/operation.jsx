@@ -118,32 +118,32 @@ export default class Operation extends PureComponent {
     const validationErrors = specSelectors.validationErrors([path, method])
 
     return (
-        <div className={deprecated ? "opblock opblock-deprecated" : isShown ? `opblock opblock-${method} is-open` : `opblock opblock-${method}`} id={escapeDeepLinkPath(isShownKey.join("-"))} >
+        <div class={deprecated ? "opblock opblock-deprecated" : isShown ? `opblock opblock-${method} is-open` : `opblock opblock-${method}`} id={escapeDeepLinkPath(isShownKey.join("-"))} >
           <OperationSummary operationProps={operationProps} isShown={isShown} toggleShown={toggleShown} getComponent={getComponent} authActions={authActions} authSelectors={authSelectors} specPath={specPath} />
           <Collapse isOpened={isShown}>
-            <div className="opblock-body">
+            <div class="opblock-body">
               { (operation && operation.size) || operation === null ? null :
-                <RollingLoadSVG height="32px" width="32px" className="opblock-loading-animation" />
+                <RollingLoadSVG height="32px" width="32px" class="opblock-loading-animation" />
               }
-              { deprecated && <h4 className="opblock-title_normal"> Warning: Deprecated</h4>}
+              { deprecated && <h4 class="opblock-title_normal"> Warning: Deprecated</h4>}
               { description &&
-                <div className="opblock-description-wrapper">
-                  <div className="opblock-description">
+                <div class="opblock-description-wrapper">
+                  <div class="opblock-description">
                     <Markdown source={ description } />
                   </div>
                 </div>
               }
               {
                 externalDocsUrl ?
-                <div className="opblock-external-docs-wrapper">
-                  <h4 className="opblock-title_normal">Find more details</h4>
-                  <div className="opblock-external-docs">
+                <div class="opblock-external-docs-wrapper">
+                  <h4 class="opblock-title_normal">Find more details</h4>
+                  <div class="opblock-external-docs">
                     {externalDocs.description &&
-                      <span className="opblock-external-docs__description">
+                      <span class="opblock-external-docs__description">
                         <Markdown source={ externalDocs.description } />
                       </span>
                     }
-                    <Link target="_blank" className="opblock-external-docs__link" href={sanitizeUrl(externalDocsUrl)}>{externalDocsUrl}</Link>
+                    <Link target="_blank" class="opblock-external-docs__link" href={sanitizeUrl(externalDocsUrl)}>{externalDocsUrl}</Link>
                   </div>
                 </div> : null
               }
@@ -186,7 +186,7 @@ export default class Operation extends PureComponent {
                 />
               }
 
-              {!tryItOutEnabled || !allowTryItOut ? null : schemes && schemes.size ? <div className="opblock-schemes">
+              {!tryItOutEnabled || !allowTryItOut ? null : schemes && schemes.size ? <div class="opblock-schemes">
                     <Schemes schemes={ schemes }
                              path={ path }
                              method={ method }
@@ -195,7 +195,7 @@ export default class Operation extends PureComponent {
                   </div> : null
               }
 
-              { !tryItOutEnabled || !allowTryItOut || validationErrors.length <= 0 ? null : <div className="validation-errors errors-wrapper">
+              { !tryItOutEnabled || !allowTryItOut || validationErrors.length <= 0 ? null : <div class="validation-errors errors-wrapper">
                   Please correct the following validation errors and try again.
                   <ul>
                     { validationErrors.map((error, index) => <li key={index}> { error } </li>) }
@@ -203,7 +203,7 @@ export default class Operation extends PureComponent {
                 </div>
               }
 
-            <div className={(!tryItOutEnabled || !response || !allowTryItOut) ? "execute-wrapper" : "btn-group"}>
+            <div class={(!tryItOutEnabled || !response || !allowTryItOut) ? "execute-wrapper" : "btn-group"}>
               { !tryItOutEnabled || !allowTryItOut ? null :
 
                   <Execute
@@ -226,7 +226,7 @@ export default class Operation extends PureComponent {
               }
             </div>
 
-            {executeInProgress ? <div className="loading-container"><div className="loading"></div></div> : null}
+            {executeInProgress ? <div class="loading-container"><div class="loading"></div></div> : null}
 
               { !responses ? null :
                   <Responses

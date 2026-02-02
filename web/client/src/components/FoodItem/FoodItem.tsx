@@ -4,8 +4,8 @@ import React, {
   useRef,
   useEffect,
   ReactNode,
-} from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+}  from "preact/hooks";
+import { useNavigate } from "preact-router"; // Import useNavigate
 import "./foodItem.scss";
 import { assets } from "../../assets/frontend_assets/assets";
 import ModalItem from "../Modal/ModalItem/ModalItem";
@@ -13,6 +13,7 @@ import ModalCmt from "../Modal/ModalCmt/ModalCmt";
 import Notification from "../Notification/Notification";
 import { StoreContext } from "../../context/StoreContext"; // Adjust import based on your context file
 import { isDiscountTime, isWeekday } from "../../utils/timeUtils"; // Import the time utilities
+import { FunctionalComponent } from "preact";
 
 interface FoodItemProps {
   id: string;
@@ -32,7 +33,7 @@ interface NotificationType {
   type: "success" | "error";
 }
 
-const FoodItem: React.FC<FoodItemProps> = ({
+const FoodItem: FunctionalComponent<FoodItemProps> = ({
   id,
   name,
   price,
@@ -132,7 +133,7 @@ const FoodItem: React.FC<FoodItemProps> = ({
 
   return (
     <>
-      <div className='notification-container'>
+      <div class='notification-container'>
         {notifications.map((notif) => (
           <Notification
             key={notif.id}
@@ -141,10 +142,10 @@ const FoodItem: React.FC<FoodItemProps> = ({
           />
         ))}
       </div>
-      <div className='food-item'>
-        <div className='food-item-img-container'>
+      <div class='food-item'>
+        <div class='food-item-img-container'>
           <img
-            className={`food-item-image ${isZoomed ? "zoom" : ""}`}
+            class={`food-item-image ${isZoomed ? "zoom" : ""}`}
             src={image}
             alt='item image'
             onDragStart={(e) => e.preventDefault()}
@@ -154,13 +155,13 @@ const FoodItem: React.FC<FoodItemProps> = ({
           />
           {cartItem === 0 ? (
             <img
-              className='add'
+              class='add'
               onClick={() => handleAddToCart(id)}
               src={assets.add_icon_white}
               alt='Add to cart'
             />
           ) : (
-            <div className='food-item-counter'>
+            <div class='food-item-counter'>
               <img
                 onClick={() => handleDecreaseToCart(id)}
                 src={assets.remove_icon_red}
@@ -175,7 +176,7 @@ const FoodItem: React.FC<FoodItemProps> = ({
             </div>
           )}
           <img
-            className={`favorite-btn ${
+            class={`favorite-btn ${
               favorite ? "favorite_filled_icon" : "favorite_icon"
             }`}
             src={favorite ? assets.favorite_filled_icon : assets.favorite_icon}
@@ -190,11 +191,11 @@ const FoodItem: React.FC<FoodItemProps> = ({
             }}
           />
         </div>
-        <div className='food-item-info'>
-          <div className='food-item-name-rating'>
+        <div class='food-item-info'>
+          <div class='food-item-name-rating'>
             <p>{name}</p>
             <img
-              className='rating-btn'
+              class='rating-btn'
               src={assets.rating_starts}
               alt='Rate item'
               onClick={toggleModalCmt}
@@ -203,17 +204,17 @@ const FoodItem: React.FC<FoodItemProps> = ({
           {showModalRating && (
             <ModalCmt onCloseModalCmt={() => setShowModalRating(false)} />
           )}
-          <p className='food-item-desc'>{description}</p>
-          <div className='food-item-prices'>
+          <p class='food-item-desc'>{description}</p>
+          <div class='food-item-prices'>
             {isWeekday(currentTime) && isDiscountTime(currentTime) && (
-              <p className='food-item-price-original'>
+              <p class='food-item-price-original'>
                 <strike>${price.toFixed(2)}</strike>
               </p>
             )}
-            <p className='food-item-price'>${discountedPrice.toFixed(2)}</p>
+            <p class='food-item-price'>${discountedPrice.toFixed(2)}</p>
           </div>
           <button
-            className='food-item-btn-toggle-modal'
+            class='food-item-btn-toggle-modal'
             onClick={() => {
               toggleModalItem();
             }} // Thêm sự kiện click vào nút

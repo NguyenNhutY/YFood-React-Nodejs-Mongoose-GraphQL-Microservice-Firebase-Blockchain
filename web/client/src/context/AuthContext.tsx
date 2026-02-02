@@ -1,6 +1,7 @@
 // context/AuthContext.tsx
 
-import React, { createContext, useState, ReactNode } from "react";
+import React, {  useState,  }  from "preact/hooks";
+import {  createContext, FunctionalComponent, ComponentChildren } from "preact";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -12,7 +13,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const AuthProvider: FunctionalComponent<{ children: ComponentChildren }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [username, setUsername] = useState<string | null>(null);
 

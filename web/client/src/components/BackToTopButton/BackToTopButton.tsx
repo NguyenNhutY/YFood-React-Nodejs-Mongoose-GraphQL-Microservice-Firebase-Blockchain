@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState }  from "preact/hooks";
 import "./backToTopButton.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import scrollObserver from "./scrollObserver";
+import { FunctionalComponent } from "preact";
 
-const BackToTopButton: React.FC = () => {
+const BackToTopButton: FunctionalComponent = () => {
   const [backToTopButton, setBackToTopButton] = useState<boolean>(false);
 
   useEffect(() => {
@@ -31,8 +32,8 @@ const BackToTopButton: React.FC = () => {
     <div>
       {backToTopButton && (
         <a href='#nav'>
-          <button className='backtotopbutton' onClick={scrollUp}>
-            <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+          <button class='backtotopbutton' onClick={scrollUp}>
+            <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
           </button>
         </a>
       )}

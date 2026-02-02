@@ -3,7 +3,7 @@
  */
 import React, { forwardRef, useState, useCallback, useEffect } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
 import * as propTypes from "../../prop-types"
 import {
@@ -118,12 +118,12 @@ const JSONSchema = forwardRef(
             <article
               ref={ref}
               data-json-schema-level={level}
-              className={classNames("json-schema-2020-12", {
+              class={classs("json-schema-2020-12", {
                 "json-schema-2020-12--embedded": isEmbedded,
                 "json-schema-2020-12--circular": isCircular,
               })}
             >
-              <div className="json-schema-2020-12-head">
+              <div class="json-schema-2020-12-head">
                 {isExpandable && !isCircular ? (
                   <>
                     <Accordion expanded={expanded} onChange={handleExpansion}>
@@ -150,7 +150,7 @@ const JSONSchema = forwardRef(
                   ))}
               </div>
               <div
-                className={classNames("json-schema-2020-12-body", {
+                class={classs("json-schema-2020-12-body", {
                   "json-schema-2020-12-body--collapsed": !expanded,
                 })}
               >

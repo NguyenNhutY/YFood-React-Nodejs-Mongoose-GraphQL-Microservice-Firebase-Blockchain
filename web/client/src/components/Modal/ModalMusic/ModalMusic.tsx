@@ -1,7 +1,8 @@
 // src/components/DragAndDropModal.tsx
-import React from "react";
+import React  from "preact/hooks";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./modalMusic.scss";
+import { FunctionalComponent } from "preact";
 
 interface Song {
   title: string;
@@ -15,7 +16,7 @@ interface DragAndDropModalProps {
   setSongs: React.Dispatch<React.SetStateAction<Song[]>>;
 }
 
-const DragAndDropModal: React.FC<DragAndDropModalProps> = ({
+const DragAndDropModal: FunctionalComponent<DragAndDropModalProps> = ({
   isOpen,
   onClose,
   songs,
@@ -48,8 +49,8 @@ const DragAndDropModal: React.FC<DragAndDropModalProps> = ({
   };
 
   return (
-    <div className='modal-music-overlay' onClick={handleOverlayClick}>
-      <div className='modal-music-content'>
+    <div class='modal-music-overlay' onClick={handleOverlayClick}>
+      <div class='modal-music-content'>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId='songs'>
             {(provided) => (
@@ -65,7 +66,7 @@ const DragAndDropModal: React.FC<DragAndDropModalProps> = ({
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className='draggable-item'
+                        class='draggable-item'
                       >
                         {song.title}
                       </div>
@@ -77,8 +78,8 @@ const DragAndDropModal: React.FC<DragAndDropModalProps> = ({
             )}
           </Droppable>
         </DragDropContext>
-        <div className='modal-footer'>
-          <button className='modal-ok-button' onClick={onClose}>
+        <div class='modal-footer'>
+          <button class='modal-ok-button' onClick={onClose}>
             Ok
           </button>
         </div>

@@ -4,7 +4,7 @@ import ImPropTypes from "react-immutable-proptypes"
 const EnumModel = ({ value, getComponent }) => {
   let ModelCollapse = getComponent("ModelCollapse")
   let collapsedContent = <span>Array [ { value.count() } ]</span>
-  return <span className="prop-enum">
+  return <span class="prop-enum">
     Enum:<br />
     <ModelCollapse collapsedContent={ collapsedContent }>
       [ { value.map(String).join(", ") } ]

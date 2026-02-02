@@ -91,21 +91,21 @@ export default class Responses extends React.Component {
     const controlId = `${regionId}_select`
 
     return (
-      <div className="responses-wrapper">
-        <div className="opblock-section-header">
+      <div class="responses-wrapper">
+        <div class="opblock-section-header">
           <h4>Responses</h4>
             { specSelectors.isOAS3() ? null : <label htmlFor={controlId}>
               <span>Response content type</span>
               <ContentType value={producesValue}
                          ariaControls={regionId}
                          ariaLabel="Response content type"
-                         className="execute-content-type"
+                         class="execute-content-type"
                          contentTypes={produces}
                          controlId={controlId}
                          onChange={this.onChangeProducesWrapper} />
                      </label> }
         </div>
-        <div className="responses-inner">
+        <div class="responses-inner">
           {
             !tryItOutResponse ? null
                               : <div>
@@ -121,19 +121,19 @@ export default class Responses extends React.Component {
 
           }
 
-          <table aria-live="polite" className="responses-table" id={regionId} role="region">
+          <table aria-live="polite" class="responses-table" id={regionId} role="region">
             <thead>
-              <tr className="responses-header">
-                <td className="col_header response-col_status">Code</td>
-                <td className="col_header response-col_description">Description</td>
-                { specSelectors.isOAS3() ? <td className="col col_header response-col_links">Links</td> : null }
+              <tr class="responses-header">
+                <td class="col_header response-col_status">Code</td>
+                <td class="col_header response-col_description">Description</td>
+                { specSelectors.isOAS3() ? <td class="col col_header response-col_links">Links</td> : null }
               </tr>
             </thead>
             <tbody>
               {
                 responses.entrySeq().map( ([code, response]) => {
 
-                  let className = tryItOutResponse && tryItOutResponse.get("status") == code ? "response_current" : ""
+                  let class = tryItOutResponse && tryItOutResponse.get("status") == code ? "response_current" : ""
                   return (
                     <Response key={ code }
                               path={path}
@@ -141,7 +141,7 @@ export default class Responses extends React.Component {
                               specPath={specPath.push(code)}
                               isDefault={defaultCode === code}
                               fn={fn}
-                              className={ className }
+                              class={ class }
                               code={ code }
                               response={ response }
                               specSelectors={ specSelectors }

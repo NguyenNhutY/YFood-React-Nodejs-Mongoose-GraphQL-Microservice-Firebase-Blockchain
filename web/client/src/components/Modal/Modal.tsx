@@ -1,18 +1,22 @@
 // src/components/Modal.tsx
-import React from "react";
-import "./modal.scss"; // Thêm style cho modal
+import { FunctionalComponent, ComponentChildren, JSX } from "preact";
+import "./modal.scss";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
+  children: ComponentChildren;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: FunctionalComponent<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+}) => {
   if (!isOpen) return null;
 
   const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+    e: JSX.TargetedMouseEvent<HTMLDivElement>
   ) => {
     if (
       (e.target as HTMLElement).classList.contains("modal-container-overlay")
@@ -22,8 +26,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   };
 
   return (
-    <div className='modal-container-overlay' onClick={handleOverlayClick}>
-      <div className='modal-container-content'>{children}</div>
+    <div class="modal-container-overlay" onClick={handleOverlayClick}>
+      <div class="modal-container-content">{children}</div>
     </div>
   );
 };

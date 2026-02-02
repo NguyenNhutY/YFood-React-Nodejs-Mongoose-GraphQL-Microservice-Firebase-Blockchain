@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const VersionStamp = ({ version }) => {
-  return <small><pre className="version"> { version } </pre></small>
+  return <small><pre class="version"> { version } </pre></small>
 }
 
 VersionStamp.propTypes = {

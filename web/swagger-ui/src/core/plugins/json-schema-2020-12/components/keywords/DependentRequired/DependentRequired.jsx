@@ -10,14 +10,14 @@ const DependentRequired = ({ dependentRequired }) => {
   if (dependentRequired.length === 0) return null
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--dependentRequired">
-      <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--dependentRequired">
+      <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
         Required when defined
       </span>
       <ul>
         {dependentRequired.map((propertyName) => (
           <li key={propertyName}>
-            <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--warning">
+            <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--warning">
               {propertyName}
             </span>
           </li>

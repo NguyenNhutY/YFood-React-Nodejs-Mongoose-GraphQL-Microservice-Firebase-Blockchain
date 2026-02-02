@@ -4,7 +4,7 @@
 import React, { useMemo, useState, useEffect, useCallback, useRef } from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
-import cx from "classnames"
+import cx from "classs"
 import randomBytes from "randombytes"
 
 const usePrevious = (value) => {
@@ -64,16 +64,16 @@ const ModelExample = ({
   })
 
   return (
-    <div className="model-example">
-      <ul className="tab" role="tablist">
+    <div class="model-example">
+      <ul class="tab" role="tablist">
         <li
-          className={cx("tabitem", { active: activeTab === tabs.example })}
+          class={cx("tabitem", { active: activeTab === tabs.example })}
           role="presentation"
         >
           <button
             aria-controls={examplePanelId}
             aria-selected={activeTab === tabs.example}
-            className="tablinks"
+            class="tablinks"
             data-name="example"
             id={exampleTabId}
             onClick={onTabChange}
@@ -84,13 +84,13 @@ const ModelExample = ({
         </li>
         {schema && (
           <li
-            className={cx("tabitem", { active: activeTab === tabs.model })}
+            class={cx("tabitem", { active: activeTab === tabs.model })}
             role="presentation"
           >
             <button
               aria-controls={modelPanelId}
               aria-selected={activeTab === tabs.model}
-              className={cx("tablinks", { inactive: isExecute })}
+              class={cx("tablinks", { inactive: isExecute })}
               data-name="model"
               id={modelTabId}
               onClick={onTabChange}

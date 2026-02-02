@@ -38,8 +38,8 @@ export default class ArrayModel extends Component {
     const Link = getComponent("Link")
 
     const titleEl = title &&
-      <span className="model-title">
-        <span className="model-title__text">{ title }</span>
+      <span class="model-title">
+        <span class="model-title__text">{ title }</span>
       </span>
 
     /*
@@ -47,18 +47,18 @@ export default class ArrayModel extends Component {
     the name of the current Model passed (and displayed) as the name of the array element Model
     */
 
-    return <span className="model">
+    return <span class="model">
       <ModelCollapse title={titleEl} expanded={ depth <= expandDepth } collapsedContent="[...]">
         [
           {
             properties.size ? properties.entrySeq().map( ( [ key, v ] ) => <Property key={`${key}-${v}`} propKey={ key } propVal={ v } propClass={ propClass } />) : null
           }
           {
-            !description ? (properties.size ? <div className="markdown"></div> : null) :
+            !description ? (properties.size ? <div class="markdown"></div> : null) :
               <Markdown source={ description } />
           }
           { externalDocsUrl &&
-            <div className="external-docs">
+            <div class="external-docs">
                <Link target="_blank" href={sanitizeUrl(externalDocsUrl)}>{externalDocsDescription || externalDocsUrl}</Link>
              </div>
           }

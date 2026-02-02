@@ -1,5 +1,6 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./modalItem.scss";
+import { FunctionalComponent } from "preact";
 
 interface ModalItemProps {
   onCloseModalItem: () => void;
@@ -9,7 +10,7 @@ interface ModalItemProps {
   metail_3: string;
 }
 
-const ModalItem: React.FC<ModalItemProps> = ({
+const ModalItem: FunctionalComponent<ModalItemProps> = ({
   onCloseModalItem,
   detail,
   metail_1,
@@ -26,10 +27,10 @@ const ModalItem: React.FC<ModalItemProps> = ({
   };
 
   return (
-    <div className='item-overlay' onClick={handleOverlayClick}>
-      <div className='item-container'>
+    <div class='item-overlay' onClick={handleOverlayClick}>
+      <div class='item-container'>
         <p>{detail}</p>
-        <ul className='item-content'>
+        <ul class='item-content'>
           <li>{metail_1}</li>
           <li>{metail_2}</li>
           <li>{metail_3}</li>

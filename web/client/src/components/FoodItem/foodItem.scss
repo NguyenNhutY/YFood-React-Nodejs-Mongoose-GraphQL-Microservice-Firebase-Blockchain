@@ -7,7 +7,6 @@
   animation: fadeIn 1s;
   position: relative;
 
-  font-size: 16px;
 
   text-align: center;
   text-decoration: none;
@@ -32,6 +31,10 @@
   }
 }
 
+.food-item-btn-toggle-modal{
+  font-size:22px;
+  color: tomato;
+}
 .food-item-image {
   width: 100%;
   border-radius: 15px 15px 0px 0px;
@@ -48,7 +51,7 @@
   margin-bottom: 10px;
 
   p {
-    font-size: 20px;
+    font-size: 35px;
     font-weight: 500;
   }
 
@@ -59,7 +62,7 @@
 
 .food-item-desc {
   color: #676767;
-  font-size: 12px;
+  font-size: 22px;
 }
 
 .food-item-price {

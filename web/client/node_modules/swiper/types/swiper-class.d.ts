@@ -60,6 +60,11 @@ interface Swiper extends SwiperClass<SwiperEvents> {
   wrapperEl: HTMLElement;
 
   /**
+   * Wrapper HTML element
+   */
+  slidesEl: HTMLElement;
+
+  /**
    * Array of slides HTML elements. To get specific slide HTMLElement use `swiper.slides[1]`
    */
   slides: HTMLElement[];
@@ -115,6 +120,16 @@ interface Swiper extends SwiperClass<SwiperEvents> {
    * Slides snap grid
    */
   snapGrid: number[];
+
+  /**
+   * Slides grid
+   */
+  slidesGrid: number[];
+
+  /**
+   * Array of widths for slides
+   */
+  slidesSizesGrid: number[];
 
   /**
    * `true` if slider on most "left"/"top" position
@@ -187,6 +202,11 @@ interface Swiper extends SwiperClass<SwiperEvents> {
    * !INTERNAL
    */
   rtlTranslate: boolean;
+
+  /**
+   * `true` if Swiper is enabled, `false` otherwise
+   */
+  enabled: boolean;
 
   /**
    * Disable Swiper (if it was enabled). When Swiper is disabled, it will hide all navigation elements and won't respond to any events and interactions

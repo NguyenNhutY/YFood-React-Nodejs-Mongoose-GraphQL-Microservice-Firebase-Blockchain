@@ -3,7 +3,7 @@
  */
 import React, { useCallback } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
 import { useComponent } from "../../hooks"
 
@@ -20,12 +20,12 @@ const Accordion = ({ expanded = false, children, onChange }) => {
   return (
     <button
       type="button"
-      className="json-schema-2020-12-accordion"
+      class="json-schema-2020-12-accordion"
       onClick={handleExpansion}
     >
-      <div className="json-schema-2020-12-accordion__children">{children}</div>
+      <div class="json-schema-2020-12-accordion__children">{children}</div>
       <span
-        className={classNames("json-schema-2020-12-accordion__icon", {
+        class={classs("json-schema-2020-12-accordion__icon", {
           "json-schema-2020-12-accordion__icon--expanded": expanded,
           "json-schema-2020-12-accordion__icon--collapsed": !expanded,
         })}

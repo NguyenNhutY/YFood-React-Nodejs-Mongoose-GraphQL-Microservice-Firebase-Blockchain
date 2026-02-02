@@ -143,7 +143,7 @@ const RequestBody = ({
     const bodyProperties = schemaForMediaType.get("properties", OrderedMap())
     requestBodyValue = Map.isMap(requestBodyValue) ? requestBodyValue : OrderedMap()
 
-    return <div className="table-container">
+    return <div class="table-container">
       { requestBodyDescription &&
         <Markdown source={requestBodyDescription} />
       }
@@ -188,22 +188,22 @@ const RequestBody = ({
 
               const isFile = type === "string" && (format === "binary" || format === "base64")
 
-              return <tr key={key} className="parameters" data-property-name={key}>
-              <td className="parameters-col_name">
-                <div className={required ? "parameter__name required" : "parameter__name"}>
+              return <tr key={key} class="parameters" data-property-name={key}>
+              <td class="parameters-col_name">
+                <div class={required ? "parameter__name required" : "parameter__name"}>
                   { key }
                   { !required ? null : <span>&nbsp;*</span> }
                 </div>
-                <div className="parameter__type">
+                <div class="parameter__type">
                   { type }
-                  { format && <span className="prop-format">(${format})</span>}
+                  { format && <span class="prop-format">(${format})</span>}
                   {!showCommonExtensions || !commonExt.size ? null : commonExt.entrySeq().map(([key, v]) => <ParameterExt key={`${key}-${v}`} xKey={key} xVal={v} />)}
                 </div>
-                <div className="parameter__deprecated">
+                <div class="parameter__deprecated">
                   { schema.get("deprecated") ? "deprecated": null }
                 </div>
               </td>
-              <td className="parameters-col_description">
+              <td class="parameters-col_description">
                 <Markdown source={ description }></Markdown>
                 {isExecute ? <div>
                   <JsonSchemaForm
@@ -289,7 +289,7 @@ const RequestBody = ({
           schema={mediaTypeValue.get("schema")}
           specPath={specPath.push("content", contentType)}
           example={
-            <HighlightCode className="body-param__example" language={language}>
+            <HighlightCode class="body-param__example" language={language}>
               {stringify(requestBodyValue) || sampleRequestBody}
             </HighlightCode>
           }

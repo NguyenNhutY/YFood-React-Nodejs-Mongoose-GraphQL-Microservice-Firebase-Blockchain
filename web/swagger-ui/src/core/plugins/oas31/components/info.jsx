@@ -31,9 +31,9 @@ const Info = ({ getComponent, specSelectors }) => {
   const JsonSchemaDialect = getComponent("JsonSchemaDialect", true)
 
   return (
-    <div className="info">
-      <hgroup className="main">
-        <h2 className="title">
+    <div class="info">
+      <hgroup class="main">
+        <h2 class="title">
           {title}
           <span>
             {version && <VersionStamp version={version} />}
@@ -45,14 +45,14 @@ const Info = ({ getComponent, specSelectors }) => {
         {url && <InfoUrl getComponent={getComponent} url={url} />}
       </hgroup>
 
-      {summary && <p className="info__summary">{summary}</p>}
+      {summary && <p class="info__summary">{summary}</p>}
 
-      <div className="info__description description">
+      <div class="info__description description">
         <Markdown source={description} />
       </div>
 
       {termsOfServiceUrl && (
-        <div className="info__tos">
+        <div class="info__tos">
           <Link target="_blank" href={sanitizeUrl(termsOfServiceUrl)}>
             Terms of service
           </Link>
@@ -65,7 +65,7 @@ const Info = ({ getComponent, specSelectors }) => {
 
       {externalDocsUrl && (
         <Link
-          className="info__extdocs"
+          class="info__extdocs"
           target="_blank"
           href={sanitizeUrl(externalDocsUrl)}
         >

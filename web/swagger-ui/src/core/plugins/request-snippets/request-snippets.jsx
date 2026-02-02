@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react"
-import classNames from "classnames"
+import classs from "classs"
 import PropTypes from "prop-types"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 
@@ -99,7 +99,7 @@ const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent }) =>
   }, [request])
 
   return (
-    <div className="request-snippets" ref={rootRef}>
+    <div class="request-snippets" ref={rootRef}>
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-start", alignItems: "center", marginBottom: "15px" }}>
         <h4
           onClick={() => handleSetIsExpanded()}
@@ -110,17 +110,17 @@ const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent }) =>
           style={{ border: "none", background: "none" }}
           title={isExpanded ? "Collapse operation" : "Expand operation"}
         >
-          {isExpanded ? <ArrowDownIcon className="arrow" width="10" height="10" /> : <ArrowIcon className="arrow" width="10" height="10" />}
+          {isExpanded ? <ArrowDownIcon class="arrow" width="10" height="10" /> : <ArrowIcon class="arrow" width="10" height="10" />}
         </button>
       </div>
       {
-        isExpanded && <div className="curl-command">
+        isExpanded && <div class="curl-command">
           <div style={{ paddingLeft: "15px", paddingRight: "10px", width: "100%", display: "flex" }}>
             {
               snippetGenerators.entrySeq().map(([key, gen]) => {
                 return (
                   <div
-                    className={classNames("btn", {"active": key === activeLanguage })}
+                    class={classs("btn", {"active": key === activeLanguage })}
                     style={handleGetBtnStyle(key)}
                     key={key}
                     onClick={() => handleGenChange(key)}
@@ -131,7 +131,7 @@ const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent }) =>
               })
             }
           </div>
-          <div className="copy-to-clipboard">
+          <div class="copy-to-clipboard">
             <CopyToClipboard text={snippet}>
               <button />
             </CopyToClipboard>
@@ -139,9 +139,9 @@ const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent }) =>
           <div>
             <SyntaxHighlighter
               language={activeGenerator.get("syntax")}
-              className="curl microlight"
+              class="curl microlight"
               renderPlainText={({ children, PlainTextViewer }) => (
-                <PlainTextViewer className="curl">{children}</PlainTextViewer>
+                <PlainTextViewer class="curl">{children}</PlainTextViewer>
               )}
             >
               {snippet}

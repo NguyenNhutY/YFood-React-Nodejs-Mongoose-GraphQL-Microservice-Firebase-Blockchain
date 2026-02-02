@@ -13,8 +13,8 @@ describe("#5070: Required field not highlighted on click of Execute button (seco
       .get(".parameters-col_description input")
       .should($el => {
         expect($el).to.have.length(1)
-        const className = $el[0].className
-        expect(className).to.match(/invalid/i)
+        const class = $el[0].class
+        expect(class).to.match(/invalid/i)
       })
       // Cancel Try It Out
       .get(".cancel")
@@ -25,8 +25,8 @@ describe("#5070: Required field not highlighted on click of Execute button (seco
       .get(".parameters-col_description input")
       .should($el => {
         expect($el).to.have.length(1)
-        const className = $el[0].className
-        expect(className).to.match(/invalid/i)
+        const class = $el[0].class
+        expect(class).to.match(/invalid/i)
       })
   })
 })

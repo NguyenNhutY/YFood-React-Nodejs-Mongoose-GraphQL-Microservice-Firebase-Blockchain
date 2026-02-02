@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import cx from "classnames"
+import cx from "classs"
 import PropTypes from "prop-types"
 
 
@@ -40,7 +40,7 @@ export default class ParameterIncludeEmpty extends Component {
       <div>
         <label 
           htmlFor="include_empty_value" 
-          className={cx("parameter__empty_value_toggle", {
+          class={cx("parameter__empty_value_toggle", {
             "disabled": isDisabled
           })}
         >

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect }  from "preact/hooks";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -19,7 +19,7 @@ const AnimatedBox = ({ children }) => {
 
   return (
     <motion.div
-      className='box'
+      class='box'
       ref={ref}
       variants={boxVariant}
       initial='hidden'

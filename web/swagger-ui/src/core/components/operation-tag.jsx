@@ -68,11 +68,11 @@ export default class OperationTag extends React.Component {
     let showTag = layoutSelectors.isShown(isShownKey, docExpansion === "full" || docExpansion === "list")
 
     return (
-      <div className={showTag ? "opblock-tag-section is-open" : "opblock-tag-section"} >
+      <div class={showTag ? "opblock-tag-section is-open" : "opblock-tag-section"} >
 
         <h3
           onClick={() => layoutActions.show(isShownKey, !showTag)}
-          className={!tagDescription ? "opblock-tag no-desc" : "opblock-tag"}
+          class={!tagDescription ? "opblock-tag no-desc" : "opblock-tag"}
           id={isShownKey.map(v => escapeDeepLinkPath(v)).join("-")}
           data-tag={tag}
           data-is-open={showTag}
@@ -89,7 +89,7 @@ export default class OperationTag extends React.Component {
           }
 
           {!tagExternalDocsUrl ? null :
-            <div className="info__externaldocs">
+            <div class="info__externaldocs">
               <small>
                 <Link
                     href={sanitizeUrl(tagExternalDocsUrl)}
@@ -103,11 +103,11 @@ export default class OperationTag extends React.Component {
 
           <button
             aria-expanded={showTag}
-            className="expand-operation"
+            class="expand-operation"
             title={showTag ? "Collapse operation" : "Expand operation"}
             onClick={() => layoutActions.show(isShownKey, !showTag)}>
 
-            {showTag ? <ArrowUpIcon className="arrow" /> : <ArrowDownIcon className="arrow" />}
+            {showTag ? <ArrowUpIcon class="arrow" /> : <ArrowDownIcon class="arrow" />}
           </button>
         </h3>
 

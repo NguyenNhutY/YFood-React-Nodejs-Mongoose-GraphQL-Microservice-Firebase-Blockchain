@@ -1,9 +1,9 @@
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useState, useContext, useCallback, useEffect }  from "preact/hooks";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { StoreContext } from "../../context/StoreContext";
 import ModalCompleted from "../../components/Modal/ModalCompleted/ModalCompleted";
-import { Link } from "react-router-dom";
+import { Link } from "preact-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import SecurityInput from "../../components/SecurityInput/SecurityInput";
@@ -11,8 +11,9 @@ import IntroTourButton from "../../components/IntroBtn/IntroBtn";
 import introJs from "intro.js";
 import { placeOrderIntroSteps } from "../../types";
 import "./placeOrder.scss";
+import { FunctionalComponent } from "preact";
 
-const PlaceOrder = () => {
+const PlaceOrder: FunctionalComponent= () => {
   const { getSelectedTotalAmount, cartItems } = useContext(StoreContext);
   const [showModalCompleted, setShowModalCompleted] = useState(false);
   const hasItemsInCart = Object.keys(cartItems).some(
@@ -61,17 +62,17 @@ const PlaceOrder = () => {
   }, [startIntroTour]);
 
   return (
-    <div className='place-order-container'>
+    <div class='place-order-container'>
       <button
-        className='btn-back-history'
+        class='btn-back-history'
         onClick={handleGoBack}
         aria-label='Go back'
       >
-        <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+        <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
       </button>
 
       <IntroTourButton
-        className='btn-intro-order'
+        class='btn-intro-order'
         steps={placeOrderIntroSteps}
       />
       <Formik
@@ -90,10 +91,10 @@ const PlaceOrder = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, values }) => (
-          <Form className='place-order' id='placeForm'>
-            <div className='place-order-left'>
-              <p className='title'>Delivery Information</p>
-              <div className='multi-fields'>
+          <Form class='place-order' id='placeForm'>
+            <div class='place-order-left'>
+              <p class='title'>Delivery Information</p>
+              <div class='multi-fields'>
                 <Field
                   type='text'
                   name='firstName'
@@ -103,7 +104,7 @@ const PlaceOrder = () => {
                 <ErrorMessage
                   name='firstName'
                   component='div'
-                  className='error'
+                  class='error'
                 />
                 <Field
                   type='text'
@@ -114,7 +115,7 @@ const PlaceOrder = () => {
                 <ErrorMessage
                   name='lastName'
                   component='div'
-                  className='error'
+                  class='error'
                 />
               </div>
               <Field
@@ -126,7 +127,7 @@ const PlaceOrder = () => {
               <ErrorMessage
                 name='emailAddress'
                 component='div'
-                className='error'
+                class='error'
               />
               <Field
                 type='text'
@@ -134,24 +135,24 @@ const PlaceOrder = () => {
                 as={SecurityInput}
                 placeholder='Street'
               />
-              <ErrorMessage name='street' component='div' className='error' />
-              <div className='multi-fields'>
+              <ErrorMessage name='street' component='div' class='error' />
+              <div class='multi-fields'>
                 <Field
                   type='text'
                   name='city'
                   as={SecurityInput}
                   placeholder='City'
                 />
-                <ErrorMessage name='city' component='div' className='error' />
+                <ErrorMessage name='city' component='div' class='error' />
                 <Field
                   type='text'
                   name='state'
                   as={SecurityInput}
                   placeholder='State'
                 />
-                <ErrorMessage name='state' component='div' className='error' />
+                <ErrorMessage name='state' component='div' class='error' />
               </div>
-              <div className='multi-fields'>
+              <div class='multi-fields'>
                 <Field
                   type='text'
                   name='zipCode'
@@ -161,7 +162,7 @@ const PlaceOrder = () => {
                 <ErrorMessage
                   name='zipCode'
                   component='div'
-                  className='error'
+                  class='error'
                 />
                 <Field
                   type='text'
@@ -172,7 +173,7 @@ const PlaceOrder = () => {
                 <ErrorMessage
                   name='country'
                   component='div'
-                  className='error'
+                  class='error'
                 />
               </div>
               <Field
@@ -181,32 +182,32 @@ const PlaceOrder = () => {
                 as={SecurityInput}
                 placeholder='Phone'
               />
-              <ErrorMessage name='phone' component='div' className='error' />
+              <ErrorMessage name='phone' component='div' class='error' />
             </div>
-            <div className='place-order-right'>
-              <div className='cart-total'>
+            <div class='place-order-right'>
+              <div class='cart-total'>
                 <h2>Cart Totals</h2>
                 <div>
-                  <div className='cart-total-details'>
+                  <div class='cart-total-details'>
                     <p>Subtotal</p>
-                    <p className='price'>${totalAmount}</p>
+                    <p class='price'>${totalAmount}</p>
                   </div>
                   <hr />
-                  <div className='cart-total-details'>
+                  <div class='cart-total-details'>
                     <p>Delivery Fee</p>
-                    <p className='price'>${deliveryFee}</p>
+                    <p class='price'>${deliveryFee}</p>
                   </div>
                   <hr />
-                  <div className='cart-total-details'>
+                  <div class='cart-total-details'>
                     <p>Total</p>
-                    <p className='price'>${finalTotal}</p>
+                    <p class='price'>${finalTotal}</p>
                   </div>
                 </div>
                 {hasItemsInCart ? (
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    className={
+                    class={
                       "text-place-order" && totalAmount === 0 ? "" : "dot"
                     }
                   >
@@ -214,11 +215,11 @@ const PlaceOrder = () => {
                   </button>
                 ) : (
                   <div>
-                    <p className='text-place-order'>
+                    <p class='text-place-order'>
                       There are no products in the cart.
                     </p>
-                    <button className='text-place-order'>
-                      <Link to='/#explore-menu' className='dot btn-back-menu'>
+                    <button class='text-place-order'>
+                      <Link to='/#explore-menu' class='dot btn-back-menu'>
                         &lt;- Back to Main Menu
                       </Link>
                     </button>

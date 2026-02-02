@@ -15,7 +15,7 @@ const ExpandDeepButton = ({ expanded, onClick }) => {
   return (
     <button
       type="button"
-      className="json-schema-2020-12-expand-deep-button"
+      class="json-schema-2020-12-expand-deep-button"
       onClick={handleExpansion}
     >
       {expanded ? "Collapse all" : "Expand all"}

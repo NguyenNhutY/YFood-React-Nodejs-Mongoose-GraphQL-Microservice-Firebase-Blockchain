@@ -1,6 +1,6 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext }  from "preact/hooks";
 import { StoreContext } from "../../context/StoreContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "preact-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import SecurityInput from "../../components/SecurityInput/SecurityInput";
@@ -12,6 +12,8 @@ import "./cart.scss";
 import { cartSteps } from "../../types";
 import { assets } from "../../assets/frontend_assets/assets";
 import AdSLider from "../../components/AdSlider/AdSlider";
+import { FunctionalComponent } from "preact";
+
 interface CartItem {
   _id: string;
   name: string;
@@ -25,7 +27,7 @@ interface NotificationType {
   type: "error" | "success";
 }
 
-const Cart: React.FC = () => {
+const Cart: FunctionalComponent = () => {
   const {
     cartItems,
     food_list,
@@ -101,20 +103,20 @@ const Cart: React.FC = () => {
 
   return (
     <>
-    <div className='cart-container'>
+    <div class='cart-container'>
       <div >
         <button
-          className='btn-back-history'
+          class='btn-back-history'
           onClick={() => window.history.back()}
           data-step='1'
           data-intro='Click here to go back to the previous page.'
         >
-          <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+          <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
         </button>
-        <IntroTourButton className='btn-intro-tour' steps={cartSteps} />
+        <IntroTourButton class='btn-intro-tour' steps={cartSteps} />
       </div>
-      <div className='cart'>
-        <div className='notification-container'>
+      <div class='cart'>
+        <div class='notification-container'>
           {notifications.map((notif) => (
             <Notification
               key={notif.id}
@@ -124,7 +126,7 @@ const Cart: React.FC = () => {
           ))}
         </div>
         <div
-          className='cart-items-title'
+          class='cart-items-title'
           data-step='2'
           data-intro='Click here to select items from your order.'
         >
@@ -132,9 +134,9 @@ const Cart: React.FC = () => {
             type='checkbox'
             checked={selectedItems.size === food_list.length}
             onChange={handleSelectAll}
-            className='select-all'
+            class='select-all'
           />
-          <label className='lagel-img'>Image</label>
+          <label class='lagel-img'>Image</label>
           <p>Title</p>
           <p>Price</p>
           <p>Quantity</p>
@@ -150,35 +152,35 @@ const Cart: React.FC = () => {
           if (itemQuantity > 0) {
             return (
               <div key={itemId} data-step='3' data-intro=''>
-                <div className='cart-items-item'>
+                <div class='cart-items-item'>
                   <input
                     type='checkbox'
                     checked={selectedItems.has(itemId)}
                     onChange={(event) => handleItemSelect(itemId, event)}
-                    className='select-item'
+                    class='select-item'
                   />
-                  <img className='img' src={item.image} alt={item.name} />
+                  <img class='img' src={item.image} alt={item.name} />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
-                  <div className='quantity-controls'>
+                  <div class='quantity-controls'>
                     <button
                       onClick={() => decreaseQuantity(itemId)}
-                      className='quantity-button'
+                      class='quantity-button'
                     >
                       -
                     </button>
-                    <p className='price'>{itemQuantity}</p>
+                    <p class='price'>{itemQuantity}</p>
                     <button
                       onClick={() => increaseQuantity(itemId)}
-                      className='quantity-button'
+                      class='quantity-button'
                     >
                       +
                     </button>
                   </div>
-                  <p className='price'>${item.price * itemQuantity}</p>
+                  <p class='price'>${item.price * itemQuantity}</p>
                   <p
                     onClick={() => handleRemoveClick(itemId)}
-                    className='cross'
+                    class='cross'
                     data-step='4'
                     data-intro='Click here to remove this item from your cart.'
                   >
@@ -191,26 +193,26 @@ const Cart: React.FC = () => {
           }
           return null;
         })}
-        <div className='cart-bottom'>
+        <div class='cart-bottom'>
           <div
-            className='cart-total'
+            class='cart-total'
             data-step='5'
             data-intro='Review your cart totals here.'
           >
             <h2>Cart Totals</h2>
-            <div className='cart-total-details'>
+            <div class='cart-total-details'>
               <p>Subtotal</p>
-              <p className='price'>${getTotalAfterDiscount()}</p>
+              <p class='price'>${getTotalAfterDiscount()}</p>
             </div>
             <hr />
-            <div className='cart-total-details'>
+            <div class='cart-total-details'>
               <p>Delivery Fee</p>
-              <p className='price'>${getSelectedTotalAmount() === 0 ? 0 : 2}</p>
+              <p class='price'>${getSelectedTotalAmount() === 0 ? 0 : 2}</p>
             </div>
             <hr />
-            <div className='cart-total-details'>
+            <div class='cart-total-details'>
               <b>Total</b>
-              <b className='price'>
+              <b class='price'>
                 $
                 {getTotalAfterDiscount() === 0
                   ? 0
@@ -221,38 +223,38 @@ const Cart: React.FC = () => {
             {selectedItems.size > 0 ? (
               <button
                 onClick={() => navigate("/order")}
-                className='btn-checkout dot'
+                class='btn-checkout dot'
               >
                 Order
               </button>
             ) : (
-              <p className='text-place-order '>Select items to order</p>
+              <p class='text-place-order '>Select items to order</p>
             )}
             {selectedItems.size === 0 && (
               <>
-                <p className='text-place-order '>
+                <p class='text-place-order '>
                   There are no products in the cart.
                 </p>
                 <button
                   onClick={() => navigate("/#explore-menu")}
-                  className='btn-back-menu dot'
+                  class='btn-back-menu dot'
                 >
                   &lt;- Back to Main Menu
                 </button>
               </>
             )}
           </div>
-          <div className='cart-promocode'>
+          <div class='cart-promocode'>
             {" "}
             <p>If you have a promo code, enter it here</p>{" "}
-            <div className='cart-promocode-input'>
+            <div class='cart-promocode-input'>
               {" "}
               <SecurityInput
                 type='text'
                 name='promoCode'
                 placeholder='Promo code'
                 ref={promoCodeRef}
-                className='promo-input'
+                class='promo-input'
                 data-step='7'
                 data-intro='Enter your promo code here for discounts.'
               />{" "}
@@ -260,7 +262,7 @@ const Cart: React.FC = () => {
             </div>{" "}
             {promoError && (
               <p
-                className={
+                class={
                   promoError === "Promo code is invalid." ? "error" : "success"
                 }
               >

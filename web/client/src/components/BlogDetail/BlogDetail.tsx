@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState }  from "preact/hooks";
+import { useParams } from "preact-router";
 import { BlogPost, NewComment } from "../../types/typesBlog";
 import { blogList } from "../../types/typesBlog";
 import CommentSection from "../CommentSection/CommentSection";
 import "./blogDetail.scss";
+import { FunctionalComponent } from "preact";
 
-const BlogDetail: React.FC = () => {
+const BlogDetail: FunctionalComponent = () => {
   const { id } = useParams<{ id: string }>(); // Ensure this matches the route parameter
   console.log("Blog ID:", id); // Thêm log để kiểm tra giá trị blogId
 
@@ -44,11 +45,11 @@ const BlogDetail: React.FC = () => {
   };
 
   return (
-    <div className='blog-detail'>
+    <div class='blog-detail'>
       <h1>{blog.title}</h1>
       <p>{blog.content}</p>
       {blog.image && <img src={blog.image} alt={blog.title} />}
-      <div className='likes-section'>
+      <div class='likes-section'>
         <button onClick={handleLike}>Like</button>
         <p>{blog.likes} Likes</p> {/* Hiển thị số lượt thích */}
       </div>

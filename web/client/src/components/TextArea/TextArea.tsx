@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 
 interface TextAreaProps {
   name?: string;
@@ -6,7 +6,7 @@ interface TextAreaProps {
   placeholder?: string;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
-  className?: string;
+  class?: string;
   onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>;
   onFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
   ref?: React.Ref<HTMLTextAreaElement>;
@@ -20,7 +20,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       placeholder={props.placeholder}
       value={props.value}
       onChange={props.onChange}
-      className={props.className}
+      class={props.class}
       onKeyDown={props.onKeyDown}
       onFocus={props.onFocus}
       ref={ref}

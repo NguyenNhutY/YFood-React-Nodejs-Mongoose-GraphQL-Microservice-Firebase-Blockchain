@@ -145,7 +145,7 @@ function buildConfig(
               terserOptions: {
                 sourceMap: sourcemaps,
                 mangle: !!mangle,
-                keep_classnames:
+                keep_classs:
                   !customConfig.mode || customConfig.mode === "production",
                 keep_fnames:
                   !customConfig.mode || customConfig.mode === "production",

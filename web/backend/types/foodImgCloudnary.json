@@ -1,0 +1,207 @@
+{
+    "foods":
+      [
+      {
+        "name": "Greek salad",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442833/dmp5ygf4lgms1ualtwge.png",
+        "price": 12,
+        "description": "A traditional Greek dish known for its unique combination of fresh and nutritious ingredients. This salad typically includes the following main components:",
+    
+      },
+      {
+        "name": "Veg salad",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442845/j9bslfa5elj6omkpknow.png",
+        "price": 18,
+        "description": "A nutritious dish combining fresh vegetable ingredients",
+      },
+      {
+        "name": "Clover Salad",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732447271/geqnx46kng2spyeoe5jb.png",
+        "price": 16,
+        "description": "A refreshing and nutritious dish often made from natural ingredients like greens and fruits.",
+      },
+      {
+        "name": "Chicken Salad",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442859/gsqvx1sfdvg0xfktosyq.png  ",
+        "price": 24,
+        "description": "A popular and very popular dish, made from chicken and other ingredients. This is a nutritious and easy-to-prepare salad. Here is an example of a description of Chicken Salad:",
+      },
+      {
+        "name": "Lasagna Rolls",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442860/gerce9uwxsakiffladq8.png",
+        "price": 14,
+        "description": "A unique version of the Italian dish Lasagna, but prepared in small rolls and shaped like sushi. This is a popular and delicious dish, often made for parties, families, or to enjoy on special occasions.",
+      },
+      {
+        "name": "Peri Peri Rolls",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442861/g0emg5jyoaklzeweefkd.png",
+        "price": 12,
+        "description": "A dish of African origin, especially popular in South Africa and Mozambique. This dish is famous for its spicy and attractive flavor, usually made from grilled chicken or lamb, rolled in bread or dumplings, and covered with the region's signature peri peri sauce.",
+      },
+      {
+        "name": "Chicken Rolls",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442862/dmfkslstbhsh4pxfrkrd.png",
+        "price": 20,
+        "description": "Is a popular dish made from chicken, usually grilled or ground chicken, rolled in bread or dumplings and can be grilled or deep-fried. This is a versatile dish with many different versions around the world.",
+      },
+      {
+        "name": "Veg Rolls",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442863/autwvnmnqdyx5do890al.png",
+        "price": 15,
+        "description": "Is a popular vegetarian dish, often made from vegetables and other plant ingredients. This is a light and nutritious option, suitable for those who prefer a vegetarian diet or want to lose weight.",
+      },
+      {
+        "name": "Ripple Ice Cream",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442864/mu96dts3ld9mya28ersf.png",
+        "price": 14,
+        "description": "It is a special type of ice cream with a different flavor and quality compared to regular ice cream. This is a remarkable ice cream product thanks to the unique combination of cream and colored stripes, creating prominent stripes on the ice cream. Each strip of chocolate or different fruit flavors creates a rich flavor and color of the ice cream.",
+      },
+      {
+        "name": "Fruit Ice Cream",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442835/p442pmjmg0j3tyfumw51.png",
+        "price": 22,
+        "description": "A great dessert, combining the natural flavors of fresh fruits with the smoothness of high-quality ice cream.",
+      },
+    {
+        "name": "Jar Ice Cream",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442836/shtap05x40r825kselaz.png",
+        "price": 10,
+        "description": "A special dessert, combining the natural flavors of fresh fruits with the smoothness of high-quality ice cream, served in cute little jars.",
+      },
+      {
+        "name": "Vanilla Ice Cream",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442837/uonvr0ttwmykrct3hpe6.png",
+        "price": 12,
+        "description": "A classic dessert, combining the delicious flavor of vanilla with the smoothness of high-quality ice cream. This dish is always the perfect choice for those who love simple but charming flavors.",
+      },
+      {
+        "name": "Chicken Sandwich",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442838/ge0poy9ljcqk9umzedmn.png",
+        "price": 12,
+        "description": "It is the perfect combination of delicious chicken, fresh green vegetables and soft bread. This is an ideal choice for a dynamic and nutritious mid-day meal.",
+      },
+      {
+        "name": "Vegan Sandwich",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442838/lz30js1l28fdqk2vdptb.png",
+        "price": 18,
+        "description": "About Greek salad, this is a traditional Greek dish, famous for its unique combination of fresh and nutritious ingredients. This salad usually includes the main ingredients such as:",
+      },
+      {
+        "name": "Grilled Sandwich",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442839/hwtmulw8ww2sxitdgmlp.png",
+        "price": 16,
+        "description": "A delicious combination of fresh and nutritious plant ingredients, suitable for those who prefer a vegetarian diet.",
+      },
+      {
+        "name": "Bread Sandwich",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442840/uv72jehkjhfjonwnlf4j.png",
+        "price": 24,
+        "description": "A sophisticated combination of simple but nutritious ingredients, suitable for all tastes.",
+      },
+      {
+        "name": "Cup Cake",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442842/bgcoyihbe31oeh1ci7cw.png",
+        "price": 14,
+        "description": "A small, sweet and attractive cake, suitable for enjoying at any time of the day.",
+      },
+      {
+        "name": "Vegan Cake",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442843/gbhfbvalw4hmqu6dlvpk.png",
+        "price": 12,
+        "description": "A sweet cake that does not use using animal products, completely suitable for those who follow a vegetarian diet.",
+      },
+      {
+        "name": "Butterscotch Cake",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442844/t97lbkgdvhyebzu4svou.png",
+        "price": 20,
+        "description": "A type of cake with a characteristic flavor of milk chocolate, used in the filling and on the surface of the cake.",
+      },
+      {
+        "name": "Sliced ​​Cake",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442846/udmjlkfxqizeacyhvjwn.png",
+        "price": 15,
+        "description": "A popular sweet cake, often cut into slices for easy serving and enjoyment.",
+      },
+      {
+        "name": "Garlic Mushroom ",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442847/xuragtlia3s9gviq5svf.png",
+        "price": 14,
+        "description": "About Greek salad, this is a traditional Greek dish, famous for its unique combination of fresh and nutritious ingredients. This salad usually includes the main ingredients such as:",
+      },
+      {
+        "name": "Fried Cauliflower",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442848/ij2xhysljbzg2mxfhfv2.png",
+        "price": 22,
+    
+        "description": "A delicious and nutritious dish, combining fragrant fresh mushrooms and rich garlic flavor.",
+      },
+      {
+        "name": "Mix Veg Pulao",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442849/evjr7c2tb4dgbc6ymhb7.png",
+        "price": 10,
+        "description": "About Greek salad, this is a traditional Greek dish, famous for its unique combination of fresh and nutritious ingredients. This salad usually includes the main ingredients such as:",
+      },
+      {
+        "name": "Rice Zucchini",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442850/ths6pxvvm0ifuapjghtm.png",
+        "price": 12,
+        "description": "A traditional Indian dish, combining rice and a variety of vegetables, providing rich flavor and nutrition.",
+      },
+      {
+        "name": "Cheese Pasta",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442851/olz9otpy9ifq4ktld6ce.png",
+        "price": 12,
+        "description": "About Greek salad, this is a traditional Greek dish, famous for its unique combination of fresh and nutritious ingredients. This salad usually includes the main ingredients such as:",
+    
+      },
+      {
+        "name": "Tomato Pasta",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442852/fvm1vo9lgxqvavmgztge.png",
+        "price": 18,
+        "description": "A popular dish loved all over the world, combining soft pasta and rich cheese sauce.",
+      },
+      {
+        "name": "Creamy Pasta",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442853/vabkkxljewtah5j8h1y5.png",
+        "price": 16,
+        "description": "Italian pasta covered in a smooth cream sauce and often garnished with herbs and cheese.",
+      },
+      {
+        "name": "Chicken Pasta",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442854/wrzi7y6azweel5vq2fbn.png",
+        "price": 24,
+    
+        "description": "Italian pasta is combined with chicken and sweet cream sauce, creating a rich and nutritious flavor.",
+      },
+      {
+        "name": "Buttter Noodles",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442854/crjb6tbecshysimyrsk0.png",
+        "price": 14,
+        "description": "A simple yet delicious Italian pasta dish where the noodles are mixed with delicious butter and lightly seasoned.",
+      },
+      {
+        "name": "Veg Noodles",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442856/agqjkqiic8ow0qwrglaq.png",
+        "price": 12,
+            "description": "A vegetarian stir-fried noodle dish rich in fresh vegetables, cooked with soft noodles and lightly seasoned.",
+      },
+      {
+        "name": "Somen Noodles",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442857/nrlwo5kugh71vupr7ixm.png",
+        "price": 20,
+        "description": "A thin, white Japanese noodle dish, often marinated in water to make the noodles soft and easy to digest. Often used in Japanese soups or salads.",
+      },
+      {
+        "name": "Cooked Noodles",
+        "image": "https://res.cloudinary.com/dmdqqaiv5/image/upload/v1732442858/jao3c0uawav1y4lebpva.png",
+        "price": 15,
+        "description": "A dish of cooked, soft and attractive noodles, often used in many Asian and international dishes. This dish is often served hot or cold, with a variety of sauces and other foods.",
+      }
+      ]
+      
+    }
+     
+    
+    
+    
+    

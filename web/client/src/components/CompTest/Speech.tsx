@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";

@@ -82,7 +82,7 @@ class Auths extends React.Component {
       (schema) => schema.get("type") === "mutualTLS"
     )
     return (
-      <div className="auth-container">
+      <div class="auth-container">
         {nonOauthDefinitions.size > 0 && (
           <form onSubmit={this.submitAuth}>
             {nonOauthDefinitions
@@ -100,10 +100,10 @@ class Auths extends React.Component {
                 )
               })
               .toArray()}
-            <div className="auth-btn-wrapper">
+            <div class="auth-btn-wrapper">
               {nonOauthDefinitions.size === authorizedAuth.size ? (
                 <Button
-                  className="btn modal-btn auth"
+                  class="btn modal-btn auth"
                   onClick={this.logoutClick}
                   aria-label="Remove authorization"
                 >
@@ -112,14 +112,14 @@ class Auths extends React.Component {
               ) : (
                 <Button 
                   type="submit"
-                  className="btn modal-btn auth authorize"
+                  class="btn modal-btn auth authorize"
                   aria-label="Apply credentials"
                 >
                   Authorize
                 </Button>
               )}
               <Button
-                className="btn modal-btn auth btn-done"
+                class="btn modal-btn auth btn-done"
                 onClick={this.close}
               >
                 Close
@@ -130,7 +130,7 @@ class Auths extends React.Component {
 
         {oauthDefinitions.size > 0 ? (
           <div>
-            <div className="scope-def">
+            <div class="scope-def">
               <p>
                 Scopes are used to grant an application different levels of
                 access to data on behalf of the end user. Each API may declare

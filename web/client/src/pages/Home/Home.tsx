@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState }  from "preact/hooks";
 import "intro.js/introjs.css"; // Import Intro.js styles
-import { homeIntroSteps } from "../../types"; // Adjust the path to your steps
 import Header from "../../components/Header/Header";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenuContainer";
 import FoodDisplay from "../../containers/FoodDisplay/FoodDisplay";
 import AppDownload from "../../components/AppDownload/AppDownload";
-import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
 import AnimatedBox from "../../helpers/Animation/AnimateBox/AnimateBox";
-import ChatBotBtn from "../../components/ChatBotBtn/ChatBotBtn";
 import AdSlider from "../../components/AdSlider/AdSlider";
 import Infinite from "../../components/Infinite/Infinite";
 import ErrorBoundary from "../../helpers/ErrorBoundary/ErrorBoundary";
 import Loading from "../Loading/Loading"; // Adjust path as needed
-import IntroBtn from "../../components/IntroBtn/IntroBtn";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "preact-router";
 import "./home.scss";
 import CTA from "../../components/CTA/CTA";
+import FeatureHighlights from "../../components/FeatureHightLights/FeatureHighLights";
+import Testimonials from "../../components/Testimonials/Testimonials";
+import SEOContentBlock from "../../components/SEOContentBlock/SEOContentBlock";
+import TrustBadges from "../../components/TrustBadges/TrusBadges";
+import { FunctionalComponent } from "preact";
 interface HomeProps {
   searchName: string;
 }
 
-const Home: React.FC<HomeProps> = ({ searchName }) => {
+const Home: FunctionalComponent<HomeProps> = ({ searchName }) => {
   const [category, setCategory] = useState<string>("All");
   const location = useLocation();
 
@@ -35,19 +36,9 @@ const Home: React.FC<HomeProps> = ({ searchName }) => {
   }, [location]);
 
   return (
-    <div className='home'>
-      <ErrorBoundary>
-        <React.Suspense fallback={<Loading />}>
-          <AnimatedBox></AnimatedBox>
-        </React.Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <React.Suspense fallback={<Loading />}>
-          <AnimatedBox>
-            <AdSlider />
-          </AnimatedBox>
-        </React.Suspense>
-      </ErrorBoundary>
+    <div class='home'>
+
+
       <ErrorBoundary>
         <React.Suspense fallback={<Loading />}>
           <AnimatedBox>
@@ -55,7 +46,20 @@ const Home: React.FC<HomeProps> = ({ searchName }) => {
           </AnimatedBox>
         </React.Suspense>
       </ErrorBoundary>
-
+        <ErrorBoundary>
+        <React.Suspense fallback={<Loading />}>
+          <AnimatedBox>
+            <TrustBadges />
+          </AnimatedBox>
+        </React.Suspense>
+      </ErrorBoundary>
+        <ErrorBoundary>
+        <React.Suspense fallback={<Loading />}>
+          <AnimatedBox>
+            <FeatureHighlights />
+          </AnimatedBox>
+        </React.Suspense>
+      </ErrorBoundary>
       <ErrorBoundary>
         <React.Suspense fallback={<Loading />}>
           <AnimatedBox>
@@ -63,11 +67,13 @@ const Home: React.FC<HomeProps> = ({ searchName }) => {
           </AnimatedBox>
         </React.Suspense>
       </ErrorBoundary>
+      
       <ErrorBoundary>
         <React.Suspense fallback={<Loading />}>
           <FoodDisplay category={category} searchName={searchName} />
         </React.Suspense>
       </ErrorBoundary>
+ 
       <ErrorBoundary>
         <React.Suspense fallback={<Loading />}>
           <Infinite />
@@ -80,10 +86,31 @@ const Home: React.FC<HomeProps> = ({ searchName }) => {
           </AnimatedBox>
         </React.Suspense>
       </ErrorBoundary>
+              <ErrorBoundary>
+        <React.Suspense fallback={<Loading />}>
+          <AnimatedBox>
+            <Testimonials />
+          </AnimatedBox>
+        </React.Suspense>
+      </ErrorBoundary>
+                    <ErrorBoundary>
+        <React.Suspense fallback={<Loading />}>
+          <AnimatedBox>
+            <SEOContentBlock />
+          </AnimatedBox>
+        </React.Suspense>
+      </ErrorBoundary>
       <ErrorBoundary>
         <React.Suspense fallback={<Loading />}>
           <AnimatedBox>
             <CTA />
+          </AnimatedBox>
+        </React.Suspense>
+      </ErrorBoundary>
+            <ErrorBoundary>
+        <React.Suspense fallback={<Loading />}>
+          <AnimatedBox>
+            <AdSlider />
           </AnimatedBox>
         </React.Suspense>
       </ErrorBoundary>

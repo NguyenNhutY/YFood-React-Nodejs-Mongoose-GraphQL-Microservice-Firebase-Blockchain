@@ -6,7 +6,7 @@ import InfoContainer from "core/containers/info"
 describe("<InfoContainer/>", function () {
 
   const components = {
-    info: () => <span className="mocked-info"/>
+    info: () => <span class="mocked-info"/>
   }
   const mockedProps = {
     specSelectors: {

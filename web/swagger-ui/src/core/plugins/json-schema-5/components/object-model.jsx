@@ -56,7 +56,7 @@ export default class ObjectModel extends Component {
     const Link = getComponent("Link")
 
     const JumpToPathSection = () => {
-      return <span className="model-jump-to-path"><JumpToPath specPath={specPath} /></span>
+      return <span class="model-jump-to-path"><JumpToPath specPath={specPath} /></span>
     }
     const collapsedContent = (<span>
         <span>{ braceOpen }</span>...<span>{ braceClose }</span>
@@ -70,12 +70,12 @@ export default class ObjectModel extends Component {
     const oneOf = specSelectors.isOAS3() ? schema.get("oneOf") : null
     const not = specSelectors.isOAS3() ? schema.get("not") : null
 
-    const titleEl = title && <span className="model-title">
-      { isRef && schema.get("$$ref") && <span className="model-hint">{ schema.get("$$ref") }</span> }
-      <span className="model-title__text">{ title }</span>
+    const titleEl = title && <span class="model-title">
+      { isRef && schema.get("$$ref") && <span class="model-hint">{ schema.get("$$ref") }</span> }
+      <span class="model-title__text">{ title }</span>
     </span>
 
-    return <span className="model">
+    return <span class="model">
       <ModelCollapse
         modelName={name}
         title={titleEl}
@@ -83,15 +83,15 @@ export default class ObjectModel extends Component {
         expanded={ expanded ? true : depth <= expandDepth }
         collapsedContent={ collapsedContent }>
 
-         <span className="brace-open object">{ braceOpen }</span>
+         <span class="brace-open object">{ braceOpen }</span>
           {
             !isRef ? null : <JumpToPathSection />
           }
-          <span className="inner-object">
+          <span class="inner-object">
             {
-              <table className="model"><tbody>
+              <table class="model"><tbody>
               {
-                !description ? null : <tr className="description">
+                !description ? null : <tr class="description">
                     <td>description:</td>
                     <td>
                       <Markdown source={ description } />
@@ -100,7 +100,7 @@ export default class ObjectModel extends Component {
               }
               {
                 externalDocsUrl &&
-                <tr className={"external-docs"}>
+                <tr class={"external-docs"}>
                   <td>
                     externalDocs:
                   </td>
@@ -111,7 +111,7 @@ export default class ObjectModel extends Component {
               }
               {
                 !deprecated ? null :
-                  <tr className={"property"}>
+                  <tr class={"property"}>
                     <td>
                       deprecated:
                     </td>
@@ -131,19 +131,19 @@ export default class ObjectModel extends Component {
                       let isDeprecated = isOAS3() && value.get("deprecated")
                       let isRequired = List.isList(requiredProperties) && requiredProperties.contains(key)
 
-                      let classNames = ["property-row"]
+                      let classs = ["property-row"]
 
                       if (isDeprecated) {
-                        classNames.push("deprecated")
+                        classs.push("deprecated")
                       }
 
                       if (isRequired) {
-                        classNames.push("required")
+                        classs.push("required")
                       }
 
-                      return (<tr key={key} className={classNames.join(" ")}>
+                      return (<tr key={key} class={classs.join(" ")}>
                         <td>
-                          { key }{ isRequired && <span className="star">*</span> }
+                          { key }{ isRequired && <span class="star">*</span> }
                         </td>
                         <td>
                           <Model key={ `object-${name}-${key}_${value}` } { ...otherProps }
@@ -171,7 +171,7 @@ export default class ObjectModel extends Component {
 
                       const normalizedValue = !value ? null : value.toJS ? value.toJS() : value
 
-                      return (<tr key={key} className="extension">
+                      return (<tr key={key} class="extension">
                         <td>
                           { key }
                         </td>
@@ -263,7 +263,7 @@ export default class ObjectModel extends Component {
               </tbody></table>
           }
         </span>
-        <span className="brace-close">{ braceClose }</span>
+        <span class="brace-close">{ braceClose }</span>
       </ModelCollapse>
       {
         infoProperties.size ? infoProperties.entrySeq().map( ( [ key, v ] ) => <Property key={`${key}-${v}`} propKey={ key } propVal={ v } propClass={ propClass } />) : null

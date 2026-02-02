@@ -26,7 +26,7 @@ export default class Overview extends React.Component {
 
     return (
         <div>
-          <h4 className="overview-title">Overview</h4>
+          <h4 class="overview-title">Overview</h4>
 
           {
             taggedOps.map( (tagObj, tag) => {
@@ -40,7 +40,7 @@ export default class Overview extends React.Component {
                 <div key={"overview-"+tag}>
 
 
-                  <h4 onClick={toggleShow} className="link overview-tag"> {showTag ? "-" : "+"}{tag}</h4>
+                  <h4 onClick={toggleShow} class="link overview-tag"> {showTag ? "-" : "+"}{tag}</h4>
 
                   <Collapse isOpened={showTag} animated>
                     {
@@ -97,10 +97,10 @@ export class OperationLink extends React.Component {
     let { id, method, shown, href } = this.props
 
     return (
-      <Link href={ href } onClick={this.onClick} className={`block opblock-link ${shown ? "shown" : ""}`}>
+      <Link href={ href } onClick={this.onClick} class={`block opblock-link ${shown ? "shown" : ""}`}>
         <div>
-          <small className={`bold-label-${method}`}>{method.toUpperCase()}</small>
-          <span className="bold-label" >{id}</span>
+          <small class={`bold-label-${method}`}>{method.toUpperCase()}</small>
+          <span class="bold-label" >{id}</span>
         </div>
       </Link>
     )

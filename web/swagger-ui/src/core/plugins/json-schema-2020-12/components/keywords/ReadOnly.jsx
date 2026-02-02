@@ -9,7 +9,7 @@ const ReadOnly = ({ schema }) => {
   if (schema?.readOnly !== true) return null
 
   return (
-    <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
+    <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
       read-only
     </span>
   )

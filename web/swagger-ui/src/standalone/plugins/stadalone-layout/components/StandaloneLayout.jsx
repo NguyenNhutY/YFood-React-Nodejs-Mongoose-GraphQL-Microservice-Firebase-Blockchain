@@ -23,7 +23,7 @@ class StandaloneLayout extends React.Component {
     const OnlineValidatorBadge = getComponent("onlineValidatorBadge", true)
 
     return (
-      <Container className='swagger-ui'>
+      <Container class='swagger-ui'>
         {Topbar ? <Topbar /> : null}
         <BaseLayout />
         <Row>

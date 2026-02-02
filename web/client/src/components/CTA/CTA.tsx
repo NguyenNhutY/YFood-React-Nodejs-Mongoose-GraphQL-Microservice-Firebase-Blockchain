@@ -1,13 +1,13 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./cta.scss";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "preact-router"; // Import Link from React Router
 
 const CTA = () => (
-  <div className='cta'>
-    <div className='cta-content'>
+  <div class='cta'>
+    <div class='cta-content'>
       <h3>Test for Real Rewards</h3>
     </div>
-    <div className='cta-btn'>
+    <div class='cta-btn'>
       <Link to='/quiz'>
         <button type='button'>Start</button>
       </Link>

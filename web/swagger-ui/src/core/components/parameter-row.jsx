@@ -283,27 +283,27 @@ export default class ParameterRow extends Component {
 
     return (
       <tr data-param-name={param.get("name")} data-param-in={param.get("in")}>
-        <td className="parameters-col_name">
-          <div className={required ? "parameter__name required" : "parameter__name"}>
+        <td class="parameters-col_name">
+          <div class={required ? "parameter__name required" : "parameter__name"}>
             { param.get("name") }
             { !required ? null : <span>&nbsp;*</span> }
           </div>
-          <div className="parameter__type">
+          <div class="parameter__type">
             { type }
             { itemType && `[${itemType}]` }
-            { format && <span className="prop-format">(${format})</span>}
+            { format && <span class="prop-format">(${format})</span>}
           </div>
-          <div className="parameter__deprecated">
+          <div class="parameter__deprecated">
             { isOAS3 && param.get("deprecated") ? "deprecated": null }
           </div>
-          <div className="parameter__in">({ param.get("in") })</div>
+          <div class="parameter__in">({ param.get("in") })</div>
         </td>
 
-        <td className="parameters-col_description">
+        <td class="parameters-col_description">
           { param.get("description") ? <Markdown source={ param.get("description") }/> : null }
 
           { (bodyParam || !isExecute) && isDisplayParamEnum ?
-            <Markdown className="parameter__enum" source={
+            <Markdown class="parameter__enum" source={
                 "<i>Available values</i> : " + paramEnum.map(function(item) {
                     return item
                   }).toArray().map(String).join(", ")}/>
@@ -311,7 +311,7 @@ export default class ParameterRow extends Component {
           }
 
           { (bodyParam || !isExecute) && paramDefaultValue !== undefined ?
-            <Markdown className="parameter__default" source={"<i>Default value</i> : " + paramDefaultValue}/>
+            <Markdown class="parameter__default" source={"<i>Default value</i> : " + paramDefaultValue}/>
             : null
           }
 
@@ -324,7 +324,7 @@ export default class ParameterRow extends Component {
 
           {
             isOAS3 && param.get("examples") ? (
-              <section className="parameter-controls">
+              <section class="parameter-controls">
                 <ExamplesSelectValueRetainer
                   examples={param.get("examples")}
                   onSelect={this._onExampleSelect}

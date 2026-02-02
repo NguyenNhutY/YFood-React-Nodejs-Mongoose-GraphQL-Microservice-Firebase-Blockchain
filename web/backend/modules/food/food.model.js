@@ -1,3 +1,4 @@
+import { log } from "console";
 import mongoose from "mongoose";
 
 // Định nghĩa schema cho món ăn (Food)
@@ -10,8 +11,8 @@ const foodSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true }, // Sử dụng Decimal128 nếu cần độ chính xác cao cho giá trị
   image: { type: String }, // Nếu có trường hình ảnh
-  item_metarial_food_id: { type: mongoose.Schema.Types.ObjectId, ref: "item_material_food" },
-  category_id: { type: mongoose.Schema.Types.ObjectId, ref: "Category" }, // Đảm bảo Category đã được khai báo trong MongoDB
+  item_metarial_food_id: { type: mongoose.Schema.Types.ObjectId, ref: "Item Material Food" },
+  category_id: { type: mongoose.Schema.Types.ObjectId, ref: "Category", default:null, required: false  }, // Đảm bảo Category đã được khai báo trong MongoDB
 },{collections:"foods"});
 
 // Tạo model Food từ foodSchema
@@ -23,6 +24,7 @@ const getFoodDetails = (food_id) => {
     .populate("item_metarial_food_id")  // Liên kết với Meterial
     .populate("category_id");           // Liên kết với Category
 };
+
 
 export { getFoodDetails };
 

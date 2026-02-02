@@ -4,11 +4,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Arrow = ({ className = null, width = 20, height = 20, ...rest }) => (
+const Arrow = ({ class = null, width = 20, height = 20, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
-    className={className}
+    class={class}
     width={width}
     height={height}
     aria-hidden="true"
@@ -20,7 +20,7 @@ const Arrow = ({ className = null, width = 20, height = 20, ...rest }) => (
 )
 
 Arrow.propTypes = {
-  className: PropTypes.string,
+  class: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
 }

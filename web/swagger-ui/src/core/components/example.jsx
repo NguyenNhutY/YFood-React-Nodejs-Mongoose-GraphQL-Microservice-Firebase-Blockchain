@@ -16,18 +16,18 @@ export default function Example(props) {
   if (!example) return null
 
   return (
-    <div className="example">
+    <div class="example">
       {example.get("description") ? (
-        <section className="example__section">
-          <div className="example__section-header">Example Description</div>
+        <section class="example__section">
+          <div class="example__section-header">Example Description</div>
           <p>
             <Markdown source={example.get("description")} />
           </p>
         </section>
       ) : null}
       {showValue && example.has("value") ? (
-        <section className="example__section">
-          <div className="example__section-header">Example Value</div>
+        <section class="example__section">
+          <div class="example__section-header">Example Value</div>
           <HighlightCode>{stringify(example.get("value"))}</HighlightCode>
         </section>
       ) : null}

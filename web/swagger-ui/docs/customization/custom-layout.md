@@ -21,7 +21,7 @@ class OperationsLayout extends React.Component {
     const Operations = getComponent("operations", true)
 
     return (
-      <div className="swagger-ui">
+      <div class="swagger-ui">
         <Operations />
       </div>
     )
@@ -64,7 +64,7 @@ class AugmentingLayout extends React.Component {
 
     return (
       <div>
-        <div className="myCustomHeader">
+        <div class="myCustomHeader">
           <h1>I have a custom header above Swagger-UI!</h1>
         </div>
         <BaseLayout />

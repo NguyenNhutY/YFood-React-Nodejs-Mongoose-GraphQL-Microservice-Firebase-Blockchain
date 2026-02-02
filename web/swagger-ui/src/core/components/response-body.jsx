@@ -90,7 +90,7 @@ export default class ResponseBody extends React.PureComponent {
             bodyEl = <div><a href={ href } download={ download }>{ "Download file" }</a></div>
         }
       } else {
-        bodyEl = <pre className="microlight">Download headers detected but your browser does not support downloading binary via XHR (Blob).</pre>
+        bodyEl = <pre class="microlight">Download headers detected but your browser does not support downloading binary via XHR (Blob).</pre>
       }
 
       // Anything else (CORS)
@@ -135,7 +135,7 @@ export default class ResponseBody extends React.PureComponent {
 
       // Audio
     } else if (/^audio\//i.test(contentType)) {
-      bodyEl = <pre className="microlight"><audio controls key={ url }><source src={ url } type={ contentType } /></audio></pre>
+      bodyEl = <pre class="microlight"><audio controls key={ url }><source src={ url } type={ contentType } /></audio></pre>
     } else if (typeof content === "string") {
       bodyEl = <HighlightCode downloadable fileName={`${downloadName}.txt`} canCopy>{content}</HighlightCode>
     } else if ( content.size > 0 ) {
@@ -144,7 +144,7 @@ export default class ResponseBody extends React.PureComponent {
         // We were able to squeeze something out of content
         // in `updateParsedContent`, so let's display it
         bodyEl = <div>
-          <p className="i">
+          <p class="i">
             Unrecognized response type; displaying content as text.
           </p>
           <HighlightCode downloadable fileName={`${downloadName}.txt`} canCopy>{parsedContent}</HighlightCode>
@@ -152,7 +152,7 @@ export default class ResponseBody extends React.PureComponent {
 
       } else {
         // Give up
-        bodyEl = <p className="i">
+        bodyEl = <p class="i">
           Unrecognized response type; unable to display.
         </p>
       }

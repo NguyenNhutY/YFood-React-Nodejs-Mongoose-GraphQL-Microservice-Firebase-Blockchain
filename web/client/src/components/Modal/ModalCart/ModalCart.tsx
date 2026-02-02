@@ -1,12 +1,13 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./modalCart.scss";
+import { FunctionalComponent } from "preact";
 
 interface ModalCartProps {
   onClose: () => void;
   children: React.ReactNode;
 }
 
-const ModalCart: React.FC<ModalCartProps> = ({ onClose, children }) => {
+const ModalCart: FunctionalComponent<ModalCartProps> = ({ onClose, children }) => {
   const handleOverlayClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -16,9 +17,9 @@ const ModalCart: React.FC<ModalCartProps> = ({ onClose, children }) => {
   };
 
   return (
-    <div className='modal-overlay' onClick={handleOverlayClick}>
-      <div className='modal'>
-        <button className='modal-close' onClick={onClose}>
+    <div class='modal-overlay' onClick={handleOverlayClick}>
+      <div class='modal'>
+        <button class='modal-close' onClick={onClose}>
           &times;
         </button>
         {children}

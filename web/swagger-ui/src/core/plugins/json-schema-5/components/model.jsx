@@ -86,8 +86,8 @@ export default class Model extends ImmutablePureComponent {
     }
 
     if(!schema) {
-      return <span className="model model-title">
-              <span className="model-title__text">{ displayName || name }</span>
+      return <span class="model model-title">
+              <span class="model-title__text">{ displayName || name }</span>
               {!$ref && <RollingLoadSVG height="20px" width="20px" />}
             </span>
     }
@@ -99,7 +99,7 @@ export default class Model extends ImmutablePureComponent {
     switch(type) {
       case "object":
         return <ObjectModel
-          className="object" { ...this.props }
+          class="object" { ...this.props }
           specPath={specPath}
           getConfigs={ getConfigs }
           schema={ schema }
@@ -110,7 +110,7 @@ export default class Model extends ImmutablePureComponent {
           includeWriteOnly = {includeWriteOnly}/>
       case "array":
         return <ArrayModel
-          className="array" { ...this.props }
+          class="array" { ...this.props }
           getConfigs={ getConfigs }
           schema={ schema }
           name={ name }

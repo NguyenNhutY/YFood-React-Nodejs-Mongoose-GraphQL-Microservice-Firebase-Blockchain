@@ -2,7 +2,7 @@
  * @prettier
  */
 import React, { useCallback, useState } from "react"
-import classNames from "classnames"
+import classs from "classs"
 
 import { schema } from "../../../prop-types"
 import {
@@ -28,13 +28,13 @@ const $vocabulary = ({ schema }) => {
   if (typeof schema.$vocabulary !== "object") return null
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--$vocabulary">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--$vocabulary">
       <Accordion expanded={expanded} onChange={handleExpansion}>
-        <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+        <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
           $vocabulary
         </span>
       </Accordion>
-      <strong className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+      <strong class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
         object
       </strong>
       <ul>
@@ -42,11 +42,11 @@ const $vocabulary = ({ schema }) => {
           Object.entries(schema.$vocabulary).map(([uri, enabled]) => (
             <li
               key={uri}
-              className={classNames("json-schema-2020-12-$vocabulary-uri", {
+              class={classs("json-schema-2020-12-$vocabulary-uri", {
                 "json-schema-2020-12-$vocabulary-uri--disabled": !enabled,
               })}
             >
-              <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
+              <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
                 {uri}
               </span>
             </li>

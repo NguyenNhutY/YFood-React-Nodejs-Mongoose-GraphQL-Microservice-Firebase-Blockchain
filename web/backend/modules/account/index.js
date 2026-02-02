@@ -29,7 +29,7 @@ const server = new ApolloServer({
   introspection: true, // Giữ introspection để có thể truy vấn schema từ localhost
   playground: true,    // Bật GraphQL Playground ở localhost
   tracing: false,      // Tắt Apollo Studio tracing
-     name: "accounts", path: "/graphql"
+     name: "accounts"
 
 });
 
@@ -50,14 +50,15 @@ app.use((err, req, res, next) => {
 });
 
 // Start Apollo Server
-await server.start();
-server.applyMiddleware({ app, path: "/graphql" });
+server.start()
+  .then(() => {
+    server.applyMiddleware({ app, path: '/graphql' });
+    app.listen(PORT, () => {
+      console.log(`Accounts service is running on http://localhost:${PORT}/graphql`);
 
-;
-
-// Start the Express server
-app.listen(PORT, () => {
-  console.log(`Account service is running on http://localhost:${PORT}/graphql`);
-});
-
-export default schema;
+    });
+  })
+  .catch((error) => {
+    console.error('Gateway startup error:', error);
+    console.error(error.extensions?.errors);
+  });

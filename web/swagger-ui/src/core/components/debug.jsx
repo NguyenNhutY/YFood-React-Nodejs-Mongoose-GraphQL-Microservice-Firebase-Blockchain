@@ -28,7 +28,7 @@ export default class Debug extends React.Component {
     const Collapse = getComponent("Collapse")
 
     return (
-      <div className="info">
+      <div class="info">
         <h3><a onClick={this.toggleJsonDump}> {this.plusOrMinus(this.state.jsonDumpOpen)} App </a></h3>
 
         <Collapse isOpened={this.state.jsonDumpOpen} springConfig={{ stiffness: 170, damping: 26 }}>

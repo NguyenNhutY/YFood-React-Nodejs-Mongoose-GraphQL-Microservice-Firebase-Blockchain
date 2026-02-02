@@ -2,7 +2,7 @@
  * @prettier
  */
 import React from "react"
-import classNames from "classnames"
+import classs from "classs"
 
 import { schema } from "../../../prop-types"
 import { useFn, useComponent } from "../../../hooks"
@@ -21,7 +21,7 @@ const Properties = ({ schema }) => {
   }
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--properties">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--properties">
       <ul>
         {Object.entries(properties).map(([propertyName, propertySchema]) => {
           const isRequired = required.includes(propertyName)
@@ -33,7 +33,7 @@ const Properties = ({ schema }) => {
           return (
             <li
               key={propertyName}
-              className={classNames("json-schema-2020-12-property", {
+              class={classs("json-schema-2020-12-property", {
                 "json-schema-2020-12-property--required": isRequired,
               })}
             >

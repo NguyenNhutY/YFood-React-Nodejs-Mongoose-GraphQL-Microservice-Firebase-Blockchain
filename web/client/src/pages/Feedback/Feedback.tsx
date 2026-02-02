@@ -1,4 +1,4 @@
-import React, { useContext, useState, ChangeEvent } from "react";
+import React, { useContext, useState, ChangeEvent }  from "preact/hooks";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { StoreContext } from "../../context/StoreContext"; // Adjust path as needed
@@ -9,13 +9,15 @@ import "./feedback.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { assets } from "../../assets/frontend_assets/assets";
+import { FunctionalComponent } from "preact";
+
 interface FeedbackFormValues {
   name: string;
   email: string;
   message: string;
 }
 
-const FeedbackForm: React.FC = () => {
+const FeedbackForm: FunctionalComponent = () => {
   const { extractForbiddenWords } = useContext(StoreContext)!;
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [messageLength, setMessageLength] = useState<number>(0);
@@ -73,14 +75,14 @@ const FeedbackForm: React.FC = () => {
 
   return (
     <>
-      <button className='btn-back-history' onClick={handleGoBack}>
-        <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+      <button class='btn-back-history' onClick={handleGoBack}>
+        <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
       </button>
       <IntroTourButton
-        className='btn-intro-feedback'
+        class='btn-intro-feedback'
         steps={feedbackIntroSteps}
       />
-      <div className='feedback-form-container'>
+      <div class='feedback-form-container'>
         <h2>Feedback Form</h2>
         {submitted ? (
           <p>Thank you for your feedback!</p>
@@ -91,8 +93,8 @@ const FeedbackForm: React.FC = () => {
             onSubmit={handleSubmit}
           >
             {({ isSubmitting, setFieldValue, values }) => (
-              <Form className='feedback-form'>
-                <div className='form-group'>
+              <Form class='feedback-form'>
+                <div class='form-group'>
                   <label htmlFor='name'>Name:</label>
                   <Field
                     name='name'
@@ -100,9 +102,9 @@ const FeedbackForm: React.FC = () => {
                     type='text'
                     placeholder='Your Name'
                   />
-                  <ErrorMessage name='name' component='div' className='error' />
+                  <ErrorMessage name='name' component='div' class='error' />
                 </div>
-                <div className='form-group'>
+                <div class='form-group'>
                   <label htmlFor='email'>Email:</label>
                   <Field
                     name='email'
@@ -113,10 +115,10 @@ const FeedbackForm: React.FC = () => {
                   <ErrorMessage
                     name='email'
                     component='div'
-                    className='error'
+                    class='error'
                   />
                 </div>
-                <div className='form-group'>
+                <div class='form-group'>
                   <label htmlFor='message'>Message:</label>
                   <Field
                     name='message'
@@ -137,24 +139,24 @@ const FeedbackForm: React.FC = () => {
                   <ErrorMessage
                     name='message'
                     component='div'
-                    className='error'
+                    class='error'
                   />
-                  <div className='message-length'>
+                  <div class='message-length'>
                     Character count: {messageLength}/{maxCharCount}
                   </div>
                   {charLimitExceeded && (
-                    <div className='error char-limit-exceeded'>
+                    <div class='error char-limit-exceeded'>
                       You have exceeded the maximum character limit of{" "}
                       {maxCharCount} characters.
                     </div>
                   )}
-                  <div className='forbidden-words-list'>
+                  <div class='forbidden-words-list'>
                     {forbiddenWordsList.length > 0 && (
-                      <div className='error'>
+                      <div class='error'>
                         <p>Forbidden words detected:</p>
-                        <div className='forbidden-words-container'>
+                        <div class='forbidden-words-container'>
                           {forbiddenWordsList.map((word, index) => (
-                            <span key={index} className='forbidden-word'>
+                            <span key={index} class='forbidden-word'>
                               {word}
                             </span>
                           ))}
@@ -163,7 +165,7 @@ const FeedbackForm: React.FC = () => {
                     )}
                   </div>
                 </div>
-                <div className='form-group'>
+                <div class='form-group'>
                   <label htmlFor='files'>Upload Files:</label>
                   <input
                     type='file'
@@ -173,11 +175,11 @@ const FeedbackForm: React.FC = () => {
                     accept='image/*,video/*'
                   />
                   {selectedFiles.length > 0 && (
-                    <div className='file-preview'>
+                    <div class='file-preview'>
                       {selectedFiles.map((file, index) => (
                         <div
                           key={index}
-                          className={
+                          class={
                             file.type.startsWith("image/")
                               ? "file-preview-image-container"
                               : "file-preview-video-container"
@@ -187,22 +189,22 @@ const FeedbackForm: React.FC = () => {
                             <img
                               src={URL.createObjectURL(file)}
                               alt={`preview-${index}`}
-                              className='file-preview-image'
+                              class='file-preview-image'
                             />
                           ) : (
                             <video
                               src={URL.createObjectURL(file)}
                               controls
-                              className='file-preview-video'
+                              class='file-preview-video'
                             />
                           )}
                           <button
                             type='button'
-                            className='btn-remove-file'
+                            class='btn-remove-file'
                             onClick={() => handleFileRemove(index)}
                           >
                             <img
-                              className='icon-remove-file'
+                              class='icon-remove-file'
                               src={assets.cross_icon}
                               alt=''
                             />
@@ -215,7 +217,7 @@ const FeedbackForm: React.FC = () => {
                 <button
                   type='submit'
                   disabled={isSubmitting || charLimitExceeded}
-                  className='btn-submit-feedback'
+                  class='btn-submit-feedback'
                 >
                   Submit
                 </button>

@@ -66,24 +66,24 @@ export default class OperationSummary extends PureComponent {
     const securityIsOptional = hasSecurity && security.size === 1 && security.first().isEmpty()
     const allowAnonymous = !hasSecurity || securityIsOptional
     return (
-      <div className={`opblock-summary opblock-summary-${method}`} >
+      <div class={`opblock-summary opblock-summary-${method}`} >
         <button
           aria-expanded={isShown}
-          className="opblock-summary-control"
+          class="opblock-summary-control"
           onClick={toggleShown}
         >
           <OperationSummaryMethod method={method} />
-          <div className="opblock-summary-path-description-wrapper">
+          <div class="opblock-summary-path-description-wrapper">
             <OperationSummaryPath getComponent={getComponent} operationProps={operationProps} specPath={specPath} />
 
             {!showSummary ? null :
-              <div className="opblock-summary-description">
+              <div class="opblock-summary-description">
                 {toString(resolvedSummary || summary)}
               </div>
             }
           </div>
 
-          {displayOperationId && (originalOperationId || operationId) ? <span className="opblock-summary-operation-id">{originalOperationId || operationId}</span> : null}
+          {displayOperationId && (originalOperationId || operationId) ? <span class="opblock-summary-operation-id">{originalOperationId || operationId}</span> : null}
         </button>
         <CopyToClipboardBtn textToCopy={`${specPath.get(1)}`} />
         {
@@ -99,11 +99,11 @@ export default class OperationSummary extends PureComponent {
         <JumpToPath path={specPath} />{/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
         <button
           aria-label={`${method} ${path.replace(/\//g, "\u200b/")}`}
-          className="opblock-control-arrow"
+          class="opblock-control-arrow"
           aria-expanded={isShown}
           tabIndex="-1"
           onClick={toggleShown}>
-          {isShown ? <ArrowUpIcon className="arrow" /> : <ArrowDownIcon className="arrow" />}
+          {isShown ? <ArrowUpIcon class="arrow" /> : <ArrowDownIcon class="arrow" />}
         </button>
       </div>
     )

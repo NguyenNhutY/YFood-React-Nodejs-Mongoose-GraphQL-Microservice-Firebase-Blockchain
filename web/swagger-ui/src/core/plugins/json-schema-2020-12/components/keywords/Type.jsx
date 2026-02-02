@@ -13,7 +13,7 @@ const Type = ({ schema, isCircular = false }) => {
   const circularSuffix = isCircular ? " [circular]" : ""
 
   return (
-    <strong className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+    <strong class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
       {`${type}${circularSuffix}`}
     </strong>
   )

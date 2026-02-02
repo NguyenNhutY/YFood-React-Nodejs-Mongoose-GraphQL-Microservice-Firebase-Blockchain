@@ -1,15 +1,14 @@
 import React, {
-  createContext,
   useCallback,
   useMemo,
   useState,
-  ReactNode,
-} from "react";
-import { food_list as initialFoodList } from "../assets/frontend_assets/assets.js";
+}  from "preact/hooks";
+import { food_list as initialFoodList } from "../assets/frontend_assets/assets";
 import promoCodesData from "../../../backend/types/promoCodes.json";
 import { PromoCodeTrie } from "../structure/PromoCodeTrie";
 import { ForbiddenWordsTree } from "../structure/ForbiddenWordsTree";
 import { forbiddenWordsData } from "../types/forbiddenWordsData";
+import {  createContext, FunctionalComponent, ComponentChildren } from "preact";
 
 // Interface Definitions
 interface FoodItem {
@@ -34,11 +33,12 @@ interface PromoCode {
   description: string;
   expiryDate: string;
 }
+type SetState<T> = (value: T | ((prev: T) => T)) => void;
 
 interface StoreContextType {
   food_list: FoodItem[];
   cartItems: CartItems;
-  setCartItems: React.Dispatch<React.SetStateAction<CartItems>>;
+  setCartItems: SetState<CartItems>;
   addToCart: (itemId: string) => void;
   decreaseToCart: (itemId: string) => void;
   removeFromCart: (itemId: string) => void;
@@ -49,26 +49,26 @@ interface StoreContextType {
   addToFavorites: (id: string) => void;
   removeFromFavorites: (id: string) => void;
   selectedItems: Set<string>;
-  setSelectedItems: React.Dispatch<React.SetStateAction<Set<string>>>;
+  setSelectedItems: SetState<Set<string>>;
   discount: number;
-  setDiscount: React.Dispatch<React.SetStateAction<number>>;
+  setDiscount: SetState<number>;
   promoError: string;
-  setPromoError: React.Dispatch<React.SetStateAction<string>>;
+  setPromoError: SetState<string>;
   promoCodes: PromoCode[];
   getTotalAfterDiscount: () => number;
   getSelectedTotalAmount: () => number;
   handlePromoCode: (promoCode: string) => void;
   getCartItemCount: () => number;
-  cart: []; // Assuming cart is an array of items
+  extractForbiddenWords: (text: string) => string[];
 }
 
 export const StoreContext = createContext<StoreContextType | null>(null);
 
 interface StoreContextProviderProps {
-  children: ReactNode;
+  children: ComponentChildren;
 }
 
-const StoreContextProvider: React.FC<StoreContextProviderProps> = ({
+const StoreContextProvider: FunctionalComponent<StoreContextProviderProps> = ({
   children,
 }) => {
   const [food_list] = useState<FoodItem[]>(initialFoodList);

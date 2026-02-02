@@ -9,7 +9,7 @@ const WriteOnly = ({ schema }) => {
   if (schema?.writeOnly !== true) return null
 
   return (
-    <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
+    <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
       write-only
     </span>
   )

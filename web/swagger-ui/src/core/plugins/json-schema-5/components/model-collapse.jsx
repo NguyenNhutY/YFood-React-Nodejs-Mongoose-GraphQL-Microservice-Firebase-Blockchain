@@ -78,17 +78,17 @@ export default class ModelCollapse extends Component {
 
     if(this.state.expanded ) {
       if(this.props.hideSelfOnExpand) {
-        return <span className={classes || ""}>
+        return <span class={classes || ""}>
           {this.props.children}
         </span>
       }
     }
 
     return (
-      <span className={classes || ""} ref={this.onLoad}>
-        <button aria-expanded={this.state.expanded} className="model-box-control" onClick={this.toggleCollapsed}>
-          { title && <span className="pointer">{title}</span> }
-          <span className={ "model-toggle" + ( this.state.expanded ? "" : " collapsed" ) }></span>
+      <span class={classes || ""} ref={this.onLoad}>
+        <button aria-expanded={this.state.expanded} class="model-box-control" onClick={this.toggleCollapsed}>
+          { title && <span class="pointer">{title}</span> }
+          <span class={ "model-toggle" + ( this.state.expanded ? "" : " collapsed" ) }></span>
           { !this.state.expanded && <span>{this.state.collapsedContent}</span> }
         </button>
 

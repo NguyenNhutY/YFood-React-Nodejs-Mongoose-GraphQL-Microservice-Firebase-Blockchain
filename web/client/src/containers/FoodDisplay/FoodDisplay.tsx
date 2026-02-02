@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect }  from "preact/hooks";
 import "./foodDisplay.scss";
 import { StoreContext } from "../../context/StoreContext";
 import FoodItem from "../../components/FoodItem/FoodItem";
@@ -6,6 +6,7 @@ import AnimateBox from "../../helpers/Animation/AnimateBox/AnimateBox";
 import { fromJS, List } from "immutable";
 import Pagination from "../../components/Pagination/Pagination";
 import SortByPrice from "../../components/SortByPrice/SortByPrice";
+import { FunctionalComponent } from "preact";
 
 // Define type for FoodItem
 interface FoodItemType {
@@ -32,7 +33,7 @@ interface StoreContextType {
   food_list: FoodItemType[];
 }
 
-const FoodDisplay: React.FC<FoodDisplayProps> = ({
+const FoodDisplay: FunctionalComponent<FoodDisplayProps> = ({
   category,
   searchName,
   excludeId,
@@ -99,12 +100,12 @@ const FoodDisplay: React.FC<FoodDisplayProps> = ({
   }, [searchName, excludeId]);
 
   return (
-    <div className='food-display' id='food-display'>
-      <div className='food-display-top'>
+    <div class='food-display' id='food-display'>
+      <div class='food-display-top'>
         <h2>Top dishes near you</h2>
         <SortByPrice onSortChange={handleSortChange} />
       </div>
-      <div className='food-display-list'>
+      <div class='food-display-list'>
         {currentItems.map((item) => (
           <AnimateBox key={item.get("_id")}>
             <FoodItem

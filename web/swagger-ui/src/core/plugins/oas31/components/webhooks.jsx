@@ -14,7 +14,7 @@ const Webhooks = ({ specSelectors, getComponent }) => {
   if (pathItemNames.length === 0) return null
 
   return (
-    <div className="webhooks">
+    <div class="webhooks">
       <h2>Webhooks</h2>
 
       {pathItemNames.map((pathItemName) => (

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
-import cx from "classnames"
+import cx from "classs"
 import { fromJS, Seq, Iterable, List, Map } from "immutable"
 import { getExtensions, fromJSOrdered, stringify } from "core/utils"
 import { getKnownSyntaxHighlighterLanguage } from "core/utils/jsonParse"
@@ -15,7 +15,7 @@ const getExampleComponent = ( sampleResponse, HighlightCode ) => {
 
   return (
     <div>
-      <HighlightCode className="example" language={language}>{stringify(sampleResponse)}</HighlightCode>
+      <HighlightCode class="example" language={language}>{stringify(sampleResponse)}</HighlightCode>
     </div>
   )
 }
@@ -34,7 +34,7 @@ export default class Response extends React.Component {
     method: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
     response: PropTypes.instanceOf(Iterable),
-    className: PropTypes.string,
+    class: PropTypes.string,
     getComponent: PropTypes.func.isRequired,
     getConfigs: PropTypes.func.isRequired,
     specSelectors: PropTypes.object.isRequired,
@@ -78,7 +78,7 @@ export default class Response extends React.Component {
       method,
       code,
       response,
-      className,
+      class,
       specPath,
       fn,
       getComponent,
@@ -170,26 +170,26 @@ export default class Response extends React.Component {
     const example = getExampleComponent( sampleResponse, HighlightCode )
 
     return (
-      <tr className={ "response " + ( className || "") } data-code={code}>
-        <td className="response-col_status">
+      <tr class={ "response " + ( class || "") } data-code={code}>
+        <td class="response-col_status">
           { code }
         </td>
-        <td className="response-col_description">
+        <td class="response-col_description">
 
-          <div className="response-col_description__inner">
+          <div class="response-col_description__inner">
             <Markdown source={ response.get( "description" ) } />
           </div>
 
           { !showExtensions || !extensions.size ? null : extensions.entrySeq().map(([key, v]) => <ResponseExtension key={`${key}-${v}`} xKey={key} xVal={v} /> )}
 
           {isOAS3 && response.get("content") ? (
-            <section className="response-controls">
+            <section class="response-controls">
               <div
-                className={cx("response-control-media-type", {
+                class={cx("response-control-media-type", {
                   "response-control-media-type--accept-controller": controlsAcceptHeader
                 })}
               >
-                <small className="response-control-media-type__title">
+                <small class="response-control-media-type__title">
                   Media type
                 </small>
                 <ContentType
@@ -203,14 +203,14 @@ export default class Response extends React.Component {
                   ariaLabel="Media Type"
                 />
                 {controlsAcceptHeader ? (
-                  <small className="response-control-media-type__accept-message">
+                  <small class="response-control-media-type__accept-message">
                     Controls <code>Accept</code> header.
                   </small>
                 ) : null}
               </div>
               {Map.isMap(examplesForMediaType) && !examplesForMediaType.isEmpty() ? (
-                <div className="response-control-examples">
-                  <small className="response-control-examples__title">
+                <div class="response-control-examples">
+                  <small class="response-control-examples__title">
                     Examples
                   </small>
                   <ExamplesSelect
@@ -259,7 +259,7 @@ export default class Response extends React.Component {
           ) : null}
 
         </td>
-        {isOAS3 ? <td className="response-col_links">
+        {isOAS3 ? <td class="response-col_links">
           { links ?
             links.toSeq().entrySeq().map(([key, link]) => {
               return <OperationLink key={key} name={key} link={ link } getComponent={getComponent}/>

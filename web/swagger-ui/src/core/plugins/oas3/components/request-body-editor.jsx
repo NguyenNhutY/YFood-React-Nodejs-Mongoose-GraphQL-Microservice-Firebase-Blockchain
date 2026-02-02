@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react"
 import PropTypes from "prop-types"
-import cx from "classnames"
+import cx from "classs"
 import { stringify } from "core/utils"
 
 const NOOP = Function.prototype
@@ -89,9 +89,9 @@ export default class RequestBodyEditor extends PureComponent {
     const TextArea = getComponent("TextArea")
 
     return (
-      <div className="body-param">
+      <div class="body-param">
         <TextArea
-          className={cx("body-param__text", { invalid: isInvalid } )}
+          class={cx("body-param__text", { invalid: isInvalid } )}
           title={errors.size ? errors.join(", ") : ""}
           value={value}
           onChange={ this.onDomChange }

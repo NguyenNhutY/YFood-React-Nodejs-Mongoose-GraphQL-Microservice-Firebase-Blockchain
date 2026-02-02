@@ -1,27 +1,24 @@
-import React, { useState } from "react";
-import IntroTour from "../Introjs/Introjs"; // Đường dẫn tương đối đến IntroTour
+import React, { useState }  from "preact/hooks";
+import IntroTour from "../Introjs/Introjs"; 
 import "./introBtn.scss";
-
+import { FunctionalComponent } from "preact";
 interface IntroTourButtonProps {
-  steps: introJs.Step[]; // Assuming introJs.Step type is available in your type definitions
+  steps: introJs.Step[];
   className?: string;
 }
 
-const IntroTourButton: React.FC<IntroTourButtonProps> = ({
+
+const IntroTourButton: FunctionalComponent<IntroTourButtonProps> = ({
   steps,
   className = "",
 }) => {
   const [showIntroTour, setShowIntroTour] = useState(false);
 
-  const handleClick = () => {
-    setShowIntroTour((prev) => !prev);
-  };
-
   return (
     <>
       <button
-        className={`intro-tour-button ${className}`}
-        onClick={handleClick}
+        class={`intro-tour-button ${className}`}
+        onClick={() => setShowIntroTour(v => !v)}
       >
         Guide
       </button>
@@ -29,10 +26,7 @@ const IntroTourButton: React.FC<IntroTourButtonProps> = ({
       {showIntroTour && (
         <IntroTour
           steps={steps}
-          onComplete={() => {
-            console.log("Tour completed!");
-            setShowIntroTour(false);
-          }}
+          onComplete={() => setShowIntroTour(false)}
         />
       )}
     </>

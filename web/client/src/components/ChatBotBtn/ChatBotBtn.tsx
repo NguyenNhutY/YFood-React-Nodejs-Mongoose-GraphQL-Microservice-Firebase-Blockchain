@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { useState }  from "preact/hooks";
 import ChatBot from "react-simple-chatbot";
 import { dbChatBoxSteps } from "../../types"; // Ensure that dbChatBoxSteps is properly typed
 import "./chatBotBtn.scss";
 import imgChatBot from "../../assets/frontend_assets/robot.png"; // Ensure correct path
+import { FunctionalComponent } from "preact";
 
-const ChatBotBtn: React.FC = () => {
+const ChatBotBtn: FunctionalComponent = () => {
   const [showChatBot, setShowChatBot] = useState<boolean>(false);
 
   return (
-    <div className='chatbot-container'>
+    <div class='chatbot-container'>
       <button
         onClick={() => setShowChatBot((prev) => !prev)}
-        className='toggle-btn'
+        class='toggle-btn'
       >
         <img
-          className='img-chatbot'
+          class='img-chatbot'
           src={imgChatBot}
           alt='Chatbot Toggle Button'
         />
       </button>
       {showChatBot && (
-        <div className='chatbot-widget'>
-          <ChatBot className='chatbot' steps={dbChatBoxSteps} />
+        <div class='chatbot-widget'>
+          <ChatBot class='chatbot' steps={dbChatBoxSteps} />
         </div>
       )}
     </div>

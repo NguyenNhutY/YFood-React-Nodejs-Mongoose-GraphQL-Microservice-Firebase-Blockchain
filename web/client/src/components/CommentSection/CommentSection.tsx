@@ -1,24 +1,24 @@
-import React, { useContext, useState, ChangeEvent } from "react";
+import React, { useContext, useState, ChangeEvent }  from "preact/hooks";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { Comment, NewComment } from "../../types/typesBlog";
 import "./commentSection.scss";
 import SecurityInput from "../SecurityInput/SecurityInput";
 import { StoreContext } from "../../context/StoreContext";
+import "quill/dist/quill.snow.css";
 
 // Import các thư viện hỗ trợ
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 
 // Import hình ảnh xóa và hình ảnh thích từ thư mục assets
 import { assets } from "../../assets/frontend_assets/assets";
+import { FunctionalComponent } from "preact";
 
 interface CommentSectionProps {
   comments: Comment[];
   onAddComment: (newComment: NewComment) => void;
 }
 
-const CommentSection: React.FC<CommentSectionProps> = ({
+const CommentSection: FunctionalComponent<CommentSectionProps> = ({
   comments,
   onAddComment,
 }) => {
@@ -65,23 +65,23 @@ const CommentSection: React.FC<CommentSectionProps> = ({
   };
 
   return (
-    <div className='comment-section'>
+    <div class='comment-section'>
       <h2>Comments</h2>
       {comments.map((comment) => (
-        <div className='comments-list' key={comment.id}>
-          <p className='comment'>
+        <div class='comments-list' key={comment.id}>
+          <p class='comment'>
             <strong>{comment.author}</strong>: {comment.content}
             {/* Hiển thị hình ảnh và video nếu có */}
             {comment.files && comment.files.length > 0 && (
-              <div className='comment-media'>
+              <div class='comment-media'>
                 {comment.files.map((file, index) => (
-                  <div key={index} className='media-item'>
+                  <div key={index} class='media-item'>
                     {file.type.startsWith("image/") && (
-                      <div className='image-container'>
+                      <div class='image-container'>
                         <img src={URL.createObjectURL(file)} alt='uploaded' />
                         <button
                           type='button'
-                          className='btn-remove-file'
+                          class='btn-remove-file'
                           onClick={() => handleRemoveFile(index)}
                         >
                           <img src={assets.cross_icon} alt='remove' />
@@ -89,13 +89,13 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                       </div>
                     )}
                     {file.type.startsWith("video/") && (
-                      <div className='video-container'>
+                      <div class='video-container'>
                         <video controls>
                           <source src={URL.createObjectURL(file)} />
                         </video>
                         <button
                           type='button'
-                          className='btn-remove-file'
+                          class='btn-remove-file'
                           onClick={() => handleRemoveFile(index)}
                         >
                           <img src={assets.cross_icon} alt='remove' />
@@ -108,7 +108,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
             )}
             <button
               type='button'
-              className='btn-like'
+              class='btn-like'
               onClick={() => handleLikeComment(comment.id)}
             >
               <img
@@ -152,7 +152,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
         }}
       >
         {({ setFieldValue, values }) => (
-          <Form className='add-comment'>
+          <Form class='add-comment'>
             <div>
               <label htmlFor='content'>Add a Comment</label>
               <Field
@@ -161,7 +161,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 type='textarea'
                 id='content'
                 placeholder='Write your comment here'
-                className='message-input'
+                class='message-input'
                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                   const value = e.target.value;
                   setFieldValue("content", value);
@@ -171,23 +171,23 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                   setForbiddenWordsList(forbiddenWordsInMessage);
                 }}
               />
-              <ErrorMessage name='content' component='div' className='error' />
-              <div className='message-length'>
+              <ErrorMessage name='content' component='div' class='error' />
+              <div class='message-length'>
                 Character count: {messageLength}/{maxCharCount}
               </div>
               {charLimitExceeded && (
-                <div className='error char-limit-exceeded'>
+                <div class='error char-limit-exceeded'>
                   You have exceeded the maximum character limit of{" "}
                   {maxCharCount} characters.
                 </div>
               )}
-              <div className='forbidden-words-list'>
+              <div class='forbidden-words-list'>
                 {forbiddenWordsList.length > 0 && (
-                  <div className='error'>
+                  <div class='error'>
                     <p>Forbidden words detected:</p>
-                    <div className='forbidden-words-container'>
+                    <div class='forbidden-words-container'>
                       {forbiddenWordsList.map((word, index) => (
-                        <span key={index} className='forbidden-word'>
+                        <span key={index} class='forbidden-word'>
                           {word}
                         </span>
                       ))}
@@ -196,7 +196,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 )}
               </div>
             </div>
-            <div className='upload-files-cmt'>
+            <div class='upload-files-cmt'>
               <label htmlFor='uploaded-files-cmt'>Upload Files:</label>
               <input
                 type='file'
@@ -205,15 +205,15 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 accept='image/*,video/*'
                 onChange={handleFileChange}
               />
-              <div className='uploaded-files-cmt'>
+              <div class='uploaded-files-cmt'>
                 {files.map((file, index) => (
-                  <div key={index} className='file-item'>
+                  <div key={index} class='file-item'>
                     {file.type.startsWith("image/") && (
-                      <div className='image-container'>
+                      <div class='image-container'>
                         <img src={URL.createObjectURL(file)} alt='uploaded' />
                         <button
                           type='button'
-                          className='btn-remove-file'
+                          class='btn-remove-file'
                           onClick={() => handleRemoveFile(index)}
                         >
                           <img src={assets.cross_icon} alt='remove' />
@@ -221,13 +221,13 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                       </div>
                     )}
                     {file.type.startsWith("video/") && (
-                      <div className='video-container'>
+                      <div class='video-container'>
                         <video controls>
                           <source src={URL.createObjectURL(file)} />
                         </video>
                         <button
                           type='button'
-                          className='btn-remove-file'
+                          class='btn-remove-file'
                           onClick={() => handleRemoveFile(index)}
                         >
                           <img src={assets.cross_icon} alt='remove' />
@@ -239,7 +239,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 ))}
               </div>
             </div>
-            {error && <p className='error'>{error}</p>}
+            {error && <p class='error'>{error}</p>}
             <button type='submit'>Add Comment</button>
           </Form>
         )}

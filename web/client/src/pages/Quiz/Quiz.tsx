@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useMemo }  from "preact/hooks";
+import { route } from "preact-router";
 import quizData, { Question } from "../../types/quizData";
 import "./quiz.scss";
 import AdSlider from "../../components/AdSlider/AdSlider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
 // Hàm trộn ngẫu nhiên mảng
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -42,7 +43,7 @@ const savePromoCode = (promoData: {
   localStorage.setItem("promoCodes", JSON.stringify(existingPromoCodes));
 };
 
-const Quiz: React.FC = () => {
+const Quiz: FunctionalComponent = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [completed, setCompleted] = useState(false);
@@ -101,7 +102,7 @@ const Quiz: React.FC = () => {
   };
 
   if (!shuffledQuestions.length) {
-    return <p className='quiz__loading'>Loading...</p>;
+    return <p class='quiz__loading'>Loading...</p>;
   }
 
   const question: Question | undefined =
@@ -112,21 +113,21 @@ const Quiz: React.FC = () => {
       <div>
         {" "}
         <button
-          className='btn-back-history'
+          class='btn-back-history'
           onClick={() => window.history.back()}
         >
           <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
         </button>
       </div>
-      <div className='quiz'>
+      <div class='quiz'>
         {!completed ? (
-          <div className='quiz__question-container'>
-            <h2 className='quiz__question-text'>{question?.text}</h2>
-            <div className='quiz__options'>
+          <div class='quiz__question-container'>
+            <h2 class='quiz__question-text'>{question?.text}</h2>
+            <div class='quiz__options'>
               {shuffleArray(question?.options || []).map((option, index) => (
                 <button
                   key={index}
-                  className='quiz__option'
+                  class='quiz__option'
                   onClick={() => handleAnswer(option.isCorrect)}
                 >
                   {option.answer}
@@ -135,29 +136,29 @@ const Quiz: React.FC = () => {
             </div>
           </div>
         ) : (
-          <div className='quiz__completion'>
-            <h2 className='quiz__completion-text'>
+          <div class='quiz__completion'>
+            <h2 class='quiz__completion-text'>
               Completed! You scored {score} points.
             </h2>
             {promo && (
-              <div className='quiz__promo'>
+              <div class='quiz__promo'>
                 <p
-                  className='quiz__promo-code'
+                  class='quiz__promo-code'
                   onClick={handleCopyPromoCode}
                   style={{ cursor: "pointer" }}
                 >
                   Your promo code is: <span>{promo.code}</span>
                 </p>
                 {copyStatus && (
-                  <p className='quiz__copy-status'>{copyStatus}</p>
+                  <p class='quiz__copy-status'>{copyStatus}</p>
                 )}
-                <p className='quiz__promo-discount'>
+                <p class='quiz__promo-discount'>
                   Discount rate: {promo.discount}%
                 </p>
-                <p className='quiz__promo-expiry'>
+                <p class='quiz__promo-expiry'>
                   Expiry date: {new Date(promo.expiryDate).toLocaleDateString()}
                 </p>
-                <button className='quiz__goto-cart' onClick={goToCart}>
+                <button class='quiz__goto-cart' onClick={goToCart}>
                   Go to Cart
                 </button>
               </div>

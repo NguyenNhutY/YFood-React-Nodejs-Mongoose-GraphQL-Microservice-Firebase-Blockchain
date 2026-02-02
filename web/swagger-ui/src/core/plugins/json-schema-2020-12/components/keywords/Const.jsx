@@ -12,11 +12,11 @@ const Const = ({ schema }) => {
   if (!fn.hasKeyword(schema, "const")) return null
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--const">
-      <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--const">
+      <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
         Const
       </span>
-      <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--const">
+      <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--const">
         {fn.stringify(schema.const)}
       </span>
     </div>

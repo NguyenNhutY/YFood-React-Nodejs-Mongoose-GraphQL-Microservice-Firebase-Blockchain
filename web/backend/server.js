@@ -4,9 +4,9 @@ import { ApolloServer } from 'apollo-server-express'; // import từ apollo-serv
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import axios from 'axios';
 import cors from 'cors';
-import punycode from "punycode";
 const app = express();
 const PORT = process.env.PORT || 4000;
+
 
 app.use(cors({
   origin: '*', // Tạm thời cho phép tất cả để kiểm tra
@@ -21,33 +21,27 @@ const gateway = new ApolloGateway({
         name: 'accounts',
         url: 'http://localhost:4001/graphql',  // Ensure this URL is correct
       },
-      {
-        name: 'materialBatches',
-        url: 'http://localhost:4002/graphql',
-      },
+
       {
         name: 'material',
         url: 'http://localhost:4003/graphql',
-      }
-    ],
+      }  
+    ],    introspectionOptions: {
+      pollIntervalInMs: 10000 // Tăng thời gian poll
+    },
     introspection: true, // Giữ introspection để có thể truy vấn schema từ localhost
     playground: true,    // Bật GraphQL Playground ở localhost
     tracing: false,      // Tắt Apollo Studio tracing 
     debug: true,
   }),
-  buildService: ({ url }) => new RemoteGraphQLDataSource({
-    url,
-    willSendRequest: ({ request, context }) => {
-      if (context.user) request.http.headers.set("user", JSON.stringify(context.user));
-    },
-  }),
+
   logger: {
     log: (message) => console.log(message),
     info: (message) => console.info(message),
     warn: (message) => console.warn(message),
     error: (message) => console.error(message),
     debug: (message) => console.debug(message),
-    pollingInterval: 5000,
+ 
     plugins: [
       {
         requestDidStart(requestContext) {
@@ -74,6 +68,12 @@ const gateway = new ApolloGateway({
     } catch (err) {
       console.error('Subgraph 2 error:', err.message);
     }
+    try {
+      await axios.get('http://localhost:4003/graphql');
+      console.log('Subgraph 3 is up');
+    } catch (err) {
+      console.error('Subgraph 3 error:', err.message);
+    }
   },
 });
 
@@ -92,4 +92,6 @@ server.start().then(() => {
   app.listen(PORT, () => {
     console.log(`API Gateway running on http://localhost:${PORT}/graphql`);
   });
+}) .catch((error) => {
+  console.error('Gateway startup error:', error);
 });

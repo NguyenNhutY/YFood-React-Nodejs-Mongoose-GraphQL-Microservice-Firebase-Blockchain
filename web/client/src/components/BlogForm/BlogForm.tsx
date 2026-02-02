@@ -1,22 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext }  from "preact/hooks";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { NewBlogPost } from "../../types/typesBlog";
 import { StoreContext } from "../../context/StoreContext";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // Import Quill styles
 import "./blogForm.scss";
 import { modules, formats } from "../../types/quillConfig";
 import ImageResize from "quill-image-resize-module-react";
 import ImageDrop from "quill-image-drop-module";
 import Quill from "quill";
 import { assets } from "../../assets/frontend_assets/assets"; // Import cross icon
+import { FunctionalComponent } from "preact";
 
 interface BlogFormProps {
   onAddBlog: (newBlog: NewBlogPost) => void;
 }
 
-const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
+const BlogForm: FunctionalComponent<BlogFormProps> = ({ onAddBlog }) => {
   const [forbiddenWordsList, setForbiddenWordsList] = useState<string[]>([]);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -71,10 +71,10 @@ const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
   };
 
   return (
-    <div className='blog-form'>
+    <div class='blog-form'>
       <h2>Add New Blog</h2>
       {successMessage && (
-        <div className='success-message'>{successMessage}</div>
+        <div class='success-message'>{successMessage}</div>
       )}
       <Formik
         initialValues={{ title: "", summary: "", content: "" }}
@@ -83,17 +83,17 @@ const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
       >
         {({ isSubmitting, setFieldValue, values }) => (
           <Form>
-            <div className='form-group'>
+            <div class='form-group'>
               <label htmlFor='title'>Title:</label>
               <Field name='title' type='text' placeholder='Blog Title' />
-              <ErrorMessage name='title' component='div' className='error' />
+              <ErrorMessage name='title' component='div' class='error' />
             </div>
-            <div className='form-group'>
+            <div class='form-group'>
               <label htmlFor='summary'>Summary:</label>
               <Field name='summary' type='text' placeholder='Blog Summary' />
-              <ErrorMessage name='summary' component='div' className='error' />
+              <ErrorMessage name='summary' component='div' class='error' />
             </div>
-            <div className='form-group'>
+            <div class='form-group'>
               <label htmlFor='content'>Content:</label>
               <ReactQuill
                 name='content'
@@ -106,14 +106,14 @@ const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
                 modules={modules}
                 formats={formats}
               />
-              <ErrorMessage name='content' component='div' className='error' />
-              <div className='forbidden-words-list'>
+              <ErrorMessage name='content' component='div' class='error' />
+              <div class='forbidden-words-list'>
                 {forbiddenWordsList.length > 0 && (
-                  <div className='error'>
+                  <div class='error'>
                     <p>Forbidden words detected:</p>
-                    <div className='forbidden-words-container'>
+                    <div class='forbidden-words-container'>
                       {forbiddenWordsList.map((word, index) => (
-                        <span key={index} className='forbidden-word'>
+                        <span key={index} class='forbidden-word'>
                           {word}
                         </span>
                       ))}
@@ -122,7 +122,7 @@ const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
                 )}
               </div>
             </div>
-            <div className='form-group'>
+            <div class='form-group'>
               <label htmlFor='imageUpload'>Upload Image:</label>
               <input
                 id='imageUpload'
@@ -132,10 +132,10 @@ const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
                 onChange={handleImageUpload}
               />
               {imagePreview && (
-                <div className='image-preview'>
+                <div class='image-preview'>
                   <button
                     type='button'
-                    className='btn-remove-image'
+                    class='btn-remove-image'
                     onClick={handleImageRemove}
                   >
                     <img src={assets.cross_icon} alt='Remove' />
@@ -147,7 +147,7 @@ const BlogForm: React.FC<BlogFormProps> = ({ onAddBlog }) => {
             <button
               type='submit'
               disabled={isSubmitting}
-              className='btn-submit-blog'
+              class='btn-submit-blog'
             >
               Add Blog
             </button>

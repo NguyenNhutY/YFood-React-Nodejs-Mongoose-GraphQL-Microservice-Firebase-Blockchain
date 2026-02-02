@@ -1,12 +1,13 @@
-import React, { useState, ChangeEvent, MouseEvent } from "react";
+import React, { useState, ChangeEvent, MouseEvent }  from "preact/hooks";
 import "./passGenerator.scss";
+import { FunctionalComponent } from "preact";
 
 interface PasswordGeneratorProps {
   onPasswordGenerated?: (password: string) => void;
   onClose: () => void;
 }
 
-const PasswordGenerator: React.FC<PasswordGeneratorProps> = ({
+const PasswordGenerator: FunctionalComponent<PasswordGeneratorProps> = ({
   onPasswordGenerated,
   onClose,
 }) => {
@@ -86,10 +87,10 @@ const PasswordGenerator: React.FC<PasswordGeneratorProps> = ({
 
   return (
     <div
-      className='password-generator passgenerator-overlay'
+      class='password-generator passgenerator-overlay'
       onClick={handleOverlayClick}
     >
-      <div className='passgenerator-container'>
+      <div class='passgenerator-container'>
         <h3>Password Generator</h3>
         <div>
           <label>Length:</label>
@@ -141,7 +142,7 @@ const PasswordGenerator: React.FC<PasswordGeneratorProps> = ({
             Symbols
           </label>
         </div>
-        <button className='passgenerator-button' onClick={generatePassword}>
+        <button class='passgenerator-button' onClick={generatePassword}>
           Generate Password
         </button>
         <div>
@@ -156,7 +157,7 @@ const PasswordGenerator: React.FC<PasswordGeneratorProps> = ({
         </div>
         <button
           onClick={onClose}
-          className='cancel-button'
+          class='cancel-button'
           aria-label='Close password generator'
         >
           Cancel

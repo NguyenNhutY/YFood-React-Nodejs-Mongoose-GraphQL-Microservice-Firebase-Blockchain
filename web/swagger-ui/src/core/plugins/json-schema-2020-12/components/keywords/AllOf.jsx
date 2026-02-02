@@ -2,7 +2,7 @@
  * @prettier
  */
 import React, { useCallback, useState } from "react"
-import classNames from "classnames"
+import classs from "classs"
 
 import { schema } from "../../prop-types"
 import {
@@ -45,23 +45,23 @@ const AllOf = ({ schema }) => {
 
   return (
     <JSONSchemaDeepExpansionContext.Provider value={expandedDeeply}>
-      <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--allOf">
+      <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--allOf">
         <Accordion expanded={expanded} onChange={handleExpansion}>
-          <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+          <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
             All of
           </span>
         </Accordion>
         <ExpandDeepButton expanded={expanded} onClick={handleExpansionDeep} />
         <KeywordType schema={{ allOf }} />
         <ul
-          className={classNames("json-schema-2020-12-keyword__children", {
+          class={classs("json-schema-2020-12-keyword__children", {
             "json-schema-2020-12-keyword__children--collapsed": !expanded,
           })}
         >
           {expanded && (
             <>
               {allOf.map((schema, index) => (
-                <li key={`#${index}`} className="json-schema-2020-12-property">
+                <li key={`#${index}`} class="json-schema-2020-12-property">
                   <JSONSchema
                     name={`#${index} ${fn.getTitle(schema)}`}
                     schema={schema}

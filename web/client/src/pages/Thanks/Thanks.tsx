@@ -1,21 +1,22 @@
-import React from "react";
+
 import "./thanks.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
-const Thanks: React.FC = () => {
+const Thanks: FunctionalComponent = () => {
   const handleGoBack = () => {
     window.history.back(); // Quay lại trang trước
   };
 
   return (
     <>
-      <button className='btn-back-history' onClick={handleGoBack}>
-        <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+      <button class='btn-back-history' onClick={handleGoBack}>
+        <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
       </button>
-      <div className='container  '>
+      <div class='container  '>
         <h2>YFood - Cảm Ơn Quý Khách</h2>
-        <p className=''>
+        <p class=''>
           YFood xin gửi lời cảm ơn chân thành đến quý khách hàng đã lựa chọn và
           tin tưởng chúng tôi là đối tác trong hành trình khám phá ẩm thực của
           quý vị. Chúng tôi cam kết luôn nỗ lực để mang đến cho quý khách những
@@ -28,49 +29,49 @@ const Thanks: React.FC = () => {
         </video> */}
 
         <div id='qlogo'>
-          <div className='poziomq'>
-            <figure className='liscie'>
-              <span className='lisc-lewy'>
-                <span className='after'></span>
+          <div class='poziomq'>
+            <figure class='liscie'>
+              <span class='lisc-lewy'>
+                <span class='after'></span>
               </span>
-              <span className='lisc-lewy drugi'>
-                <span className='after'></span>
+              <span class='lisc-lewy drugi'>
+                <span class='after'></span>
               </span>
-              <span className='lisc-prawy'>
-                <span className='after'></span>
+              <span class='lisc-prawy'>
+                <span class='after'></span>
               </span>
-              <span className='lisc-prawy drugi'>
-                <span className='after'></span>
+              <span class='lisc-prawy drugi'>
+                <span class='after'></span>
               </span>
-              <span className='lodyga'></span>
+              <span class='lodyga'></span>
             </figure>
-            <figure className='rece'>
-              <span className='reka reka-lewa'></span>
-              <span className='reka reka-prawa'></span>
+            <figure class='rece'>
+              <span class='reka reka-lewa'></span>
+              <span class='reka reka-prawa'></span>
             </figure>
-            <figure className='cialo'>
-              <span className='twarz'>
-                <span className='oczy'>
-                  <span className='oko oko-lewe'></span>
-                  <span className='oko oko-prawe'></span>
+            <figure class='cialo'>
+              <span class='twarz'>
+                <span class='oczy'>
+                  <span class='oko oko-lewe'></span>
+                  <span class='oko oko-prawe'></span>
                 </span>
-                <span className='piegi'>
-                  <span className='pieg pieg-lewy'></span>
-                  <span className='pieg pieg-prawy'></span>
+                <span class='piegi'>
+                  <span class='pieg pieg-lewy'></span>
+                  <span class='pieg pieg-prawy'></span>
                 </span>
-                <span className='buzia'>
-                  <span className='gardlo'></span>
-                  <span className='zuby'></span>
+                <span class='buzia'>
+                  <span class='gardlo'></span>
+                  <span class='zuby'></span>
                 </span>
               </span>
             </figure>
-            <figure className='nogi'>
-              <span className='noga-lewa'></span>
-              <span className='noga-prawa'></span>
+            <figure class='nogi'>
+              <span class='noga-lewa'></span>
+              <span class='noga-prawa'></span>
             </figure>
           </div>
-          <figure className='cien'></figure>
-          <figure className='tekst'>Hover Me!</figure>
+          <figure class='cien'></figure>
+          <figure class='tekst'>Hover Me!</figure>
         </div>
       </div>
     </>

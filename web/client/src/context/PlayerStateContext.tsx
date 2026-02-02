@@ -1,5 +1,6 @@
 // src/components/MusicBar/PlayerStateContext.tsx
-import React, { createContext, useContext, useState } from "react";
+import React, {  useContext, useState }  from "preact/hooks";
+import { FunctionalComponent,createContext } from "preact";
 
 interface PlayerState {
   isPlaying: boolean;
@@ -8,7 +9,7 @@ interface PlayerState {
 
 const PlayerStateContext = createContext<PlayerState | undefined>(undefined);
 
-export const PlayerStateProvider: React.FC = ({ children }) => {
+export const PlayerStateProvider: FunctionalComponent = ({ children }) => {
   const [state, setState] = useState<PlayerState>({
     isPlaying: true,
     volume: 0.5,

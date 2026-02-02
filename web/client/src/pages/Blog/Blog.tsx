@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState }  from "preact/hooks";
 import BlogList from "../../containers/BlogList/BlogList";
 import BlogForm from "../../components/BlogForm/BlogForm";
 import { blogList, NewBlogPost, BlogPost } from "../../types/typesBlog";
@@ -9,8 +9,9 @@ import AdSlider from "../../components/AdSlider/AdSlider";
 import { assets } from "../../assets/frontend_assets/assets";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
-const BlogPage: React.FC = () => {
+const BlogPage: FunctionalComponent = () => {
   const [blogs, setBlogs] = useState<BlogPost[]>(blogList);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [filteredBlogs, setFilteredBlogs] = useState<BlogPost[]>(blogList);
@@ -52,23 +53,23 @@ const BlogPage: React.FC = () => {
       <div>
         {" "}
         <button
-          className='btn-back-history'
+          class='btn-back-history'
           onClick={() => window.history.back()}
         >
-          <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+          <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
         </button>
       </div>
-      <div className='blog-container'>
-        <div className='img-header-blog' />
+      <div class='blog-container'>
+        <div class='img-header-blog' />
         <h1>Blog</h1>
 
         <Search
-          className='search-blog'
+          class='search-blog'
           setSearchName={handleSearchName}
           placeholder='Search for blogs...'
         />
         <br />
-        <BlogList className='blog-list' blogs={currentBlogs} />
+        <BlogList class='blog-list' blogs={currentBlogs} />
         {totalPages > 1 && (
           <Pagination
             currentPage={currentPage}
@@ -76,7 +77,7 @@ const BlogPage: React.FC = () => {
             paginate={handlePaginate}
           />
         )}
-        <BlogForm className='blog-form' onAddBlog={handleAddBlog} />
+        <BlogForm class='blog-form' onAddBlog={handleAddBlog} />
       </div>
       <AdSlider />
     </>

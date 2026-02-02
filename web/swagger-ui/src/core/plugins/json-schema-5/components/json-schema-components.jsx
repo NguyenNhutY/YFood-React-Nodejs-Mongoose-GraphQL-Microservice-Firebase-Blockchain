@@ -1,7 +1,7 @@
 import React, { PureComponent, Component } from "react"
 import PropTypes from "prop-types"
 import { List, fromJS } from "immutable"
-import cx from "classnames"
+import cx from "classs"
 import ImPropTypes from "react-immutable-proptypes"
 import DebounceInput from "react-debounce-input"
 import { stringify } from "core/utils"
@@ -82,7 +82,7 @@ export class JsonSchema_string extends Component {
 
     if ( enumValue ) {
       const Select = getComponent("Select")
-      return (<Select className={ errors.length ? "invalid" : ""}
+      return (<Select class={ errors.length ? "invalid" : ""}
                       title={ errors.length ? errors : ""}
                       allowedValues={ [...enumValue] }
                       value={ value }
@@ -96,7 +96,7 @@ export class JsonSchema_string extends Component {
     if (type && type === "file") {
       return (
         <Input type="file"
-          className={errors.length ? "invalid" : ""}
+          class={errors.length ? "invalid" : ""}
           title={errors.length ? errors : ""}
           onChange={this.onChange}
           disabled={isDisabled} />
@@ -106,7 +106,7 @@ export class JsonSchema_string extends Component {
       return (
         <DebounceInput
           type={format && format === "password" ? "password" : "text"}
-          className={errors.length ? "invalid" : ""}
+          class={errors.length ? "invalid" : ""}
           title={errors.length ? errors : ""}
           value={value}
           minLength={0}
@@ -200,7 +200,7 @@ export class JsonSchema_array extends PureComponent {
 
     if ( schemaItemsEnum ) {
       const Select = getComponent("Select")
-      return (<Select className={ errors.length ? "invalid" : ""}
+      return (<Select class={ errors.length ? "invalid" : ""}
                       title={ errors.length ? errors : ""}
                       multiple={ true }
                       value={ value }
@@ -212,7 +212,7 @@ export class JsonSchema_array extends PureComponent {
 
     const Button = getComponent("Button")
     return (
-      <div className="json-schema-array">
+      <div class="json-schema-array">
         {shouldRenderValue ?
           (value.map((item, i) => {
             const itemErrors = fromJS([
@@ -220,7 +220,7 @@ export class JsonSchema_array extends PureComponent {
               .map(e => e.error)
             ])
             return (
-              <div key={i} className="json-schema-form-item">
+              <div key={i} class="json-schema-form-item">
                 {
                   isArrayItemFile ?
                     <JsonSchemaArrayItemFile
@@ -249,7 +249,7 @@ export class JsonSchema_array extends PureComponent {
                 }
                 {!disabled ? (
                   <Button
-                    className={`btn btn-sm json-schema-form-item-remove ${needsRemoveError.length ? "invalid" : null}`}
+                    class={`btn btn-sm json-schema-form-item-remove ${needsRemoveError.length ? "invalid" : null}`}
                     title={needsRemoveError.length ? needsRemoveError : ""}
 
                     onClick={() => this.removeItem(i)}
@@ -262,7 +262,7 @@ export class JsonSchema_array extends PureComponent {
         }
         {!disabled ? (
           <Button
-            className={`btn btn-sm json-schema-form-item-add ${arrayErrors.length ? "invalid" : null}`}
+            class={`btn btn-sm json-schema-form-item-add ${arrayErrors.length ? "invalid" : null}`}
             title={arrayErrors.length ? arrayErrors : ""}
             onClick={this.addItem}
           >
@@ -292,7 +292,7 @@ export class JsonSchemaArrayItemText extends Component {
 
     return (<DebounceInput
       type={"text"}
-      className={errors.length ? "invalid" : ""}
+      class={errors.length ? "invalid" : ""}
       title={errors.length ? errors : ""}
       value={value}
       minLength={0}
@@ -318,7 +318,7 @@ export class JsonSchemaArrayItemFile extends Component {
     const isDisabled = disabled || !("FormData" in window)
 
     return (<Input type="file"
-      className={errors.length ? "invalid" : ""}
+      class={errors.length ? "invalid" : ""}
       title={errors.length ? errors : ""}
       onChange={this.onFileChange}
       disabled={isDisabled} />)
@@ -338,7 +338,7 @@ export class JsonSchema_boolean extends Component {
     let booleanValue = !enumValue && ["true", "false"]
     const Select = getComponent("Select")
 
-    return (<Select className={ errors.length ? "invalid" : ""}
+    return (<Select class={ errors.length ? "invalid" : ""}
                     title={ errors.length ? errors : ""}
                     value={ String(value) }
                     disabled={ disabled }
@@ -405,7 +405,7 @@ export class JsonSchema_object extends PureComponent {
     return (
       <div>
         <TextArea
-          className={cx({ invalid: errors.length })}
+          class={cx({ invalid: errors.length })}
           title={ errors.length ? stringifyObjectErrors(errors).join(", ") : ""}
           value={stringify(value)}
           disabled={disabled}

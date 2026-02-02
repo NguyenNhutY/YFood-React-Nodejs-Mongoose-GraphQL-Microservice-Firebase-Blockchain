@@ -1,7 +1,8 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./loading.scss"; // Import CSS file for styling
+import { FunctionalComponent } from "preact";
 
-const Loading: React.FC = () => {
+const Loading: FunctionalComponent = () => {
   return (
     <div id='load'>
       <div>G</div>

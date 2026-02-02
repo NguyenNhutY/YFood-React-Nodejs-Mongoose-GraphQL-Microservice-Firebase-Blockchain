@@ -1,4 +1,5 @@
-import React from "react";
+// src/components/AdSlider/AdSlider.tsx
+import { FunctionalComponent } from "preact";
 import {
   Navigation,
   Pagination,
@@ -6,41 +7,51 @@ import {
   A11y,
   Autoplay,
 } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Swiper, SwiperSlide } from "../../compat/SwiperCompat";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 import "./adSlider.scss";
+import { createImageList } from "./imageFactory";
 
-import { createImageList, ImageItem } from "./imageFactory";
+type AdSliderProps = {
+  className?: string;
+};
 
-interface AdSliderProps {}
+const AdSlider: FunctionalComponent<{ className?: string }> = ({ className }) => {
+  const imageList = createImageList();
 
-const AdSlider: React.FC<AdSliderProps> = () => {
-  const imageList = createImageList(); // Use factory function
-
-  // Define Swiper configuration strategy
   const swiperConfig = {
     modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     slidesPerView: 3,
+    navigation: true,
     pagination: { clickable: true },
     scrollbar: { draggable: true },
-    navigation: true,
     autoplay: {
-      delay: 4000, // Time between slides (4000ms = 4 seconds)
-      disableOnInteraction: false, // Do not stop autoplay on user interaction
+      delay: 4000,
+      disableOnInteraction: false,
     },
-    onSwiper: (swiper: any) => console.log("Swiper initialized:", swiper),
+    onSwiper: (swiper: unknown) =>
+      console.log("Swiper initialized", swiper),
     onSlideChange: () => console.log("Slide changed"),
   };
 
   return (
-    <div className='ad-slider' id='ad-slider'>
-      <Swiper {...swiperConfig} className='ad-slider-list'>
-        {imageList.map((item: any) => (
-          <SwiperSlide key={item.get("id")} className='ad-slider-list-item'>
+    <div class="ad-slider" id="ad-slider">
+      <Swiper {...swiperConfig} class="ad-slider-list">
+        {imageList.map((item) => (
+          <SwiperSlide
+            key={item.id}
+            class="ad-slider-list-item"
+          >
             <img
-              src={item.get("src")}
-              alt={item.get("alt")}
-              loading='lazy'
-              className='ad-slider-img'
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              class="ad-slider-img"
             />
           </SwiperSlide>
         ))}

@@ -5,7 +5,9 @@ import { connectDB } from '../../config/db.js';  // Ensure the correct path
 import { ApolloServer } from "apollo-server-express";
 import materialSchema from './material.schema.js';  // Import material schema
 import materialResolver from "./material.resolver.js"; // Material batch resolvers
-import {buildSubgraphSchema} from "@apollo/subgraph"
+import {buildSubgraphSchema} from "@apollo/subgraph";
+import { DateScalar } from "../../utils/custom.date.js";
+
 const app = express();
 const PORT = process.env.PORT || 4003;
 
@@ -17,7 +19,7 @@ const schema = buildSubgraphSchema({
   typeDefs: [materialSchema], // Merge your typeDefs here
   resolvers: {
     ...materialResolver,  // Your resolvers
-  },
+  }, Date: DateScalar
 });
 
 // Create Apollo Server instance
@@ -48,10 +50,15 @@ app.use((err, req, res, next) => {
 });
 
 // Start the Apollo Server
-await server.start();
-server.applyMiddleware({ app, path: "/graphql" }); // Use the /graphql endpoint
+server.start()
+  .then(() => {
+    server.applyMiddleware({ app, path: '/graphql' });
+    app.listen(PORT, () => {
+      console.log(`Material service is running on http://localhost:${PORT}/graphql`);
 
-// Start the Express app
-app.listen(PORT, () => {
-  console.log(`Material service is running on http://localhost:${PORT}/graphql`);
-});
+    });
+  })
+  .catch((error) => {
+    console.error('Gateway startup error:', error);
+    console.error(error.extensions?.errors);
+  });

@@ -51,7 +51,7 @@ describe("<ObjectModel />", function() {
           return false
         }
       },
-      className: "for-test"
+      class: "for-test"
     }
     const propsNullable = {
       ...props,

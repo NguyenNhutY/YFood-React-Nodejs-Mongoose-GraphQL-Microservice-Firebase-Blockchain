@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component }  from "preact/hooks";
 import { ReCaptcha } from "react-recaptcha-google";
 
 class ExampleComponent extends Component {

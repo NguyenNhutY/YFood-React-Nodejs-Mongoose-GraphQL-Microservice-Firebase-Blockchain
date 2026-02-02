@@ -15,9 +15,9 @@ const VersionPragmaFilter = ({
 
   if (isSwagger2 && (isOAS3 || isOAS31)) {
     return (
-      <div className="version-pragma">
+      <div class="version-pragma">
         {alsoShow}
-        <div className="version-pragma__message version-pragma__message--ambiguous">
+        <div class="version-pragma__message version-pragma__message--ambiguous">
           <div>
             <h3>Unable to render this definition</h3>
             <p>
@@ -38,9 +38,9 @@ const VersionPragmaFilter = ({
 
   if (!isSwagger2 && !isOAS3 && !isOAS31) {
     return (
-      <div className="version-pragma">
+      <div class="version-pragma">
         {alsoShow}
-        <div className="version-pragma__message version-pragma__message--missing">
+        <div class="version-pragma__message version-pragma__message--missing">
           <div>
             <h3>Unable to render this definition</h3>
             <p>

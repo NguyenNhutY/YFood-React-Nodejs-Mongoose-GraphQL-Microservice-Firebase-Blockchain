@@ -70,7 +70,7 @@ const Servers = ({
   )
 
   return (
-    <div className="servers">
+    <div class="servers">
       <label htmlFor="servers">
         <select
           onChange={handleServerChange}
@@ -90,7 +90,7 @@ const Servers = ({
       </label>
       {shouldShowVariableUI && (
         <div>
-          <div className={"computed-url"}>
+          <div class={"computed-url"}>
             Computed URL:
             <code>{getEffectiveServerValue(currentServer)}</code>
           </div>

@@ -121,17 +121,17 @@ export default class ParamBody extends PureComponent {
     const controlId = `${regionId}_select`
 
     return (
-      <div className="body-param" data-param-name={param.get("name")} data-param-in={param.get("in")}>
+      <div class="body-param" data-param-name={param.get("name")} data-param-in={param.get("in")}>
         {
           isEditBox && isExecute
-            ? <TextArea className={ "body-param__text" + ( errors.count() ? " invalid" : "")} value={value} onChange={ this.handleOnChange }/>
-            : (value && <HighlightCode className="body-param__example" language={ language }>{value}</HighlightCode>)
+            ? <TextArea class={ "body-param__text" + ( errors.count() ? " invalid" : "")} value={value} onChange={ this.handleOnChange }/>
+            : (value && <HighlightCode class="body-param__example" language={ language }>{value}</HighlightCode>)
         }
-        <div className="body-param-options">
+        <div class="body-param-options">
           {
             !isExecute ? null
-                       : <div className="body-param-edit">
-                        <Button className={isEditBox ? "btn cancel body-param__example-edit" : "btn edit body-param__example-edit"}
+                       : <div class="body-param-edit">
+                        <Button class={isEditBox ? "btn cancel body-param__example-edit" : "btn edit body-param__example-edit"}
                                  onClick={this.toggleIsEditBox}>{ isEditBox ? "Cancel" : "Edit"}
                          </Button>
                          </div>
@@ -142,7 +142,7 @@ export default class ParamBody extends PureComponent {
               value={ consumesValue }
               contentTypes={ consumes }
               onChange={onChangeConsumes}
-              className="body-param-content-type"
+              class="body-param-content-type"
               ariaLabel="Parameter content type"
               controlId={controlId}
             />

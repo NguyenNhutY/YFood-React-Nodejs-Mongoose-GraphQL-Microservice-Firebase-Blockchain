@@ -20,24 +20,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Hàm tải lên video/hình ảnh
-export async function uploadFile(filePath, mediaType) {
-  try {
-    // Kiểm tra xem tệp có tồn tại không
-    if (!fs.existsSync(filePath)) {
-      throw new Error("Tệp không tồn tại");
-    }
 
-    // Tải lên tệp lên Cloudinary
-    const result = await cloudinary.uploader.upload(filePath, {
-      resource_type: mediaType === 'video' ? 'video' : 'image',
-    });
-
-    return result.secure_url;  // Trả về URL của tệp đã tải lên
-  } catch (error) {
-    console.error("Lỗi khi tải lên:", error);
-    throw error;
-  }
-}
 
 // Hàm tải lên tất cả hình ảnh trong thư mục uploads
 export async function uploadAllImages() {
@@ -59,11 +42,3 @@ export async function uploadAllImages() {
   }
 }
 
-// Sử dụng hàm tải lên tất cả hình ảnh
-(async () => {
-  try {
-    await uploadAllImages();
-  } catch (error) {
-    console.error("Lỗi:", error);
-  }
-})();

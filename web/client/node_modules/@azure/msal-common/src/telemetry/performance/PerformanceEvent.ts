@@ -116,6 +116,7 @@ export const PerformanceEvents = {
     /**
      * Time spent sending/waiting for the response of a request to the token endpoint
      */
+    NetworkClientSendPostRequestAsync: "networkClientSendPostRequestAsync",
     RefreshTokenClientExecutePostToTokenEndpoint:
         "refreshTokenClientExecutePostToTokenEndpoint",
     AuthorizationCodeClientExecutePostToTokenEndpoint:
@@ -188,11 +189,6 @@ export const PerformanceEvents = {
     InitializeSilentRequest: "initializeSilentRequest",
 
     InitializeClientApplication: "initializeClientApplication",
-
-    /**
-     * Helper function in PopupClient class (msal-browser).
-     */
-    PopupClientTokenHelper: "popupClientTokenHelper",
 
     /**
      * Helper function in SilentIframeClient class (msal-browser).
@@ -346,6 +342,10 @@ export const PerformanceEventAbbreviations: ReadonlyMap<string, string> =
         [
             PerformanceEvents.BaseClientCreateTokenRequestHeaders,
             "BaseClientCreateTReqHead",
+        ],
+        [
+            PerformanceEvents.NetworkClientSendPostRequestAsync,
+            "NetClientSendPost",
         ],
         [
             PerformanceEvents.RefreshTokenClientExecutePostToTokenEndpoint,
@@ -795,7 +795,14 @@ export type PerformanceEvent = {
     matsSilentStatus?: number;
     matsHttpStatus?: number;
     matsHttpEventCount?: number;
+
+    /**
+     * Http POST metadata
+     */
     httpVerToken?: string;
+    httpStatus?: number;
+    contentTypeHeader?: string;
+    contentLengthHeader?: string;
 
     /**
      * Native broker fields
@@ -839,6 +846,9 @@ export type PerformanceEvent = {
      * @type {string}
      */
     retryError?: string;
+
+    embeddedClientId?: string;
+    embeddedRedirectUri?: string;
 };
 
 export type PerformanceEventContext = {

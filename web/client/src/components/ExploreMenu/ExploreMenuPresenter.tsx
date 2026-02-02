@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 import {
   Navigation,
   Pagination,
@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import "./exploreMenu.scss";
 import "./swiper.scss";
+import { FunctionalComponent } from "preact";
 
 // Define props interface
 interface MenuItem {
@@ -26,15 +27,15 @@ interface ExploreMenuPresenterProps {
   menuItems: MenuItem[];
 }
 
-const ExploreMenuPresenter: React.FC<ExploreMenuPresenterProps> = ({
+const ExploreMenuPresenter: FunctionalComponent<ExploreMenuPresenterProps> = ({
   category,
   setCategory,
   menuItems,
 }) => {
   return (
-    <div className='explore-menu' id='explore-menu'>
+    <div class='explore-menu' id='explore-menu'>
       <h1>Explore our menu</h1>
-      <p className='explore-menu-text'>
+      <p class='explore-menu-text'>
         Discover our diverse menu featuring a delectable array of dishes crafted
         with the finest ingredients.
       </p>
@@ -51,12 +52,12 @@ const ExploreMenuPresenter: React.FC<ExploreMenuPresenterProps> = ({
         }}
         onSwiper={(swiper) => console.log("Swiper initialized:", swiper)}
         onSlideChange={() => console.log("Slide changed")}
-        className='explore-menu-list my-swiper'
+        class='explore-menu-list my-swiper'
       >
         {menuItems.map((item, index) => (
           <SwiperSlide
             key={item._id || index} // Use item._id if available, fallback to index
-            className='explore-menu-list-item'
+            class='explore-menu-list-item'
             onClick={() =>
               setCategory((prev) =>
                 prev === item.menu_name ? "All" : item.menu_name
@@ -65,7 +66,7 @@ const ExploreMenuPresenter: React.FC<ExploreMenuPresenterProps> = ({
             aria-label={`Category ${item.menu_name}`} // Accessibility improvement
           >
             <img
-              className={category === item.menu_name ? "active" : ""}
+              class={category === item.menu_name ? "active" : ""}
               src={item.menu_image}
               alt={item.menu_name}
               loading='lazy'

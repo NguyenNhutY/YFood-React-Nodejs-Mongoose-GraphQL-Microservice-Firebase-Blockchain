@@ -12,8 +12,8 @@ const Enum = ({ schema }) => {
   if (!Array.isArray(schema?.enum)) return null
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--enum">
-      <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--enum">
+      <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
         Allowed values
       </span>
       <ul>
@@ -22,7 +22,7 @@ const Enum = ({ schema }) => {
 
           return (
             <li key={strigifiedElement}>
-              <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--const">
+              <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--const">
                 {strigifiedElement}
               </span>
             </li>

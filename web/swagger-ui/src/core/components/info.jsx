@@ -17,7 +17,7 @@ export class InfoBasePath extends React.Component {
     const { host, basePath } = this.props
 
     return (
-      <pre className="base-url">
+      <pre class="base-url">
         [ Base URL: {host}
         {basePath} ]
       </pre>
@@ -37,7 +37,7 @@ export class InfoUrl extends React.PureComponent {
 
     return (
       <Link target="_blank" href={sanitizeUrl(url)}>
-        <span className="url"> {url}</span>
+        <span class="url"> {url}</span>
       </Link>
     )
   }
@@ -96,9 +96,9 @@ class Info extends React.Component {
     const Contact = getComponent("Contact")
 
     return (
-      <div className="info">
-        <hgroup className="main">
-          <h2 className="title">
+      <div class="info">
+        <hgroup class="main">
+          <h2 class="title">
             {title}
             <span>
               {version && <VersionStamp version={version} />}
@@ -111,12 +111,12 @@ class Info extends React.Component {
           {url && <InfoUrl getComponent={getComponent} url={url} />}
         </hgroup>
 
-        <div className="description">
+        <div class="description">
           <Markdown source={description} />
         </div>
 
         {termsOfServiceUrl && (
-          <div className="info__tos">
+          <div class="info__tos">
             <Link target="_blank" href={sanitizeUrl(termsOfServiceUrl)}>
               Terms of service
             </Link>
@@ -141,7 +141,7 @@ class Info extends React.Component {
         )}
         {externalDocsUrl ? (
           <Link
-            className="info__extdocs"
+            class="info__extdocs"
             target="_blank"
             href={sanitizeUrl(externalDocsUrl)}
           >

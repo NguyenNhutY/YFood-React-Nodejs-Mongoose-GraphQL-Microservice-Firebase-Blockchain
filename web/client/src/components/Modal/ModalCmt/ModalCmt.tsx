@@ -1,11 +1,12 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./modalCmt.scss";
+import { FunctionalComponent } from "preact";
 
 interface ModalCmtProps {
   onCloseModalCmt: () => void;
 }
 
-const ModalCmt: React.FC<ModalCmtProps> = ({ onCloseModalCmt }) => {
+const ModalCmt: FunctionalComponent<ModalCmtProps> = ({ onCloseModalCmt }) => {
   const handleOverlayClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -15,8 +16,8 @@ const ModalCmt: React.FC<ModalCmtProps> = ({ onCloseModalCmt }) => {
   };
 
   return (
-    <div className='cmt-overlay' onClick={handleOverlayClick}>
-      <div className='cmt-container'>
+    <div class='cmt-overlay' onClick={handleOverlayClick}>
+      <div class='cmt-container'>
         <h2>Rating</h2>
         {/* Add additional content here as needed */}
       </div>

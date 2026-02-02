@@ -4,17 +4,17 @@ import PropTypes from "prop-types"
 export const OperationExt = ({ extensions, getComponent }) => {
     let OperationExtRow = getComponent("OperationExtRow")
     return (
-      <div className="opblock-section">
-        <div className="opblock-section-header">
+      <div class="opblock-section">
+        <div class="opblock-section-header">
           <h4>Extensions</h4>
         </div>
-        <div className="table-container">
+        <div class="table-container">
 
           <table>
             <thead>
               <tr>
-                <td className="col_header">Field</td>
-                <td className="col_header">Value</td>
+                <td class="col_header">Field</td>
+                <td class="col_header">Value</td>
               </tr>
             </thead>
             <tbody>

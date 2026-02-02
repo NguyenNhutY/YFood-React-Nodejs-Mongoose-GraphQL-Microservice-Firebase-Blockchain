@@ -1,28 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { render } from "preact";
 import App from "./App";
 import "./index.scss";
-import { ApolloProvider } from "@apollo/client";
-import clientGraphql from "./ApolloClient";
-import { BrowserRouter } from "react-router-dom";
-import StoreContextProvider from "./context/StoreContext";
+
+// Context providers (Preact)
+import { StoreProvider } from "./context/StoreContext";
 import { AuthProvider } from "./context/AuthContext";
 
-const rootElement = document.getElementById("root");
-if (!rootElement) {
-  throw new Error("Root element not found");
+// Apollo client (CORE – không Provider)
+import clientGraphql from "./ApolloClient";
+
+export { clientGraphql }; // dùng trực tiếp trong component khi cần
+
+const root = document.getElementById("app");
+if (!root) {
+  throw new Error("Root element #app not found");
 }
 
-const root = ReactDOM.createRoot(rootElement);
-
-root.render(
-  <ApolloProvider client={clientGraphql}>
-    <BrowserRouter>
-      <AuthProvider>
-        <StoreContextProvider>
-          <App />
-        </StoreContextProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </ApolloProvider>
+render(
+  <AuthProvider>
+    <StoreProvider>
+      <App />
+    </StoreProvider>
+  </AuthProvider>,
+  root
 );

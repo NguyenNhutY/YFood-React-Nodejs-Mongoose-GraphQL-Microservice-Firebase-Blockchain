@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect }  from "preact/hooks";
 import JobList from "../../containers/Jobs/Jobs"; // Make sure the import path is correct
 import JobDetail from "../../components/Job/Job"; // Make sure the import path is correct
 import ApplyForm from "../../components/ApplyForm/ApplyForm";
@@ -11,10 +11,11 @@ import AdSlider from "../../components/AdSlider/AdSlider";
 import ProvinceSelector from "../../containers/Jobs/ProvinceSelector"; // Import ProvinceSelector
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
 const ITEMS_PER_PAGE = 10;
 
-const Career: React.FC = () => {
+const Career: FunctionalComponent = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [applicationSuccess, setApplicationSuccess] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -72,14 +73,14 @@ const Career: React.FC = () => {
       <div>
         {" "}
         <button
-          className='btn-back-history'
+          class='btn-back-history'
           onClick={() => window.history.back()}
         >
-          <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+          <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
         </button>
       </div>
-      <div className='career-page p-8'>
-        <h1 className=' mb-8'>Career Opportunities</h1>
+      <div class='career-page p-8'>
+        <h1 class=' mb-8'>Career Opportunities</h1>
         {!selectedJob && (
           <>
             <Search
@@ -90,7 +91,7 @@ const Career: React.FC = () => {
           </>
         )}
         {!selectedJob ? (
-          <div className=''>
+          <div class=''>
             <JobList
               jobs={currentJobs}
               onSelectJob={handleSelectJob}
@@ -103,7 +104,7 @@ const Career: React.FC = () => {
             />
           </div>
         ) : applicationSuccess ? (
-          <div className='text-green-600 font-bold'>
+          <div class='text-green-600 font-bold'>
             Your application has been submitted successfully!
           </div>
         ) : (

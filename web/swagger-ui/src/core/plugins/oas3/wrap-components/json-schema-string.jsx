@@ -15,7 +15,7 @@ export default OAS3ComponentWrapFactory(({ Ori, ...props }) => {
 
   if(type && type === "string" && (format && (format === "binary" || format === "base64"))) {
     return <Input type="file"
-                   className={ errors.length ? "invalid" : ""}
+                   class={ errors.length ? "invalid" : ""}
                    title={ errors.length ? errors : ""}
                    onChange={(e) => {
                      onChange(e.target.files[0])

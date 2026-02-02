@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./modalCompleted.scss";
 
 const ModalCompleted = ({ formData, onClose, total }) => {
@@ -37,8 +37,8 @@ const ModalCompleted = ({ formData, onClose, total }) => {
   };
 
   return (
-    <div className='completed-overlay' onClick={handleOverlayClick}>
-      <div className='completed-container'>
+    <div class='completed-overlay' onClick={handleOverlayClick}>
+      <div class='completed-container'>
         <h2>Order Completed</h2>
         <p>Thank you for your order, {formData.firstName}!</p>
         <p>Your order details:</p>
@@ -72,14 +72,14 @@ const ModalCompleted = ({ formData, onClose, total }) => {
           </li>
         </ul>
         <p>Total: ${total}</p>
-        <div className='completed-buttons'>
+        <div class='completed-buttons'>
           <button
-            className='completed-button downl-btn'
+            class='completed-button downl-btn'
             onClick={handleEmailDownload}
           >
             Download
           </button>
-          <button className='completed-button ok-btn' onClick={onClose}>
+          <button class='completed-button ok-btn' onClick={onClose}>
             Ok
           </button>
         </div>

@@ -1,10 +1,11 @@
-import React, { useState, ChangeEvent, useContext } from "react";
+import React, { useState, ChangeEvent, useContext }  from "preact/hooks";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { StoreContext } from "../../context/StoreContext"; // Adjust path as needed
 import SecurityInput from "../../components/SecurityInput/SecurityInput";
 import "./applyForm.scss";
 import { assets } from "../../assets/frontend_assets/assets";
+import { FunctionalComponent } from "preact";
 
 // Define the interface for ApplyForm props
 interface ApplyFormValues {
@@ -14,7 +15,7 @@ interface ApplyFormValues {
   files: File[];
 }
 
-const ApplyForm: React.FC = () => {
+const ApplyForm: FunctionalComponent = () => {
   const { extractForbiddenWords } = useContext(StoreContext)!;
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [messageLength, setMessageLength] = useState<number>(0);
@@ -81,7 +82,7 @@ const ApplyForm: React.FC = () => {
 
   return (
     <>
-      <div className='apply-form-container'>
+      <div class='apply-form-container'>
         <h2>Apply Form</h2>
         {submitted ? (
           <p>Thank you for your application!</p>
@@ -92,8 +93,8 @@ const ApplyForm: React.FC = () => {
             onSubmit={handleSubmit}
           >
             {({ isSubmitting, setFieldValue, values }) => (
-              <Form className='apply-form'>
-                <div className='form-group'>
+              <Form class='apply-form'>
+                <div class='form-group'>
                   <label htmlFor='name'>Name:</label>
                   <Field
                     name='name'
@@ -101,9 +102,9 @@ const ApplyForm: React.FC = () => {
                     type='text'
                     placeholder='Your Name'
                   />
-                  <ErrorMessage name='name' component='div' className='error' />
+                  <ErrorMessage name='name' component='div' class='error' />
                 </div>
-                <div className='form-group'>
+                <div class='form-group'>
                   <label htmlFor='email'>Email:</label>
                   <Field
                     name='email'
@@ -114,10 +115,10 @@ const ApplyForm: React.FC = () => {
                   <ErrorMessage
                     name='email'
                     component='div'
-                    className='error'
+                    class='error'
                   />
                 </div>
-                <div className='form-group'>
+                <div class='form-group'>
                   <label htmlFor='resume'>Resume:</label>
                   <Field
                     name='resume'
@@ -138,24 +139,24 @@ const ApplyForm: React.FC = () => {
                   <ErrorMessage
                     name='resume'
                     component='div'
-                    className='error'
+                    class='error'
                   />
-                  <div className='message-length'>
+                  <div class='message-length'>
                     Character count: {messageLength}/{maxCharCount}
                   </div>
                   {charLimitExceeded && (
-                    <div className='error char-limit-exceeded'>
+                    <div class='error char-limit-exceeded'>
                       You have exceeded the maximum character limit of{" "}
                       {maxCharCount} characters.
                     </div>
                   )}
-                  <div className='forbidden-words-list'>
+                  <div class='forbidden-words-list'>
                     {forbiddenWordsList.length > 0 && (
-                      <div className='error'>
+                      <div class='error'>
                         <p>Forbidden words detected:</p>
-                        <div className='forbidden-words-container'>
+                        <div class='forbidden-words-container'>
                           {forbiddenWordsList.map((word, index) => (
-                            <span key={index} className='forbidden-word'>
+                            <span key={index} class='forbidden-word'>
                               {word}
                             </span>
                           ))}
@@ -164,7 +165,7 @@ const ApplyForm: React.FC = () => {
                     )}
                   </div>
                 </div>
-                <div className='form-group'>
+                <div class='form-group'>
                   <label htmlFor='files'>Upload Files:</label>
                   <input
                     type='file'
@@ -174,11 +175,11 @@ const ApplyForm: React.FC = () => {
                     accept='image/*,video/*'
                   />
                   {selectedFiles.length > 0 && (
-                    <div className='file-preview'>
+                    <div class='file-preview'>
                       {selectedFiles.map((file, index) => (
                         <div
                           key={index}
-                          className={
+                          class={
                             file.type.startsWith("image/")
                               ? "file-preview-image-container"
                               : "file-preview-video-container"
@@ -188,22 +189,22 @@ const ApplyForm: React.FC = () => {
                             <img
                               src={URL.createObjectURL(file)}
                               alt={`preview-${index}`}
-                              className='file-preview-image'
+                              class='file-preview-image'
                             />
                           ) : (
                             <video
                               src={URL.createObjectURL(file)}
                               controls
-                              className='file-preview-video'
+                              class='file-preview-video'
                             />
                           )}
                           <button
                             type='button'
-                            className='btn-remove-file'
+                            class='btn-remove-file'
                             onClick={() => handleFileRemove(index)}
                           >
                             <img
-                              className='icon-remove-file'
+                              class='icon-remove-file'
                               src={assets.cross_icon}
                               alt='Remove'
                             />
@@ -216,7 +217,7 @@ const ApplyForm: React.FC = () => {
                 <button
                   type='submit'
                   disabled={isSubmitting}
-                  className='btn-submit-apply'
+                  class='btn-submit-apply'
                 >
                   Submit
                 </button>

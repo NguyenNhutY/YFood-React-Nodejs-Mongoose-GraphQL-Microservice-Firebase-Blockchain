@@ -2,22 +2,22 @@ import "./animationFooter.scss";
 
 const AnimatioFooter = () => {
   return (
-    <div className='container'>
-      <div className='coast'>
-        <div className='wave-rel-wrap'>
-          <div className='wave'></div>
+    <div class='container'>
+      <div class='coast'>
+        <div class='wave-rel-wrap'>
+          <div class='wave'></div>
         </div>
       </div>
-      <div className='coast delay'>
-        <div className='wave-rel-wrap'>
-          <div className='wave delay'></div>
+      <div class='coast delay'>
+        <div class='wave-rel-wrap'>
+          <div class='wave delay'></div>
         </div>
       </div>
 
-      <div className='text-wave text-wave-w'>w</div>
-      <div className='text-wave text-wave-a'>a</div>
-      <div className='text-wave text-wave-v'>v</div>
-      <div className='text-wave text-wave-e'>e</div>
+      <div class='text-wave text-wave-w'>w</div>
+      <div class='text-wave text-wave-a'>a</div>
+      <div class='text-wave text-wave-v'>v</div>
+      <div class='text-wave text-wave-e'>e</div>
     </div>
   );
 };

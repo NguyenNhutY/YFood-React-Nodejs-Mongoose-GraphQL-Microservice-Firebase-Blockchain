@@ -15,17 +15,17 @@ export default class Curl extends React.Component {
     const SyntaxHighlighter = getComponent("SyntaxHighlighter", true)
 
     return (
-      <div className="curl-command">
+      <div class="curl-command">
         <h4>Curl</h4>
-        <div className="copy-to-clipboard">
+        <div class="copy-to-clipboard">
             <CopyToClipboard text={curl}><button/></CopyToClipboard>
         </div>
         <div>
           <SyntaxHighlighter
             language="bash"
-            className="curl microlight"
+            class="curl microlight"
             renderPlainText={({ children, PlainTextViewer }) => (
-              <PlainTextViewer className="curl">{children}</PlainTextViewer>
+              <PlainTextViewer class="curl">{children}</PlainTextViewer>
             )}
           >
             {curl}

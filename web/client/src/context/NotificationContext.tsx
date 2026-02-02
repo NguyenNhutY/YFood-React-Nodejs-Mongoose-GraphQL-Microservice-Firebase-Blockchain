@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext }  from "preact/hooks";
 
 const NotificationContext = createContext();
 
@@ -15,7 +15,7 @@ export const NotificationProvider = ({ children }) => {
   return (
     <NotificationContext.Provider value={{ addNotification }}>
       {children}
-      <div className='notification-container'>
+      <div class='notification-container'>
         {notifications.map((notif) => (
           <Notification
             key={notif.id}

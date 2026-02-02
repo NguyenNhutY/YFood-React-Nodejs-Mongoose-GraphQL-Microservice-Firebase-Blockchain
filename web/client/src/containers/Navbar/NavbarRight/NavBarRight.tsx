@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect }  from "preact/hooks";
+import { Link } from "preact-router";
 import Search from "../../../components/Search/Search";
 import IntroTourButton from "../../../components/IntroBtn/IntroBtn";
 import { navbarIntroSteps } from "../../../types";
 import { assets } from "../../../assets/frontend_assets/assets";
 import { StoreContext } from "../../../context/StoreContext";
+import { FunctionalComponent } from "preact";
 
-const NavbarRight: React.FC<{
+const NavbarRight: FunctionalComponent<{
   setSearchName: (name: string) => void;
   setShowLogin: (show: boolean) => void;
   showLogin: boolean;
@@ -30,14 +31,14 @@ const NavbarRight: React.FC<{
   const totalAmount = getTotalCartAmount();
 
   return (
-    <div className='navbar-right'>
-      <Search className='search-nav-input' setSearchName={setSearchName} />
-      <div className='navbar-search-icon'>
+    <div class='navbar-right'>
+      <Search class='search-nav-input' setSearchName={setSearchName} />
+      <div class='navbar-search-icon'>
         <Link to='/cart'>
-          <div className='basket-icon-container'>
+          <div class='basket-icon-container'>
             <img src={assets.basket_icon} alt='basket_icon' />
             {totalAmount > 0 && (
-              <div className={getCartItemCount() === 0 ? "" : "dot"}>
+              <div class={getCartItemCount() === 0 ? "" : "dot"}>
                 <span>{getCartItemCount ? getCartItemCount() : ""}</span>
               </div>
             )}
@@ -45,18 +46,18 @@ const NavbarRight: React.FC<{
         </Link>
       </div>
       {userName ? (
-        <div className='user-info'>
-          <span className='user-name'>{userName}</span>
-          <button className='logout-btn' onClick={handleLogout}>
+        <div class='user-info'>
+          <span class='user-name'>{userName}</span>
+          <button class='logout-btn' onClick={handleLogout}>
             Logout
           </button>
         </div>
       ) : (
-        <button className='login-btn' onClick={() => handleLoginClick()}>
+        <button class='login-btn' onClick={() => handleLoginClick()}>
           Login
         </button>
       )}
-      <IntroTourButton className='btn-intro' steps={navbarIntroSteps} />
+      <IntroTourButton class='btn-intro' steps={navbarIntroSteps} />
     </div>
   );
 };

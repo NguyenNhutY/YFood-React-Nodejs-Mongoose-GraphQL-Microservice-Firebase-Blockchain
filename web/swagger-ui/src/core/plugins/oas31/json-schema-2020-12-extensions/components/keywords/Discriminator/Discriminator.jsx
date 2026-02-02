@@ -3,7 +3,7 @@
  */
 import React, { useCallback, useState } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
 import DiscriminatorMapping from "./DiscriminatorMapping"
 
@@ -41,11 +41,11 @@ const Discriminator = ({ schema, getSystem }) => {
 
   return (
     <JSONSchemaDeepExpansionContext.Provider value={expandedDeeply}>
-      <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--discriminator">
+      <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--discriminator">
         {isExpandable ? (
           <>
             <Accordion expanded={expanded} onChange={handleExpansion}>
-              <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+              <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                 Discriminator
               </span>
             </Accordion>
@@ -55,26 +55,26 @@ const Discriminator = ({ schema, getSystem }) => {
             />
           </>
         ) : (
-          <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+          <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
             Discriminator
           </span>
         )}
 
         {discriminator.propertyName && (
-          <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
+          <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
             {discriminator.propertyName}
           </span>
         )}
-        <strong className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+        <strong class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
           object
         </strong>
         <ul
-          className={classNames("json-schema-2020-12-keyword__children", {
+          class={classs("json-schema-2020-12-keyword__children", {
             "json-schema-2020-12-keyword__children--collapsed": !expanded,
           })}
         >
           {expanded && (
-            <li className="json-schema-2020-12-property">
+            <li class="json-schema-2020-12-property">
               <DiscriminatorMapping discriminator={discriminator} />
             </li>
           )}

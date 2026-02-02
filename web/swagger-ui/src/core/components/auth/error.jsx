@@ -15,7 +15,7 @@ export default class AuthError extends React.Component {
     let source = error.get("source")
 
     return (
-      <div className="errors">
+      <div class="errors">
         <b>{ source } { level }</b>
         <span>{ message }</span>
       </div>

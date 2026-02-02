@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState }  from "preact/hooks";
 import TextInput from "../TextInput/TextInput";
 import TextArea from "../TextArea/TextArea";
 import "./securityInput.scss";
@@ -10,7 +10,7 @@ interface SecurityInputProps {
   placeholder?: string;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  className?: string;
+  class?: string;
   onKeyDown?: React.KeyboardEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   >;

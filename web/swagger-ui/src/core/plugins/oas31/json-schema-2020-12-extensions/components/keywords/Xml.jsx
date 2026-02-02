@@ -3,7 +3,7 @@
  */
 import React, { useCallback, useState } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
 const Xml = ({ schema, getSystem }) => {
   const xml = schema?.xml || {}
@@ -39,11 +39,11 @@ const Xml = ({ schema, getSystem }) => {
 
   return (
     <JSONSchemaDeepExpansionContext.Provider value={expandedDeeply}>
-      <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--xml">
+      <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--xml">
         {isExpandable ? (
           <>
             <Accordion expanded={expanded} onChange={handleExpansion}>
-              <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+              <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                 XML
               </span>
             </Accordion>
@@ -53,37 +53,37 @@ const Xml = ({ schema, getSystem }) => {
             />
           </>
         ) : (
-          <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+          <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
             XML
           </span>
         )}
         {xml.attribute === true && (
-          <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
+          <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
             attribute
           </span>
         )}
         {xml.wrapped === true && (
-          <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
+          <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--muted">
             wrapped
           </span>
         )}
-        <strong className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+        <strong class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
           object
         </strong>
         <ul
-          className={classNames("json-schema-2020-12-keyword__children", {
+          class={classs("json-schema-2020-12-keyword__children", {
             "json-schema-2020-12-keyword__children--collapsed": !expanded,
           })}
         >
           {expanded && (
             <>
               {xml.name && (
-                <li className="json-schema-2020-12-property">
-                  <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword">
-                    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+                <li class="json-schema-2020-12-property">
+                  <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword">
+                    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                       name
                     </span>
-                    <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
+                    <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
                       {xml.name}
                     </span>
                   </div>
@@ -91,12 +91,12 @@ const Xml = ({ schema, getSystem }) => {
               )}
 
               {xml.namespace && (
-                <li className="json-schema-2020-12-property">
-                  <div className="json-schema-2020-12-keyword">
-                    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+                <li class="json-schema-2020-12-property">
+                  <div class="json-schema-2020-12-keyword">
+                    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                       namespace
                     </span>
-                    <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
+                    <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
                       {xml.namespace}
                     </span>
                   </div>
@@ -104,12 +104,12 @@ const Xml = ({ schema, getSystem }) => {
               )}
 
               {xml.prefix && (
-                <li className="json-schema-2020-12-property">
-                  <div className="json-schema-2020-12-keyword">
-                    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
+                <li class="json-schema-2020-12-property">
+                  <div class="json-schema-2020-12-keyword">
+                    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--secondary">
                       prefix
                     </span>
-                    <span className="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
+                    <span class="json-schema-2020-12-keyword__value json-schema-2020-12-keyword__value--secondary">
                       {xml.prefix}
                     </span>
                   </div>

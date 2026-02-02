@@ -1,6 +1,0 @@
-# Create your project directory then go into it:
-mkdir -p ~/Sites/magento
-cd $_
-
-# Run this automated one-liner from the directory you want to install your project.
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento.test 2.4.7 community

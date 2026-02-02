@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
  */
 const Constraint = ({ constraint }) => (
   <span
-    className={`json-schema-2020-12__constraint json-schema-2020-12__constraint--${constraint.scope}`}
+    class={`json-schema-2020-12__constraint json-schema-2020-12__constraint--${constraint.scope}`}
   >
     {constraint.value}
   </span>

@@ -6,7 +6,7 @@ const Headers = ( { headers } )=>{
   return (
     <div>
       <h5>Response headers</h5>
-      <pre className="microlight">{headers}</pre>
+      <pre class="microlight">{headers}</pre>
     </div>)
 }
 Headers.propTypes = {
@@ -17,7 +17,7 @@ const Duration = ( { duration } ) => {
   return (
     <div>
       <h5>Request duration</h5>
-      <pre className="microlight">{duration} ms</pre>
+      <pre class="microlight">{duration} ms</pre>
     </div>
   )
 }
@@ -64,7 +64,7 @@ export default class LiveResponse extends React.Component {
     const ResponseBody = getComponent("responseBody")
     const returnObject = headersKeys.map(key => {
       var joinedHeaders = Array.isArray(headers[key]) ? headers[key].join() : headers[key]
-      return <span className="headerline" key={key}> {key}: {joinedHeaders} </span>
+      return <span class="headerline" key={key}> {key}: {joinedHeaders} </span>
     })
     const hasHeaders = returnObject.length !== 0
     const Markdown = getComponent("Markdown", true)
@@ -78,32 +78,32 @@ export default class LiveResponse extends React.Component {
           : <Curl request={ curlRequest } />
         }
         { url && <div>
-            <div className="request-url">
+            <div class="request-url">
               <h4>Request URL</h4>
-              <pre className="microlight">{url}</pre>
+              <pre class="microlight">{url}</pre>
             </div>
           </div>
         }
         <h4>Server response</h4>
-        <table className="responses-table live-responses-table">
+        <table class="responses-table live-responses-table">
           <thead>
-          <tr className="responses-header">
-            <td className="col_header response-col_status">Code</td>
-            <td className="col_header response-col_description">Details</td>
+          <tr class="responses-header">
+            <td class="col_header response-col_status">Code</td>
+            <td class="col_header response-col_description">Details</td>
           </tr>
           </thead>
           <tbody>
-            <tr className="response">
-              <td className="response-col_status">
+            <tr class="response">
+              <td class="response-col_status">
                 { status }
                 {
-                  notDocumented ? <div className="response-undocumented">
+                  notDocumented ? <div class="response-undocumented">
                                     <i> Undocumented </i>
                                   </div>
                                 : null
                 }
               </td>
-              <td className="response-col_description">
+              <td class="response-col_description">
                 {
                   isError ? <Markdown source={`${response.get("name") !== "" ? `${response.get("name")}: ` : ""}${response.get("message")}`}/>
                           : null

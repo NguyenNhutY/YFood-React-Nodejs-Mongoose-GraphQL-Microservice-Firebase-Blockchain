@@ -50,7 +50,7 @@ describe("<Response />", function () {
   const props = {
     ...getSystem(),
     contentType: "application/json",
-    className: "for-test",
+    class: "for-test",
     specPath: List(),
     response: fromJS({
       schema: {

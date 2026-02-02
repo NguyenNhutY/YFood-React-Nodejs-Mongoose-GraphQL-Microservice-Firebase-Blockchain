@@ -1,13 +1,15 @@
-import React from "react";
+import React  from "preact/hooks";
 import { Job } from "../../types/dbJobs";
 import "./job.scss";
+import { FunctionalComponent } from "preact";
+
 interface JobDetailProps {
   job: Job;
   onApply: (jobId: string) => void;
 }
 
-const JobDetail: React.FC<JobDetailProps> = ({ job, onApply }) => (
-  <div className='job-detail'>
+const JobDetail: FunctionalComponent<JobDetailProps> = ({ job, onApply }) => (
+  <div class='job-detail'>
     <h2>{job.title}</h2>
     <ul>
       <li> {job.location}</li>
@@ -24,7 +26,7 @@ const JobDetail: React.FC<JobDetailProps> = ({ job, onApply }) => (
       <li> {job.workEnvironment}</li>
     </ul>
 
-    <button className='application-success' onClick={() => onApply(job.id)}>
+    <button class='application-success' onClick={() => onApply(job.id)}>
       Apply Now
     </button>
   </div>

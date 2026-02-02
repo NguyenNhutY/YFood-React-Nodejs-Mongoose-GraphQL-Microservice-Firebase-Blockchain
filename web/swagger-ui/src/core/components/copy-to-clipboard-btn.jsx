@@ -14,7 +14,7 @@ export default class CopyToClipboardBtn extends React.Component {
     const CopyIcon = getComponent("CopyIcon")
 
     return (
-      <div className="view-line-link copy-to-clipboard" title="Copy to clipboard">
+      <div class="view-line-link copy-to-clipboard" title="Copy to clipboard">
         <CopyToClipboard text={this.props.textToCopy}>
           <CopyIcon />
         </CopyToClipboard>

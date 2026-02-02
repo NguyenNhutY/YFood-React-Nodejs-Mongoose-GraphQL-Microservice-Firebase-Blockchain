@@ -3,7 +3,7 @@
  */
 import React, { useCallback, useEffect } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
 const Models = ({
   specActions,
@@ -74,13 +74,13 @@ const Models = ({
 
   return (
     <section
-      className={classNames("models", { "is-open": isOpen })}
+      class={classs("models", { "is-open": isOpen })}
       ref={handleModelsRef}
     >
       <h4>
         <button
           aria-expanded={isOpen}
-          className="models-control"
+          class="models-control"
           onClick={handleModelsExpand}
         >
           <span>Schemas</span>

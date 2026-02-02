@@ -46,7 +46,7 @@ While using the Standalone Preset the SwaggerUI logo is rendered in the Top Bar.
 The logo can be exchanged by replacing the `Logo` component via the plugin api:
 
 ```jsx
-import React from "react";
+import React  from "preact/hooks";
 const MyLogoPlugin = {
   components: {
     Logo: () => (
@@ -100,7 +100,7 @@ All you need to do is to create a component to wrap [react-datepicker](https://w
 
 This creates the need for two components and simple logic to strip any time input in case the format is date:
 ```js
-import React from "react";
+import React  from "preact/hooks";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -371,7 +371,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const Fallback = ({ name }) => (
-  <div className="fallback">
+  <div class="fallback">
     😱 <i>Could not render { name === "t" ? "this component" : name }, see the console.</i>
   </div>
 )

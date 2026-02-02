@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback }  from "preact/hooks";
 import "./cur.scss";
+import { FunctionalComponent } from "preact";
 
 type CursorProps = {
   color?: string;
@@ -35,7 +36,7 @@ function useEventListener<T extends EventTarget>(
   }, [eventName, element]);
 }
 
-const Cursor: React.FC<CursorProps> = ({
+const Cursor: FunctionalComponent<CursorProps> = ({
   color = "220, 90, 90",
   outerAlpha = 0.4,
   innerSize = 8,

@@ -4,11 +4,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Copy = ({ className = null, width = 15, height = 16, ...rest }) => (
+const Copy = ({ class = null, width = 15, height = 16, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 15 16"
-    className={className}
+    class={class}
     width={width}
     height={height}
     aria-hidden="true"
@@ -26,7 +26,7 @@ const Copy = ({ className = null, width = 15, height = 16, ...rest }) => (
 )
 
 Copy.propTypes = {
-  className: PropTypes.string,
+  class: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
 }

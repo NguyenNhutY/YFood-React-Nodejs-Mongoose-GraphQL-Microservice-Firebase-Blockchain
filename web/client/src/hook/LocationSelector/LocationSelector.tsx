@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "preact/hooks";
+import type { JSX, FunctionalComponent } from "preact";
 import axios from "axios";
 import "./locationSelector.css";
 
@@ -6,161 +7,158 @@ interface LocationSelectorProps {
   setFieldValue: (field: string, value: any) => void;
 }
 
-const LocationSelector: React.FC<LocationSelectorProps> = ({
+const LocationSelector: FunctionalComponent<LocationSelectorProps> = ({
   setFieldValue,
 }) => {
   const [provinces, setProvinces] = useState<any[]>([]);
   const [districts, setDistricts] = useState<any[]>([]);
   const [wards, setWards] = useState<any[]>([]);
-  const [selectedProvince, setSelectedProvince] = useState<string>("");
-  const [selectedDistrict, setSelectedDistrict] = useState<string>("");
-  const [selectedWard, setSelectedWard] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedWard, setSelectedWard] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // Fetch provinces on component mount
+  // Fetch provinces
   useEffect(() => {
     setLoading(true);
     axios
       .get("https://esgoo.net/api-tinhthanh/4/0.htm")
-      .then((response) => {
-        setProvinces(response.data.data);
+      .then((res) => {
+        setProvinces(res.data.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching provinces:", error);
+      .catch(() => {
         setError("Failed to load provinces");
         setLoading(false);
       });
   }, []);
 
-  // Fetch districts when a province is selected
+  // Province → districts
   useEffect(() => {
-    if (selectedProvince) {
-      setLoading(true);
-      const selectedProvinceData = provinces.find(
-        (p) => p.id === selectedProvince
-      );
-      if (selectedProvinceData) {
-        setDistricts(selectedProvinceData.data2 || []);
-        setWards([]);
-        setFieldValue("state", selectedProvinceData.full_name);
-        setLoading(false);
-      } else {
-        setDistricts([]);
-        setWards([]);
-      }
-    } else {
+    if (!selectedProvince) {
       setDistricts([]);
       setWards([]);
+      return;
     }
+
+    const province = provinces.find((p) => p.id === selectedProvince);
+    if (!province) return;
+
+    setDistricts(province.data2 || []);
+    setWards([]);
+    setFieldValue("state", province.full_name);
   }, [selectedProvince, provinces, setFieldValue]);
 
-  // Fetch wards when a district is selected
+  // District → wards
   useEffect(() => {
-    if (selectedDistrict) {
-      setLoading(true);
-      const selectedProvinceData = provinces.find(
-        (p) => p.id === selectedProvince
-      );
-      const selectedDistrictData = selectedProvinceData?.data2.find(
-        (d) => d.id === selectedDistrict
-      );
-      if (selectedDistrictData && selectedDistrictData.data3) {
-        setWards(selectedDistrictData.data3);
-        setFieldValue("city", selectedDistrictData.full_name);
-        setLoading(false);
-      } else {
-        setWards([]);
-      }
-    } else {
+    if (!selectedDistrict) {
       setWards([]);
+      return;
     }
+
+    const province = provinces.find((p) => p.id === selectedProvince);
+    const district = province?.data2.find(
+      (d: any) => d.id === selectedDistrict
+    );
+
+    if (!district) return;
+
+    setWards(district.data3 || []);
+    setFieldValue("city", district.full_name);
   }, [selectedDistrict, selectedProvince, provinces, setFieldValue]);
 
-  // Memoize address construction
+  // Memo address
   const address = useMemo(() => {
     const province = provinces.find((p) => p.id === selectedProvince);
-    const district = province?.data2.find((d) => d.id === selectedDistrict);
-    const ward = district?.data3.find((w) => w.id === selectedWard);
-    return `${province?.full_name || ""}, ${district?.full_name ||
-      ""}, ${ward?.full_name || ""}`;
+    const district = province?.data2.find(
+      (d: any) => d.id === selectedDistrict
+    );
+    const ward = district?.data3.find(
+      (w: any) => w.id === selectedWard
+    );
+
+    return [
+      ward?.full_name,
+      district?.full_name,
+      province?.full_name,
+    ]
+      .filter(Boolean)
+      .join(", ");
   }, [selectedProvince, selectedDistrict, selectedWard, provinces]);
 
-  // Update the address on change
   useEffect(() => {
     setFieldValue("address", address);
   }, [address, setFieldValue]);
 
-  // Handle location change
+  // ✅ Preact-style event handler
   const handleLocationChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    e: JSX.TargetedEvent<HTMLSelectElement, Event>,
     type: "province" | "district" | "ward"
   ) => {
-    const value = event.target.value;
-    switch (type) {
-      case "province":
-        setSelectedProvince(value);
-        setSelectedDistrict(""); // Reset district and ward when province changes
-        setSelectedWard("");
-        break;
-      case "district":
-        setSelectedDistrict(value);
-        setSelectedWard(""); // Reset ward when district changes
-        break;
-      case "ward":
-        setSelectedWard(value);
-        break;
+    const value = e.currentTarget.value;
+
+    if (type === "province") {
+      setSelectedProvince(value);
+      setSelectedDistrict("");
+      setSelectedWard("");
+    }
+
+    if (type === "district") {
+      setSelectedDistrict(value);
+      setSelectedWard("");
+    }
+
+    if (type === "ward") {
+      setSelectedWard(value);
     }
   };
 
   return (
-    <div className='location-selector'>
+    <div class="location-selector">
       {loading && <p>Loading...</p>}
-      {error && <p className='error'>{error}</p>}
-      <label htmlFor='province-select'>Tỉnh/Thành phố</label>
+      {error && <p class="error">{error}</p>}
+
+      <label>Tỉnh/Thành phố</label>
       <select
-        id='province-select'
-        className='select-location'
-        onChange={(e) => handleLocationChange(e, "province")}
+        class="select-location"
         value={selectedProvince}
+        onInput={(e) => handleLocationChange(e, "province")}
       >
-        <option value=''>Chọn tỉnh/thành phố</option>
-        {provinces.map((province) => (
-          <option key={province.id} value={province.id}>
-            {province.full_name}
+        <option value="">Chọn tỉnh/thành phố</option>
+        {provinces.map((p) => (
+          <option key={p.id} value={p.id}>
+            {p.full_name}
           </option>
         ))}
       </select>
 
-      <label htmlFor='district-select'>Quận/Huyện</label>
+      <label>Quận/Huyện</label>
       <select
-        id='district-select'
-        className='select-location'
-        onChange={(e) => handleLocationChange(e, "district")}
+        class="select-location"
         value={selectedDistrict}
         disabled={!selectedProvince}
+        onInput={(e) => handleLocationChange(e, "district")}
       >
-        <option value=''>Chọn quận/huyện</option>
-        {districts.map((district) => (
-          <option key={district.id} value={district.id}>
-            {district.full_name}
+        <option value="">Chọn quận/huyện</option>
+        {districts.map((d) => (
+          <option key={d.id} value={d.id}>
+            {d.full_name}
           </option>
         ))}
       </select>
 
-      <label htmlFor='ward-select'>Phường/Xã</label>
+      <label>Phường/Xã</label>
       <select
-        id='ward-select'
-        className='select-location'
-        onChange={(e) => handleLocationChange(e, "ward")}
+        class="select-location"
         value={selectedWard}
         disabled={!selectedDistrict}
+        onInput={(e) => handleLocationChange(e, "ward")}
       >
-        <option value=''>Chọn phường/xã</option>
-        {wards.map((ward) => (
-          <option key={ward.id} value={ward.id}>
-            {ward.full_name}
+        <option value="">Chọn phường/xã</option>
+        {wards.map((w) => (
+          <option key={w.id} value={w.id}>
+            {w.full_name}
           </option>
         ))}
       </select>

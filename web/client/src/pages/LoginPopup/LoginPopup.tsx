@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useContext } from "react";
+import React, { useState, useCallback, useEffect, useContext }  from "preact/hooks";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import "./loginPopup.scss";
@@ -11,7 +11,9 @@ import { loginPopupIntroSteps } from "../../types";
 import IntroTourButton from "../../components/IntroBtn/IntroBtn";
 import { AuthContext } from "../../context/AuthContext"; // Import AuthContext
 import { gql, useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "preact-router";
+import { FunctionalComponent } from "preact";
+
 const LOGIN_MUTATION = gql`
   mutation loginAccount(
     $email: String!
@@ -38,7 +40,7 @@ interface FormValues {
   terms: boolean;
 }
 
-const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
+const LoginPopup: FunctionalComponent<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
   const authContext = useContext(AuthContext);
 
   if (!showLogin) return null;
@@ -134,65 +136,65 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
   if (!showLogin) return <div>...Login not render</div>;
 
   return (
-    <div className='login-popup' onClick={handleOverlayClick}>
+    <div class='login-popup' onClick={handleOverlayClick}>
       <Formik
         initialValues={{ name: "", email: "", password: "", terms: false }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, setFieldValue }) => (
-          <Form className='login-popup-container'>
-            <div className='login-popup-title'>
-              <h2 className='login-popup-title-text'>{currState}</h2>
+          <Form class='login-popup-container'>
+            <div class='login-popup-title'>
+              <h2 class='login-popup-title-text'>{currState}</h2>
               <img
                 onClick={() => setShowLogin(false)}
                 src={assets.cross_icon}
                 alt='Close'
-                className='close-icon'
+                class='close-icon'
               />
             </div>
             <div
-              className='login-popup-inputs'
+              class='login-popup-inputs'
               data-step='1'
               data-intro='Fill in your login details here.'
             >
               {currState === "Login" ? null : (
                 <div>
-                  <label htmlFor='name-input' className='name-label label'>
+                  <label htmlFor='name-input' class='name-label label'>
                     Name
                   </label>
                   <Field
-                    className='input-login'
+                    class='input-login'
                     type='text'
                     name='name'
                     placeholder='Your name'
                     as={SecurityInput}
                   />
-                  <ErrorMessage name='name' component='div' className='error' />
+                  <ErrorMessage name='name' component='div' class='error' />
                 </div>
               )}
               <div>
-                <label htmlFor='email-input' className='email-label label'>
+                <label htmlFor='email-input' class='email-label label'>
                   Email
                 </label>
                 <Field
-                  className='input-login'
+                  class='input-login'
                   type='email'
                   name='email'
                   placeholder='Your email'
                   as={SecurityInput}
                 />
-                <ErrorMessage name='email' component='div' className='error' />
+                <ErrorMessage name='email' component='div' class='error' />
               </div>
               <div>
                 <label
                   htmlFor='password-input'
-                  className='password-label label'
+                  class='password-label label'
                 >
                   Password
                 </label>
                 <Field
-                  className='input-login'
+                  class='input-login'
                   type='password'
                   name='password'
                   id='password-input'
@@ -208,17 +210,17 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                 <ErrorMessage
                   name='password'
                   component='div'
-                  className='error'
+                  class='error'
                 />
                 {loginError && (
-                  <div className='error-message'>{loginError}</div>
+                  <div class='error-message'>{loginError}</div>
                 )}
 
                 {showPasswordCriteria && currState === "Sign Up" && (
-                  <div className='password-criteria'>
-                    <div className='criteria-row'>
+                  <div class='password-criteria'>
+                    <div class='criteria-row'>
                       <div
-                        className={`criteria-item ${
+                        class={`criteria-item ${
                           passwordValidation.minLength ? "valid" : "invalid"
                         }`}
                       >
@@ -226,7 +228,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                         characters
                       </div>
                       <div
-                        className={`criteria-item ${
+                        class={`criteria-item ${
                           passwordValidation.hasUpperCase ? "valid" : "invalid"
                         }`}
                       >
@@ -234,9 +236,9 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                         one uppercase letter
                       </div>
                     </div>
-                    <div className='criteria-row'>
+                    <div class='criteria-row'>
                       <div
-                        className={`criteria-item ${
+                        class={`criteria-item ${
                           passwordValidation.hasLowerCase ? "valid" : "invalid"
                         }`}
                       >
@@ -244,7 +246,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                         one lowercase letter
                       </div>
                       <div
-                        className={`criteria-item ${
+                        class={`criteria-item ${
                           passwordValidation.hasNumber ? "valid" : "invalid"
                         }`}
                       >
@@ -252,9 +254,9 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                         one number
                       </div>
                     </div>
-                    <div className='criteria-row'>
+                    <div class='criteria-row'>
                       <div
-                        className={`criteria-item ${
+                        class={`criteria-item ${
                           passwordValidation.hasSpecialChar
                             ? "valid"
                             : "invalid"
@@ -268,7 +270,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                 )}
                 {currState === "Sign Up" && (
                   <span
-                    className='btn-pass-generator'
+                    class='btn-pass-generator'
                     onClick={() => setShowPasswordGenerator(true)}
                   >
                     Generate Password
@@ -279,7 +281,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
             <button
               type='submit'
               disabled={isSubmitting}
-              className='btn-login'
+              class='btn-login'
               data-step='2'
               data-intro='Click here to submit your login details.'
             >
@@ -290,12 +292,12 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
               data-intro='Accept the terms and conditions to proceed.'
             >
               {currState === "Sign Up" && (
-                <div className='container-terms'>
+                <div class='container-terms'>
                   <Field type='checkbox' name='terms' id='terms' />
-                  <label className='label-terms' htmlFor='terms'>
+                  <label class='label-terms' htmlFor='terms'>
                     By continuing, I agree to{" "}
                     <span
-                      className='span-terms'
+                      class='span-terms'
                       onClick={() => setShowModalPolicy(true)}
                     >
                       the terms of use & privacy policy.
@@ -305,18 +307,18 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                   <ErrorMessage
                     name='terms'
                     component='div'
-                    className='error'
+                    class='error'
                   />
                 </div>
               )}
             </div>
             {currState === "Login" ? (
-              <div className='form-login-bottom'>
+              <div class='form-login-bottom'>
                 <p>
                   Create a new account?
                   <span
                     data-step='4'
-                    className='text-sign-up'
+                    class='text-sign-up'
                     data-intro="Don't have an account? Create one here."
                     onClick={() => setCurrState("Sign Up")}
                   >
@@ -325,18 +327,18 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ showLogin, setShowLogin }) => {
                 </p>
               </div>
             ) : (
-              <div className='form-login-bottom'>
+              <div class='form-login-bottom'>
                 <p>
                   Already have an account?
                   <span
-                    className='text-sign-up'
+                    class='text-sign-up'
                     onClick={() => setCurrState("Login")}
                   >
                     Sign in
                   </span>
                 </p>
                 <IntroTourButton
-                  className='btn-intro-login'
+                  class='btn-intro-login'
                   steps={loginPopupIntroSteps}
                 />
               </div>

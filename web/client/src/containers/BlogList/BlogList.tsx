@@ -1,16 +1,17 @@
 // src/components/BlogList.tsx
-import React from "react";
-import { Link } from "react-router-dom";
+import React  from "preact/hooks";
+import { Link } from "preact-router";
 import { BlogPost } from "../../types/typesBlog";
 import "./blogList.scss";
-import { useParams } from "react-router-dom";
+import { useParams } from "preact-router";
+import { FunctionalComponent } from "preact";
 
 interface BlogListProps {
   blogs: BlogPost[];
 }
 
-const BlogList: React.FC<BlogListProps> = ({ blogs }) => (
-  <div className='blog-list'>
+const BlogList: FunctionalComponent<BlogListProps> = ({ blogs }) => (
+  <div class='blog-list'>
     <h2>Blog Posts</h2>
     <ul>
       {blogs.map((blog) => (

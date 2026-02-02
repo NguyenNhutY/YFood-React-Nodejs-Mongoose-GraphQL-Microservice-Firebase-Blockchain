@@ -153,7 +153,7 @@ export default class Oauth2 extends React.Component {
         { oidcUrl && <p>OpenID Connect URL: <code>{ oidcUrl }</code></p> }
         { ( flow === AUTH_FLOW_IMPLICIT || flow === AUTH_FLOW_ACCESS_CODE ) && <p>Authorization URL: <code>{ schema.get("authorizationUrl") }</code></p> }
         { ( flow === AUTH_FLOW_PASSWORD || flow === AUTH_FLOW_ACCESS_CODE || flow === AUTH_FLOW_APPLICATION ) && <p>Token URL:<code> { schema.get("tokenUrl") }</code></p> }
-        <p className="flow">Flow: <code>{ flowToDisplay }</code></p>
+        <p class="flow">Flow: <code>{ flowToDisplay }</code></p>
 
         {
           flow !== AUTH_FLOW_PASSWORD ? null
@@ -229,7 +229,7 @@ export default class Oauth2 extends React.Component {
         )}
 
         {
-          !isAuthorized && scopes && scopes.size ? <div className="scopes">
+          !isAuthorized && scopes && scopes.size ? <div class="scopes">
             <h2>
               Scopes:
               <a onClick={this.selectScopes} data-all={true}>select all</a>
@@ -238,7 +238,7 @@ export default class Oauth2 extends React.Component {
             { scopes.map((description, name) => {
               return (
                 <Row key={ name }>
-                  <div className="checkbox">
+                  <div class="checkbox">
                     <Input data-value={ name }
                           id={`${name}-${flow}-checkbox-${this.state.name}`}
                            disabled={ isAuthorized }
@@ -246,10 +246,10 @@ export default class Oauth2 extends React.Component {
                            type="checkbox"
                            onChange={ this.onScopeChange }/>
                          <label htmlFor={`${name}-${flow}-checkbox-${this.state.name}`}>
-                           <span className="item"></span>
-                           <div className="text">
-                             <p className="name">{name}</p>
-                             <p className="description">{description}</p>
+                           <span class="item"></span>
+                           <div class="text">
+                             <p class="name">{name}</p>
+                             <p class="description">{description}</p>
                            </div>
                          </label>
                   </div>
@@ -266,13 +266,13 @@ export default class Oauth2 extends React.Component {
                               key={ key }/>
           } )
         }
-        <div className="auth-btn-wrapper">
+        <div class="auth-btn-wrapper">
         { isValid &&
-          ( isAuthorized ? <Button className="btn modal-btn auth authorize" onClick={ this.logout } aria-label="Remove authorization">Logout</Button>
-        : <Button className="btn modal-btn auth authorize" onClick={ this.authorize } aria-label="Apply given OAuth2 credentials">Authorize</Button>
+          ( isAuthorized ? <Button class="btn modal-btn auth authorize" onClick={ this.logout } aria-label="Remove authorization">Logout</Button>
+        : <Button class="btn modal-btn auth authorize" onClick={ this.authorize } aria-label="Apply given OAuth2 credentials">Authorize</Button>
           )
         }
-          <Button className="btn modal-btn auth btn-done" onClick={ this.close }>Close</Button>
+          <Button class="btn modal-btn auth btn-done" onClick={ this.close }>Close</Button>
         </div>
 
       </div>

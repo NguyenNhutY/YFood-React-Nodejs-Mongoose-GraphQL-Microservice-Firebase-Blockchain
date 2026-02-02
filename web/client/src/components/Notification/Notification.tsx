@@ -1,13 +1,14 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./notification.scss";
+import { FunctionalComponent } from "preact";
 
 interface NotificationProps {
   message: string;
   type: string;
 }
 
-const Notification: React.FC<NotificationProps> = ({ message, type }) => {
-  return <div className={`notification ${type}`}>{message}</div>;
+const Notification: FunctionalComponent<NotificationProps> = ({ message, type }) => {
+  return <div class={`notification ${type}`}>{message}</div>;
 };
 
 export default Notification;

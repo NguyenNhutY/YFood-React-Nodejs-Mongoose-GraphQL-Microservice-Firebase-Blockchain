@@ -13,9 +13,9 @@ const License = ({ getComponent, specSelectors }) => {
   const Link = getComponent("Link")
 
   return (
-    <div className="info__license">
+    <div class="info__license">
       {url ? (
-        <div className="info__license__url">
+        <div class="info__license__url">
           <Link target="_blank" href={sanitizeUrl(url)}>
             {name}
           </Link>

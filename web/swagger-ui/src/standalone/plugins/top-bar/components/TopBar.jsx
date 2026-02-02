@@ -117,9 +117,9 @@ class TopBar extends React.Component {
     let isLoading = specSelectors.loadingStatus() === "loading"
     let isFailed = specSelectors.loadingStatus() === "failed"
 
-    const classNames = ["download-url-input"]
-    if (isFailed) classNames.push("failed")
-    if (isLoading) classNames.push("loading")
+    const classs = ["download-url-input"]
+    if (isFailed) classs.push("failed")
+    if (isLoading) classs.push("loading")
 
     const { urls } = getConfigs()
     let control = []
@@ -132,7 +132,7 @@ class TopBar extends React.Component {
       })
 
       control.push(
-        <label className="select-label" htmlFor="select"><span>Select a definition</span>
+        <label class="select-label" htmlFor="select"><span>Select a definition</span>
           <select id="select" disabled={isLoading} onChange={ this.onUrlSelect } value={urls[this.state.selectedIndex].url}>
             {rows}
           </select>
@@ -143,7 +143,7 @@ class TopBar extends React.Component {
       formOnSubmit = this.downloadUrl
       control.push(
         <input
-          className={classNames.join(" ")}
+          class={classs.join(" ")}
           type="text"
           onChange={this.onUrlChange}
           value={this.state.url}
@@ -151,17 +151,17 @@ class TopBar extends React.Component {
           id="download-url-input"
         />
       )
-      control.push(<Button className="download-url-button" onClick={ this.downloadUrl }>Explore</Button>)
+      control.push(<Button class="download-url-button" onClick={ this.downloadUrl }>Explore</Button>)
     }
 
     return (
-      <div className="topbar">
-        <div className="wrapper">
-          <div className="topbar-wrapper">
+      <div class="topbar">
+        <div class="wrapper">
+          <div class="topbar-wrapper">
             <Link>
               <Logo/>
             </Link>
-            <form className="download-url-wrapper" onSubmit={formOnSubmit}>
+            <form class="download-url-wrapper" onSubmit={formOnSubmit}>
               {control.map((el, i) => cloneElement(el, { key: i }))}
             </form>
           </div>

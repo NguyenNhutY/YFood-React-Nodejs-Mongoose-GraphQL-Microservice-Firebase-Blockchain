@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 import {
   Navigation,
   Pagination,
@@ -18,6 +18,7 @@ import "./exploreMenu.css";
 import { fromJS, List } from "immutable"; // Import from immutable
 import { menu_list } from "../../assets/frontend_assets/assets";
 import "./swiper.css";
+import { FunctionalComponent } from "preact";
 
 // Type for menu item
 interface MenuItem {
@@ -32,14 +33,14 @@ interface ExploreMenuProps {
   setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const ExploreMenu: React.FC<ExploreMenuProps> = ({ category, setCategory }) => {
+const ExploreMenu: FunctionalComponent<ExploreMenuProps> = ({ category, setCategory }) => {
   // Convert menu_list to Immutable List with typed data
   const immutableMenuList: List<MenuItem> = fromJS(menu_list);
 
   return (
-    <div className='explore-menu' id='explore-menu'>
+    <div class='explore-menu' id='explore-menu'>
       <h1>Explore our menu</h1>
-      <p className='explore-menu-text'>
+      <p class='explore-menu-text'>
         Discover our diverse menu featuring a delectable array of dishes crafted
         with the finest ingredients.
       </p>
@@ -56,12 +57,12 @@ const ExploreMenu: React.FC<ExploreMenuProps> = ({ category, setCategory }) => {
         }}
         onSwiper={(swiper) => console.log("Swiper initialized:", swiper)}
         onSlideChange={() => console.log("Slide changed")}
-        className='explore-menu-list my-swiper'
+        class='explore-menu-list my-swiper'
       >
         {immutableMenuList.map((item, index) => (
           <SwiperSlide
             key={item.get("_id") || index} // Use item.get('_id') if available, fallback to index
-            className='explore-menu-list-item'
+            class='explore-menu-list-item'
             onClick={() =>
               setCategory((prev) =>
                 prev === item.get("menu_name") ? "All" : item.get("menu_name")
@@ -70,7 +71,7 @@ const ExploreMenu: React.FC<ExploreMenuProps> = ({ category, setCategory }) => {
             aria-label={`Category ${item.get("menu_name")}`} // Accessibility improvement
           >
             <img
-              className={category === item.get("menu_name") ? "active" : ""}
+              class={category === item.get("menu_name") ? "active" : ""}
               src={item.get("menu_image")}
               alt={item.get("menu_name")}
               loading='lazy'

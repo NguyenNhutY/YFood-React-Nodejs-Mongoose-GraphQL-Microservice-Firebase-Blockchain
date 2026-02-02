@@ -1,22 +1,30 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./header.scss";
+import { FunctionalComponent } from "preact";
 
-const Header: React.FC = () => {
+const Header: FunctionalComponent = () => {
   return (
-    <div className='header'>
-      <div className='header-contents'>
-        <h2>Order your favourite food here</h2>
-        <p>
-          Choose from a diverse menu featuring a delectable array of dishes
-          crafted with the finest ingredients and culinary expertise. Our
-          mission is to satisfy your cravings and elevate your dining
-          experience, one delicious meal at a time.
+    <header class="hero-header">
+      <div class="hero-header__overlay" />
+
+      <div class="hero-header__content">
+        <h1 class="hero-header__title">
+          Healthy Food Delivered Fresh to Your Door
+        </h1>
+
+        <p class="hero-header__description">
+          Discover nutritious meals made from fresh ingredients. Browse menus,
+          order easily, and enjoy fast, reliable delivery.
         </p>
-        <a href='#explore-menu'>
-          <button>View Menu</button>
-        </a>
+
+        <div class="hero-header__actions">
+          <a href="#explore-menu" class="btn btn--primary">
+            View Menu
+          </a>
+
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

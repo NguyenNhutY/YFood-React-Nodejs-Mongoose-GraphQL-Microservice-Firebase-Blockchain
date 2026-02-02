@@ -1,8 +1,9 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useCallback, useContext }  from "preact/hooks";
 import Search from "../components/Search/Search";
 import { StoreContext } from "../context/StoreContext";
+import { FunctionalComponent } from "preact";
 
-const SearchContainer: React.FC = () => {
+const SearchContainer: FunctionalComponent = () => {
   const [searchName, setSearchName] = useState<string>("");
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 

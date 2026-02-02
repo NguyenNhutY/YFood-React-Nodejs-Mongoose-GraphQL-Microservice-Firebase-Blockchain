@@ -1,11 +1,12 @@
 import React, {
-  createContext,
+
   useState,
   useCallback,
   useMemo,
-  ReactNode,
-} from "react";
+ 
+}  from "preact/hooks";
 import { food_list } from "../assets/frontend_assets/assets";
+import {  createContext, FunctionalComponent, ComponentChildren } from "preact";
 
 interface CartItems {
   [key: string]: number; // key là ID của item và value là số lượng
@@ -22,7 +23,7 @@ interface CartContextType {
 
 export const CartContext = createContext<CartContextType | null>(null);
 
-const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const CartProvider: FunctionalComponent<{ children: ComponentChildren }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItems>({});
 
   const addToCart = useCallback((itemId: string) => {

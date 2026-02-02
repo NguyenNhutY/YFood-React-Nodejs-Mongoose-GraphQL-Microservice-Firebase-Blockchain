@@ -23,16 +23,16 @@ export default class FilterContainer extends React.Component {
     const isFailed = specSelectors.loadingStatus() === "failed"
     const filter = layoutSelectors.currentFilter()
 
-    const classNames = ["operation-filter-input"]
-    if (isFailed) classNames.push("failed")
-    if (isLoading) classNames.push("loading")
+    const classs = ["operation-filter-input"]
+    if (isFailed) classs.push("failed")
+    if (isLoading) classs.push("loading")
 
     return (
       <div>
         {filter === false ? null :
-          <div className="filter-container">
-            <Col className="filter wrapper" mobile={12}>
-              <input className={classNames.join(" ")} placeholder="Filter by tag" type="text"
+          <div class="filter-container">
+            <Col class="filter wrapper" mobile={12}>
+              <input class={classs.join(" ")} placeholder="Filter by tag" type="text"
                      onChange={this.onFilterChange} value={typeof filter === "string" ? filter : ""}
                      disabled={isLoading}/>
             </Col>

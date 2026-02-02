@@ -102,14 +102,14 @@ export default class ExamplesSelect extends React.PureComponent {
     } = this.props
 
     return (
-      <div className="examples-select">
+      <div class="examples-select">
         {
           showLabels ? (
-            <span className="examples-select__section-label">Examples: </span>
+            <span class="examples-select__section-label">Examples: </span>
           ) : null
         }
         <select
-          className="examples-select-element"
+          class="examples-select-element"
           onChange={this._onDomSelect}
           value={
             isModifiedValueAvailable && isValueModified

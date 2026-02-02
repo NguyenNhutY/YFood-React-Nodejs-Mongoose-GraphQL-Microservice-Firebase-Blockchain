@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect }  from "preact/hooks";
 import { Job } from "../../types/dbJobs";
 import "./jobs.scss";
+import { FunctionalComponent } from "preact";
 
 interface JobListProps {
   jobs: Job[];
@@ -8,7 +9,7 @@ interface JobListProps {
   selectedProvince: string; // Add selectedProvince prop
 }
 
-const JobList: React.FC<JobListProps> = ({
+const JobList: FunctionalComponent<JobListProps> = ({
   jobs,
   onSelectJob,
   selectedProvince,
@@ -23,13 +24,13 @@ const JobList: React.FC<JobListProps> = ({
   }, [jobs, selectedProvince]);
 
   return (
-    <div className='job-list'>
-      <div className='job-items'>
+    <div class='job-list'>
+      <div class='job-items'>
         {filteredJobs.length > 0 ? (
           filteredJobs.map((job) => (
             <div
               key={job.id}
-              className='job-item'
+              class='job-item'
               onClick={() => onSelectJob(job.id)}
             >
               <h2>{job.title}</h2>

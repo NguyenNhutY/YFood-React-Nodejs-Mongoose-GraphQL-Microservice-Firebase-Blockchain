@@ -1,6 +1,7 @@
-import React from "react";
+import React  from "preact/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
 interface FileUploadProps {
   selectedFiles: File[];
@@ -8,12 +9,12 @@ interface FileUploadProps {
   handleFileRemove: (index: number) => void;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({
+const FileUpload: FunctionalComponent<FileUploadProps> = ({
   selectedFiles,
   handleFileChange,
   handleFileRemove,
 }) => (
-  <div className='form-group'>
+  <div class='form-group'>
     <label htmlFor='files'>Upload Files:</label>
     <input
       type='file'
@@ -23,11 +24,11 @@ const FileUpload: React.FC<FileUploadProps> = ({
       accept='image/*,video/*'
     />
     {selectedFiles.length > 0 && (
-      <div className='file-preview'>
+      <div class='file-preview'>
         {selectedFiles.map((file, index) => (
           <div
             key={index}
-            className={
+            class={
               file.type.startsWith("image/")
                 ? "file-preview-image-container"
                 : "file-preview-video-container"
@@ -37,21 +38,21 @@ const FileUpload: React.FC<FileUploadProps> = ({
               <img
                 src={URL.createObjectURL(file)}
                 alt={`preview-${index}`}
-                className='file-preview-image'
+                class='file-preview-image'
               />
             ) : (
               <video
                 src={URL.createObjectURL(file)}
                 controls
-                className='file-preview-video'
+                class='file-preview-video'
               />
             )}
             <button
               type='button'
-              className='btn-remove-file'
+              class='btn-remove-file'
               onClick={() => handleFileRemove(index)}
             >
-              <FontAwesomeIcon className='icon-remove-file' icon={faTrash} />
+              <FontAwesomeIcon class='icon-remove-file' icon={faTrash} />
             </button>
           </div>
         ))}

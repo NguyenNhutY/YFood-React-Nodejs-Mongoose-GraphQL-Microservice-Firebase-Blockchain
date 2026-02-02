@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo }  from "preact/hooks";
 import { fromJS, List } from "immutable";
 import ExploreMenuPresenter from "./ExploreMenuPresenter";
 import { menu_list } from "../../assets/frontend_assets/assets";
+import { FunctionalComponent } from "preact";
 
 // Type for menu item
 interface MenuItem {
@@ -16,7 +17,7 @@ interface ExploreMenuContainerProps {
   setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const ExploreMenuContainer: React.FC<ExploreMenuContainerProps> = ({
+const ExploreMenuContainer: FunctionalComponent<ExploreMenuContainerProps> = ({
   category,
   setCategory,
 }) => {

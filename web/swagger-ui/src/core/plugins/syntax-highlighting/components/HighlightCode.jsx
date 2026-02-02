@@ -3,13 +3,13 @@
  */
 import React, { useRef, useEffect } from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 import saveAs from "js-file-download"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 
 const HighlightCode = ({
   fileName = "response.txt",
-  className,
+  class,
   downloadable,
   getComponent,
   canCopy,
@@ -63,12 +63,12 @@ const HighlightCode = ({
         )
       )
     }
-  }, [children, className, language])
+  }, [children, class, language])
 
   return (
-    <div className="highlight-code" ref={rootRef}>
+    <div class="highlight-code" ref={rootRef}>
       {canCopy && (
-        <div className="copy-to-clipboard">
+        <div class="copy-to-clipboard">
           <CopyToClipboard text={children}>
             <button />
           </CopyToClipboard>
@@ -76,16 +76,16 @@ const HighlightCode = ({
       )}
 
       {!downloadable ? null : (
-        <button className="download-contents" onClick={handleDownload}>
+        <button class="download-contents" onClick={handleDownload}>
           Download
         </button>
       )}
 
       <SyntaxHighlighter
         language={language}
-        className={classNames(className, "microlight")}
+        class={classs(class, "microlight")}
         renderPlainText={({ children, PlainTextViewer }) => (
-          <PlainTextViewer className={className}>{children}</PlainTextViewer>
+          <PlainTextViewer class={class}>{children}</PlainTextViewer>
         )}
       >
         {children}
@@ -96,7 +96,7 @@ const HighlightCode = ({
 
 HighlightCode.propTypes = {
   getComponent: PropTypes.func.isRequired,
-  className: PropTypes.string,
+  class: PropTypes.string,
   downloadable: PropTypes.bool,
   fileName: PropTypes.string,
   language: PropTypes.string,

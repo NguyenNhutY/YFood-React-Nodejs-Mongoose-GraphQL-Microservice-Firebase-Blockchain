@@ -1,5 +1,5 @@
 import PlacesAutocomplete from "react-places-autocomplete";
-import { useState } from "react";
+import { useState }  from "preact/hooks";
 import {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -31,10 +31,10 @@ const AddressAutocomplete = ({ value, onChange, onSelect }) => {
             <input
               {...getInputProps({
                 placeholder: "Enter address...",
-                className: "location-search-input",
+                class: "location-search-input",
               })}
             />
-            <div className='autocomplete-dropdown-container'>
+            <div class='autocomplete-dropdown-container'>
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion) => {
                 const style = {
@@ -50,7 +50,7 @@ const AddressAutocomplete = ({ value, onChange, onSelect }) => {
                 );
               })}
             </div>
-            {error && <div className='error'>{error}</div>}
+            {error && <div class='error'>{error}</div>}
           </div>
         )}
       </PlacesAutocomplete>

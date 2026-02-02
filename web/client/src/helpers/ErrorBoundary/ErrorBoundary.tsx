@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component }  from "preact/hooks";
 import "./errorBoundary.scss";
 class ErrorBoundary extends Component {
   constructor(props) {

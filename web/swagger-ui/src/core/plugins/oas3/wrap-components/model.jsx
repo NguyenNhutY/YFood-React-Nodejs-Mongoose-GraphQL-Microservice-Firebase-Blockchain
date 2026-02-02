@@ -23,10 +23,10 @@ class ModelComponent extends Component {
 
     if(isDeprecated) {
       classes.push("deprecated")
-      message = <span className="model-deprecated-warning">Deprecated:</span>
+      message = <span class="model-deprecated-warning">Deprecated:</span>
     }
 
-    return <div className={classes.join(" ")}>
+    return <div class={classes.join(" ")}>
       {message}
       <Model { ...this.props }
         getConfigs={ getConfigs }

@@ -17,13 +17,13 @@ const UnevaluatedProperties = ({ schema }) => {
   if (!fn.hasKeyword(schema, "unevaluatedProperties")) return null
 
   const name = (
-    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
       Unevaluated properties
     </span>
   )
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--unevaluatedProperties">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--unevaluatedProperties">
       <JSONSchema name={name} schema={unevaluatedProperties} />
     </div>
   )

@@ -1,12 +1,14 @@
 // MapComponent.tsx
-import React from "react";
+import React  from "preact/hooks";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./map.scss";
+import { FunctionalComponent } from "preact";
+
 // Tọa độ của khu vực bạn muốn hiển thị
 const position = [10.136, 105.529];
 
-const MapComponent: React.FC = () => {
+const MapComponent: FunctionalComponent = () => {
   return (
     <div style={{ height: "200px", width: "200px" }}>
       <MapContainer

@@ -24,7 +24,7 @@ class Contact extends React.Component {
     const Link = getComponent("Link")
 
     return (
-      <div className="info__contact">
+      <div class="info__contact">
         {url && (
           <div>
             <Link href={sanitizeUrl(url)} target="_blank">

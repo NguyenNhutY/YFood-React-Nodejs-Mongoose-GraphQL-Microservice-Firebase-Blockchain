@@ -17,24 +17,24 @@ const AdditionalProperties = ({ schema }) => {
    * Rendering.
    */
   const name = (
-    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
       Additional properties
     </span>
   )
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--additionalProperties">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--additionalProperties">
       {additionalProperties === true ? (
         <>
           {name}
-          <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+          <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
             allowed
           </span>
         </>
       ) : additionalProperties === false ? (
         <>
           {name}
-          <span className="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
+          <span class="json-schema-2020-12__attribute json-schema-2020-12__attribute--primary">
             forbidden
           </span>
         </>

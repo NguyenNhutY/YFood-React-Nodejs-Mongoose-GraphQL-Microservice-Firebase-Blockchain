@@ -68,20 +68,25 @@ return await MaterialBatchService.getBatchByHarvestDate(harvestDate);
       getMaterialBatchesByExpiryDate: async (_, { expiryDate }) => {
 return await MaterialBatchService.getMaterialBatchesByExpiryDate(expiryDate)
       },
-  
       // Lấy lô nguyên liệu theo ngày kiểm tra chất lượng
       getMaterialBatchesByQualityCheckDate: async (_, { qualityCheckDate }) => {
         return await MaterialBatchService.getMaterialBatchesByQualityCheckDate(qualityCheckDate)
       },
     },
-  
     Mutation: {
       // Thêm một lô nguyên liệu mới
       addMaterialBatch: async (_, { material_name, batch_code, harvest_date, expiry_date, quality_check_date, quantity }) => {
         try {
           // Tìm nguyên liệu theo tên
           let material = await Material.findOne({ name: material_name });
-    
+          const checkBatch = await MaterialBatches.findOne({ batch_code: batch_code});
+          if(checkBatch){
+            return {
+              success: false,
+              message: 'Lô nguyên liệu với mã này đã tồn tại',
+              data: [],
+            };
+          }
           // Nếu nguyên liệu không tồn tại, tạo mới
           if (!material) {
             material = new Material({
@@ -89,7 +94,6 @@ return await MaterialBatchService.getMaterialBatchesByExpiryDate(expiryDate)
             });
             await material.save();
           }
-    
           // Tạo mới một lô nguyên liệu
           const newMaterialBatch = new MaterialBatch({
             material_id: material._id,
@@ -99,7 +103,6 @@ return await MaterialBatchService.getMaterialBatchesByExpiryDate(expiryDate)
             quality_check_date: quality_check_date,
             quantity: quantity,
           });
-    
           // Lưu lô nguyên liệu vào cơ sở dữ liệu
           await newMaterialBatch.save();
     

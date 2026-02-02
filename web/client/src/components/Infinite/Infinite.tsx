@@ -1,5 +1,6 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./infinite.scss";
+import { FunctionalComponent } from "preact";
 
 interface TagListProps {
   tags: string[];
@@ -7,9 +8,9 @@ interface TagListProps {
   direction: "normal" | "reverse";
 }
 
-const TagList: React.FC<TagListProps> = ({ tags, duration, direction }) => (
+const TagList: FunctionalComponent<TagListProps> = ({ tags, duration, direction }) => (
   <div
-    className='loop-slider'
+    class='loop-slider'
     style={
       {
         "--duration": duration,
@@ -17,15 +18,15 @@ const TagList: React.FC<TagListProps> = ({ tags, duration, direction }) => (
       } as React.CSSProperties
     }
   >
-    <div className='inner'>
+    <div class='inner'>
       {tags.map((tag, index) => (
-        <div className='tag' key={index}>
+        <div class='tag' key={index}>
           {tag}
         </div>
       ))}
       {/* duplicated content */}
       {tags.map((tag, index) => (
-        <div className='tag' key={`duplicate-${index}`}>
+        <div class='tag' key={`duplicate-${index}`}>
           {tag}
         </div>
       ))}
@@ -33,9 +34,9 @@ const TagList: React.FC<TagListProps> = ({ tags, duration, direction }) => (
   </div>
 );
 
-const InfiniteScrollAnimation: React.FC = () => (
-  <div className='app'>
-    <div className='tag-list'>
+const InfiniteScrollAnimation: FunctionalComponent = () => (
+  <div class='app'>
+    <div class='tag-list'>
       <TagList
         tags={[
           "YFood",

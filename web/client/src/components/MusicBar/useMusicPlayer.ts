@@ -1,5 +1,5 @@
 // src/components/MusicBar/useMusicPlayer.ts
-import { useState, useRef, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent }  from "preact/hooks";
 import ReactPlayer from "react-player";
 
 const useMusicPlayer = () => {

@@ -137,26 +137,26 @@ export default class Parameters extends Component {
 
     const retainRequestBodyValueFlagForOperation = (f) => oas3Actions.setRetainRequestBodyValueFlag({ value: f, pathMethod })
     return (
-      <div className="opblock-section">
-        <div className="opblock-section-header">
+      <div class="opblock-section">
+        <div class="opblock-section-header">
           {isOAS3 ? (
-            <div className="tab-header">
+            <div class="tab-header">
               <div onClick={() => this.toggleTab("parameters")}
-                   className={`tab-item ${this.state.parametersVisible && "active"}`}>
-                <h4 className="opblock-title"><span>Parameters</span></h4>
+                   class={`tab-item ${this.state.parametersVisible && "active"}`}>
+                <h4 class="opblock-title"><span>Parameters</span></h4>
               </div>
               {operation.get("callbacks") ?
                 (
                   <div onClick={() => this.toggleTab("callbacks")}
-                       className={`tab-item ${this.state.callbackVisible && "active"}`}>
-                    <h4 className="opblock-title"><span>Callbacks</span></h4>
+                       class={`tab-item ${this.state.callbackVisible && "active"}`}>
+                    <h4 class="opblock-title"><span>Callbacks</span></h4>
                   </div>
                 ) : null
               }
             </div>
           ) : (
-            <div className="tab-header">
-              <h4 className="opblock-title">Parameters</h4>
+            <div class="tab-header">
+              <h4 class="opblock-title">Parameters</h4>
             </div>
           )}
           {allowTryItOut ? (
@@ -169,14 +169,14 @@ export default class Parameters extends Component {
               onResetClick={() => onResetClick(pathMethod)}/>
           ) : null}
         </div>
-        {this.state.parametersVisible ? <div className="parameters-container">
-          {!groupedParametersArr.length ? <div className="opblock-description-wrapper"><p>No parameters</p></div> :
-            <div className="table-container">
-              <table className="parameters">
+        {this.state.parametersVisible ? <div class="parameters-container">
+          {!groupedParametersArr.length ? <div class="opblock-description-wrapper"><p>No parameters</p></div> :
+            <div class="table-container">
+              <table class="parameters">
                 <thead>
                 <tr>
-                  <th className="col_header parameters-col_name">Name</th>
-                  <th className="col_header parameters-col_description">Description</th>
+                  <th class="col_header parameters-col_name">Name</th>
+                  <th class="col_header parameters-col_description">Description</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -206,7 +206,7 @@ export default class Parameters extends Component {
           }
         </div> : null}
 
-        {this.state.callbackVisible ? <div className="callbacks-container opblock-description-wrapper">
+        {this.state.callbackVisible ? <div class="callbacks-container opblock-description-wrapper">
           <Callbacks
             callbacks={Map(operation.get("callbacks"))}
             specPath={specPath.slice(0, -1).push("callbacks")}
@@ -214,9 +214,9 @@ export default class Parameters extends Component {
         </div> : null}
         {
           isOAS3 && requestBody && this.state.parametersVisible &&
-          <div className="opblock-section opblock-section-request-body">
-            <div className="opblock-section-header">
-              <h4 className={`opblock-title parameter__name ${requestBody.get("required") && "required"}`}>Request
+          <div class="opblock-section opblock-section-request-body">
+            <div class="opblock-section-header">
+              <h4 class={`opblock-title parameter__name ${requestBody.get("required") && "required"}`}>Request
                 body</h4>
               <label id={controlId}>
                 <ContentType
@@ -225,13 +225,13 @@ export default class Parameters extends Component {
                   onChange={(value) => {
                     this.onChangeMediaType({ value, pathMethod })
                   }}
-                  className="body-param-content-type"
+                  class="body-param-content-type"
                   ariaLabel="Request content type" 
                   controlId={controlId}
                 />
               </label>
             </div>
-            <div className="opblock-description-wrapper">
+            <div class="opblock-description-wrapper">
               <RequestBody
                 setRetainRequestBodyValueFlag={retainRequestBodyValueFlagForOperation}
                 userHasEditedBody={oas3Selectors.hasUserEditedBody(...pathMethod)}

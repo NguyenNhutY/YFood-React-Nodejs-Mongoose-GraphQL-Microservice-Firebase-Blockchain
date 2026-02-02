@@ -59,11 +59,11 @@ export default class Models extends Component {
     const ArrowUpIcon = getComponent("ArrowUpIcon")
     const ArrowDownIcon = getComponent("ArrowDownIcon")
 
-    return <section className={ showModels ? "models is-open" : "models"} ref={this.onLoadModels}>
+    return <section class={ showModels ? "models is-open" : "models"} ref={this.onLoadModels}>
       <h4>
         <button
           aria-expanded={showModels}
-          className="models-control"
+          class="models-control"
           onClick={() => layoutActions.show(specPathBase, !showModels)}
         >
           <span>{isOAS3 ? "Schemas" : "Models"}</span>
@@ -106,15 +106,15 @@ export default class Models extends Component {
               includeReadOnly = {true}
               includeWriteOnly = {true}/>
 
-            const title = <span className="model-box">
-              <span className="model model-title">
+            const title = <span class="model-box">
+              <span class="model model-title">
                 {displayName}
               </span>
             </span>
 
-            return <div id={ `model-${name}` } className="model-container" key={ `models-section-${name}` }
+            return <div id={ `model-${name}` } class="model-container" key={ `models-section-${name}` }
                     data-name={name} ref={this.onLoadModel} >
-              <span className="models-jump-to-path"><JumpToPath specPath={specPath} /></span>
+              <span class="models-jump-to-path"><JumpToPath specPath={specPath} /></span>
               <ModelCollapse
                 classes="model-box"
                 collapsedContent={this.getCollapsedContent(name)}

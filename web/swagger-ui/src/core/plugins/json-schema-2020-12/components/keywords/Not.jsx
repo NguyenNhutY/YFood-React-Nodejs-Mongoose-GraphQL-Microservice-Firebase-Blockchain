@@ -16,13 +16,13 @@ const Not = ({ schema }) => {
   if (!fn.hasKeyword(schema, "not")) return null
 
   const name = (
-    <span className="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
+    <span class="json-schema-2020-12-keyword__name json-schema-2020-12-keyword__name--primary">
       Not
     </span>
   )
 
   return (
-    <div className="json-schema-2020-12-keyword json-schema-2020-12-keyword--not">
+    <div class="json-schema-2020-12-keyword json-schema-2020-12-keyword--not">
       <JSONSchema name={name} schema={schema.not} />
     </div>
   )

@@ -1,11 +1,12 @@
 // src/components/MusicBar/MusicBarContainer.tsx
-import React, { useState } from "react";
+import React, { useState }  from "preact/hooks";
 import MusicBar from "./MusicBar";
 import useMusicPlayer from "./useMusicPlayer";
 import Modal from "../Modal/Modal";
 import DragAndDropModal from "../Modal/ModalMusic/ModalMusic";
+import { FunctionalComponent } from "preact";
 
-const MusicBarContainer: React.FC = () => {
+const MusicBarContainer: FunctionalComponent = () => {
   const {
     isPlaying,
     currentSongIndex,

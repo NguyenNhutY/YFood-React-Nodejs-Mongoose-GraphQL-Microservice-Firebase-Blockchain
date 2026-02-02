@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "preact/hooks";
 import "./customerReviews.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,6 +6,7 @@ import {
   faStarHalfAlt,
   faStar as faStarSolid,
 } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
 // Define types for the review and props
 interface Review {
@@ -20,42 +21,42 @@ interface CustomerReviewsProps {
   reviews: Review[];
 }
 
-const CustomerReviews: React.FC<CustomerReviewsProps> = ({ reviews }) => {
+const CustomerReviews: FunctionalComponent<CustomerReviewsProps> = ({ reviews }) => {
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
     return (
       <>
         {[...Array(fullStars)].map((_, i) => (
-          <FontAwesomeIcon key={i} icon={faStarSolid} className='star' />
+          <FontAwesomeIcon key={i} icon={faStarSolid} class='star' />
         ))}
-        {halfStar && <FontAwesomeIcon icon={faStarHalfAlt} className='star' />}
+        {halfStar && <FontAwesomeIcon icon={faStarHalfAlt} class='star' />}
         {[...Array(5 - fullStars - (halfStar ? 1 : 0))].map((_, i) => (
-          <FontAwesomeIcon key={i} icon={faStar} className='star' />
+          <FontAwesomeIcon key={i} icon={faStar} class='star' />
         ))}
       </>
     );
   };
 
   return (
-    <div className='customer-reviews'>
+    <div class='customer-reviews'>
       <h2>Customer Reviews</h2>
       {reviews.length > 0 ? (
         reviews.map((review) => (
-          <div key={review.id} className='review'>
-            <div className='review-rating'>{renderStars(review.rating)}</div>
-            <p className='review-username'>{review.username}</p>{" "}
+          <div key={review.id} class='review'>
+            <div class='review-rating'>{renderStars(review.rating)}</div>
+            <p class='review-username'>{review.username}</p>{" "}
             {/* Hiển thị tên người dùng */}
-            <p className='review-comment'>{review.comment}</p>
+            <p class='review-comment'>{review.comment}</p>
             {review.media && (
-              <div className='review-media'>
+              <div class='review-media'>
                 {review.media.endsWith(".mp4") ? (
-                  <video controls src={review.media} className='review-video' />
+                  <video controls src={review.media} class='review-video' />
                 ) : (
                   <img
                     src={review.media}
                     alt='Review Media'
-                    className='review-image'
+                    class='review-image'
                   />
                 )}
               </div>

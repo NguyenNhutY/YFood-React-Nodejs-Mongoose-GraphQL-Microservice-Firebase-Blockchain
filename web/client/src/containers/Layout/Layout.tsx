@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect } from "react";
+import React, { ReactNode, useState, useEffect }  from "preact/hooks";
 import Footer from "../../components/Footer/Footer";
 import "./layout.scss"; // Import CSS file for Layout
 import Navbar from "../../containers/Navbar/Navbar";
@@ -6,13 +6,22 @@ import PromotionBarClock from "../../components/PromotionBarClock/PromotionBarCl
 import LoginPopup from "../../pages/LoginPopup/LoginPopup";
 import ChatBotBtn from "../../components/ChatBotBtn/ChatBotBtn";
 import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
-import MusicBar from "../../components/MusicBar/MusicBarContainer";
+
+import { FunctionalComponent } from "preact";
+
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void;
+    google: any;
+  }
+}
+
 
 interface LayoutProps {
   children: ReactNode; // Định nghĩa kiểu cho props.children
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: FunctionalComponent<LayoutProps> = ({ children }) => {
   const [searchName, setSearchName] = useState<string>("");
   const [showLogin, setShowLogin] = useState<boolean>(false);
 
@@ -50,8 +59,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {showLogin ? (
         <LoginPopup setShowLogin={setShowLogin} showLogin={showLogin} />
       ) : (
-        <div className='wrapper'>
-          <div className='btn-translate' id='google_translate_element'></div>
+        <div class='wrapper'>
+          <div class='btn-translate' id='google_translate_element'></div>
           <PromotionBarClock />
           <Navbar
             showLogin={showLogin}
@@ -61,10 +70,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           {/* Phần tử để Google Translate nhúng vào */}
 
-          <main className='content'>{children}</main>
+          <main class='content'>{children}</main>
           <ChatBotBtn />
           <BackToTopButton />
-          <MusicBar />
+      
           <Footer />
         </div>
       )}

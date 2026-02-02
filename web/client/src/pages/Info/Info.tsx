@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef, MouseEvent } from "react";
+import React, { useState, useEffect, useRef, MouseEvent }  from "preact/hooks";
 import "./info.scss";
 import { assets } from "../../assets/frontend_assets/assets";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FunctionalComponent } from "preact";
 
 // Define the type for product
 interface Product {
@@ -13,7 +14,7 @@ interface Product {
   description: string;
 }
 
-const Info: React.FC = () => {
+const Info: FunctionalComponent = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const productsRef = useRef<HTMLDivElement[]>([]);
   const productContainerRef = useRef<HTMLDivElement | null>(null);
@@ -69,7 +70,7 @@ const Info: React.FC = () => {
     color: string
   ) => {
     const rippleDiv = document.createElement("div");
-    rippleDiv.className = "ripple-info";
+    rippleDiv.class = "ripple-info";
     const rippleSize = 60;
     const rippleOffset = e.currentTarget.getBoundingClientRect();
     const rippleY = e.clientY - rippleOffset.top;
@@ -158,32 +159,32 @@ const Info: React.FC = () => {
 
   return (
     <>
-      <button className='btn-back-history' onClick={handleGoBack}>
-        <FontAwesomeIcon icon={faArrowUp} className='fontawe' />
+      <button class='btn-back-history' onClick={handleGoBack}>
+        <FontAwesomeIcon icon={faArrowUp} class='fontawe' />
       </button>
-      <div className='card-info'>
-        <div className='products-info' ref={productContainerRef}>
+      <div class='card-info'>
+        <div class='products-info' ref={productContainerRef}>
           {products.map((product, index) => (
             <div
               key={product.id}
-              className={`product-info ${
+              class={`product-info ${
                 index === activeIndex ? "active" : ""
               }`}
               product-id={product.id}
               product-color={product.color}
               ref={(el) => (productsRef.current[index] = el as HTMLDivElement)}
             >
-              <div className='thumbnail-info'>
+              <div class='thumbnail-info'>
                 <img src={product.img} alt={product.title} />
               </div>
-              <h1 className='title-info'>{product.title}</h1>
-              <p className='description-info'>{product.description}</p>
+              <h1 class='title-info'>{product.title}</h1>
+              <p class='description-info'>{product.description}</p>
             </div>
           ))}
         </div>
-        <div className='footer-info'>
+        <div class='footer-info'>
           <a
-            className='btn-info'
+            class='btn-info'
             id='prev'
             href='#'
             ripple=''
@@ -197,7 +198,7 @@ const Info: React.FC = () => {
             Prev
           </a>
           <a
-            className='btn-info'
+            class='btn-info'
             id='next'
             href='#'
             ripple=''

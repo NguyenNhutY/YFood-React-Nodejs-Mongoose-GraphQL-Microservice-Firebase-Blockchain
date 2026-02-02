@@ -3,27 +3,37 @@ import { gql } from "apollo-server-express";
 const foodSchema = gql`
   scalar Upload
 
+  input FoodInput {
+    name: String!
+    price: Float!
+    description: String!
+    image: String!   # Đây là hình ảnh (dạng base64 hoặc URL)
+  category_name:String
+    }
+
   type Food @key(fields: "id") {
-    _id: String
+    _id: ID
     name: String
     description: String
     price: Float
-    item_metarial_food_id: ID
-    category_id: ID
+    item_metarial_food_id: String
+    category_id: ID!
     image: String
+    category_name:String
+
   }
 
   type FoodResponse {
     success: Boolean
     message: String
-    data: Food
+    data: [Food]
   }
 
-  type Mutation {
-    addFoods(category_id: ID, name: String!, price: Float!, description: String!, image: String!): FoodResponse!
+  extend type Mutation {
+    addFoods(foods: [FoodInput]!): FoodResponse!
   }
 
-  type Query {
+  extend type Query {
     listFood: FoodResponse
     getFoodById(_id: ID!): FoodResponse
     getFoodByCategory(category: String!): FoodResponse

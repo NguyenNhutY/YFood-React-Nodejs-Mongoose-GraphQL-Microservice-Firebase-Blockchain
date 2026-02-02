@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect }  from "preact/hooks";
 import introJs, { Step } from "intro.js";
 import "intro.js/introjs.css";
+import { FunctionalComponent } from "preact";
 
 interface IntroTourProps {
   steps: Step[];
   onComplete: () => void;
 }
 
-const IntroTour: React.FC<IntroTourProps> = ({ steps, onComplete }) => {
+const IntroTour: FunctionalComponent<IntroTourProps> = ({ steps, onComplete }) => {
   useEffect(() => {
     if (steps && steps.length > 0) {
       const tour = introJs();

@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 import { buildSubgraphSchema } from '@apollo/federation';
 
 const accountSchema = gql`
-  scalar Date
+  scalar Date 
 
   # Đối tượng Account có @key để định danh bởi _id
   type Account @key(fields: "_id") {

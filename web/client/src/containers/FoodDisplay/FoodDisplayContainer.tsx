@@ -1,17 +1,18 @@
-import React, { useContext, useState, useEffect, useMemo } from "react";
+import React, { useContext, useState, useEffect, useMemo }  from "preact/hooks";
 import { StoreContext } from "../../context/StoreContext";
 import FoodDisplay from "./FoodDisplay";
 import { List, fromJS } from "immutable";
 import { SortingStrategy } from "./SortingStrategy";
 import { filterFoodItems } from "./FilteringStrategy";
 import { FoodItemType } from "./FoodDisplay";
+import { FunctionalComponent } from "preact";
 
 interface FoodDisplayContainerProps {
   category: string;
   searchName: string;
 }
 
-const FoodDisplayContainer: React.FC<FoodDisplayContainerProps> = ({
+const FoodDisplayContainer: FunctionalComponent<FoodDisplayContainerProps> = ({
   category,
   searchName,
 }) => {

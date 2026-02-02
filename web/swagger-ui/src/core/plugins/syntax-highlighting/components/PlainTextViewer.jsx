@@ -3,14 +3,14 @@
  */
 import React from "react"
 import PropTypes from "prop-types"
-import classNames from "classnames"
+import classs from "classs"
 
-const PlainTextViewer = ({ className = "", children }) => (
-  <pre className={classNames("microlight", className)}>{children}</pre>
+const PlainTextViewer = ({ class = "", children }) => (
+  <pre class={classs("microlight", class)}>{children}</pre>
 )
 
 PlainTextViewer.propTypes = {
-  className: PropTypes.string,
+  class: PropTypes.string,
   children: PropTypes.string.isRequired,
 }
 

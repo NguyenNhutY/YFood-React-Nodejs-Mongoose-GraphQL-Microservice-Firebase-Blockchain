@@ -78,14 +78,14 @@ export default class OperationServers extends React.Component {
     const serversToDisplay = operationServers || pathServers
     const displaying = operationServers ? "operation" : "path"
 
-    return <div className="opblock-section operation-servers">
-      <div className="opblock-section-header">
-        <div className="tab-header">
-          <h4 className="opblock-title">Servers</h4>
+    return <div class="opblock-section operation-servers">
+      <div class="opblock-section-header">
+        <div class="tab-header">
+          <h4 class="opblock-title">Servers</h4>
         </div>
       </div>
-      <div className="opblock-description-wrapper">
-        <h4 className="message">
+      <div class="opblock-description-wrapper">
+        <h4 class="message">
           These {displaying}-level options override the global server options.
         </h4>
         <Servers

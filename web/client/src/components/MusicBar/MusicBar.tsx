@@ -1,9 +1,10 @@
 // src/components/MusicBar/MusicBar.tsx
-import React from "react";
+import React  from "preact/hooks";
 import ReactPlayer from "react-player";
 import "./musicBar.scss";
 import repeatIcon from "../../assets/frontend_assets/repeat.png";
 import repeatActiveIcon from "../../assets/frontend_assets/repeat-active.png";
+import { FunctionalComponent } from "preact";
 
 interface MusicBarProps {
   isPlaying: boolean;
@@ -38,7 +39,7 @@ interface MusicBarProps {
   getVolumeIcon: () => string;
 }
 
-const MusicBar: React.FC<MusicBarProps> = ({
+const MusicBar: FunctionalComponent<MusicBarProps> = ({
   isPlaying,
   currentSongIndex,
   volume,
@@ -68,12 +69,12 @@ const MusicBar: React.FC<MusicBarProps> = ({
   handleDropdownChange,
   getVolumeIcon,
 }) => (
-  <div className='music-bar'>
+  <div class='music-bar'>
     <button onClick={playPrevious}>&lt;</button>
     <button onClick={togglePlay}>{isPlaying ? "[ ]" : "O"}</button>
     <button onClick={playNext}>&gt;</button>
     <button onClick={() => setShowVolume(!showVolume)}>
-      <div className={`volume-icon ${getVolumeIcon()}`} />
+      <div class={`volume-icon ${getVolumeIcon()}`} />
     </button>
     {showVolume && (
       <input
@@ -83,11 +84,11 @@ const MusicBar: React.FC<MusicBarProps> = ({
         step='0.01'
         value={volume}
         onChange={handleVolumeChange}
-        className='volume-slider vertical'
+        class='volume-slider vertical'
       />
     )}
     <select
-      className='select-music'
+      class='select-music'
       onChange={handleDropdownChange}
       value={currentSongIndex}
     >
@@ -105,18 +106,18 @@ const MusicBar: React.FC<MusicBarProps> = ({
         type='file'
         accept='video/*, audio/*'
         onChange={handleFileChange}
-        className='file-upload'
+        class='file-upload'
       />
     )}
     <button
       onClick={() => setRepeat(!repeat)}
-      className={`repeat-button ${
+      class={`repeat-button ${
         repeat ? "repeat-active-icon" : "repeat-icon"
       }`}
     >
       <img src={repeat ? repeatActiveIcon : repeatIcon} alt='Repeat' />
     </button>
-    <div className='time-display'>
+    <div class='time-display'>
       {formatTime(playedSeconds)} / {formatTime(duration)}
     </div>
     <ReactPlayer

@@ -16,7 +16,7 @@ const JsonSchemaDialect = ({ getComponent, specSelectors }) => {
   return (
     <>
       {jsonSchemaDialect && jsonSchemaDialect === jsonSchemaDialectDefault && (
-        <p className="info__jsonschemadialect">
+        <p class="info__jsonschemadialect">
           JSON Schema dialect:{" "}
           <Link target="_blank" href={sanitizeUrl(jsonSchemaDialect)}>
             {jsonSchemaDialect}
@@ -25,12 +25,12 @@ const JsonSchemaDialect = ({ getComponent, specSelectors }) => {
       )}
 
       {jsonSchemaDialect && jsonSchemaDialect !== jsonSchemaDialectDefault && (
-        <div className="error-wrapper">
-          <div className="no-margin">
-            <div className="errors">
-              <div className="errors-wrapper">
-                <h4 className="center">Warning</h4>
-                <p className="message">
+        <div class="error-wrapper">
+          <div class="no-margin">
+            <div class="errors">
+              <div class="errors-wrapper">
+                <h4 class="center">Warning</h4>
+                <p class="message">
                   <strong>OpenAPI.jsonSchemaDialect</strong> field contains a
                   value different from the default value of{" "}
                   <Link target="_blank" href={jsonSchemaDialectDefault}>

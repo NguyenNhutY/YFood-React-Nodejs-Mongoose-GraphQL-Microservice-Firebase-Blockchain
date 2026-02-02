@@ -8,9 +8,7 @@ import materialBatchSchema from "./material_batch.schema.js"; // Material batch 
 import materialBatchResolver from "./material_batch.resolver.js"; // Material batch resolvers
 import { DateScalar } from "../../utils/custom.date.js";
 import { Decimal } from "../../utils/custom.decimal.js";
-import session from "express-session";  // Express session
 import {buildSubgraphSchema} from "@apollo/subgraph"
-import { buildFederatedSchema } from '@apollo/federation';  // Federation schema
 const app = express();
 const PORT = process.env.PORT || 4002;
 
@@ -56,10 +54,15 @@ app.use((err, req, res, next) => {
 });
 
 // Start the Apollo Server
-await server.start();
-server.applyMiddleware({ app, path: "/graphql" }); // Use the /graphql endpoint
+server.start()
+  .then(() => {
+    server.applyMiddleware({ app, path: '/graphql' });
+    app.listen(PORT, () => {
+      console.log(`Material Batch service is running on http://localhost:${PORT}/graphql`);
 
-// Start the Express app
-app.listen(PORT, () => {
-  console.log(`Material Batch service is running on http://localhost:${PORT}/graphql`);
-});
+    });
+  })
+  .catch((error) => {
+    console.error('Gateway startup error:', error);
+    console.error(error.extensions?.errors);
+  });

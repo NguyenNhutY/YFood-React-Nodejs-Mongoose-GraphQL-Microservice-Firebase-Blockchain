@@ -10,7 +10,7 @@ describe("<SchemesContainer/>", function(){
   const components = {
     schemes: Schemes,
     Col,
-    authorizeBtn: () => <span className="mocked-button" id="mocked-button" />
+    authorizeBtn: () => <span class="mocked-button" id="mocked-button" />
   }
   const mockedProps = {
     specSelectors: {

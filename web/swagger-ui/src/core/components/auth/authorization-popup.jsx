@@ -15,18 +15,18 @@ export default class AuthorizationPopup extends React.Component {
     const CloseIcon = getComponent("CloseIcon")
 
     return (
-      <div className="dialog-ux">
-        <div className="backdrop-ux"></div>
-        <div className="modal-ux">
-          <div className="modal-dialog-ux">
-            <div className="modal-ux-inner">
-              <div className="modal-ux-header">
+      <div class="dialog-ux">
+        <div class="backdrop-ux"></div>
+        <div class="modal-ux">
+          <div class="modal-dialog-ux">
+            <div class="modal-ux-inner">
+              <div class="modal-ux-header">
                 <h3>Available authorizations</h3>
-                <button type="button" className="close-modal" onClick={ this.close }>
+                <button type="button" class="close-modal" onClick={ this.close }>
                   <CloseIcon />
                 </button>
               </div>
-              <div className="modal-ux-content">
+              <div class="modal-ux-content">
 
                 {
                   definitions.valueSeq().map(( definition, key ) => {
